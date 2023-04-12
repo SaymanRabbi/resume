@@ -1,0 +1,11 @@
+.list::before{
+    content: '';
+    height: 10px;
+  width: 10px;
+  background-color: #4b5563;
+  border-radius: 50%;
+  display: block;
+  padding-top: 3px;
+    /* border: 2px solid #4B5563; */
+    /* box-shadow: 0 0 0 2px #f00; */
+}

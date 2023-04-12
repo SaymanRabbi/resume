@@ -1,0 +1,6 @@
+.clippath{
+    clip-path: polygon(50% 0, 50% 0, 100% 20%, 100% 80%, 50% 100%, 49% 99%, 0% 80%, 0% 20%);
+}
+.bg{
+    background-image: url(./Img/bg.png);
+}
