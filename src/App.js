@@ -1,34 +1,29 @@
 import { Routes,Route } from "react-router-dom";
-import Christoper from "./Components/Christoper/Christoper";
-import Sebastian from "./Components/Sebastian/Sebastian";
-import Petrica from "./Components/Petrica/Petrica";
-import Gregory from "./Components/Gregory/Gregory";
-import Shophie from "./Components/Shophie/Shophie";
-import Westurner from "./Components/Westurner/Westurner";
-import Tim from "./Components/Tim/Tim";
-import IsabelMaher from "./Components/IsabelMaher/IsabelMaher";
-import Vince from "./Components/Vince/Vince";
-import Elsa from "./Components/Elsa/Elsa";
-import Monica from "./Components/Monica/Monica";
-import Daryal from "./Components/Daryal/Daryal";
+import OutletContainer from "./Components/OutletContainer/OutletContainer";
+import Home from "./Pages/Home";
+import ResumeTemplate from "./Pages/ResumeTemplate/ResumeTemplate";
+import Login from "./Pages/Login/Login";
+import ResumeTemplates from "./Components/ResumeTemplates/ResumeTemplates";
+import Creative from "./Components/Creative/Creative";
+import Professional from "./Components/Professional/Professional";
+import ResumeBuilder from "./Pages/ResumeBuilder";
 
 
 function App() {
   return (
     <div>
       <Routes>
-        <Route path="/" element={<Christoper />} />
-        <Route path="/sebastian" element={<Sebastian />} />
-        <Route path="/petrica" element={<Petrica />} />
-        <Route path="/gregory" element={<Gregory />} />
-        <Route path="/shophie" element={<Shophie />} />
-        <Route path="/westurner" element={<Westurner />} />
-        <Route path="/tim" element={<Tim />} />
-        <Route path="/isabel" element={<IsabelMaher />} />
-        <Route path="/vince" element={<Vince />} />
-        <Route path="/elsa" element={<Elsa />} />
-        <Route path="/monica" element={<Monica />} />
-        <Route path="/daryal" element={<Daryal />} />
+        <Route  element={<OutletContainer />}>
+         <Route path="/" element={<Home />}/>
+         
+         <Route path="/resume-templates" element={<ResumeTemplate />}>
+            <Route exact path='' element={<ResumeTemplates />}/>
+            <Route exact path='/resume-templates/creative' element={<Creative/>}/>
+            <Route exact path='/resume-templates/professional' element={<Professional/>}/>
+          </Route>
+        <Route path="/login" element={<Login/>} />
+        </Route>
+        <Route path="/resume_builder" element={<ResumeBuilder />}/>
         </Routes>
     </div>
   );
