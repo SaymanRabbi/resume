@@ -23,7 +23,9 @@ open?<div className=' p-4 border'>
             <div className=' ml-5 flex gap-3 py-3 font-[600] text-blue-500 items-center cursor-pointer'>
                <FontAwesomeIcon icon={faPlus} onClick={()=>SetOpen(!open)}/>
                <p onClick={()=>SetOpen(!open)}>
-                Add Link
+                {
+                    open?'Add One More Website':'Add Website'
+                }
                </p>
             </div>
         </div>
