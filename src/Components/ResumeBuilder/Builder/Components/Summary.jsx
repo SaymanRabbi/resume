@@ -19,7 +19,10 @@ const Summary = () => {
            onInit={(evt, editor) => editorRef.current = editor}
            initialValue=""
            init={{
+            branding: false,
+            selector: 'textarea',
              height: 200,
+             resize: false,
              menubar: false,
              plugins: [
                'advlist autolink lists link image charmap print preview anchor',

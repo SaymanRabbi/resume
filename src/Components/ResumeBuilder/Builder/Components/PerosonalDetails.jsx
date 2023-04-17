@@ -2,7 +2,7 @@ import React, { useRef, useState } from 'react';
 import Titttle from './Titttle';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser } from '@fortawesome/free-regular-svg-icons';
-import { faAngleDown } from '@fortawesome/free-solid-svg-icons';
+import { faAngleDown,faAngleUp } from '@fortawesome/free-solid-svg-icons';
 import Input from './Input';
 
 const PerosonalDetails = () => {
@@ -61,8 +61,11 @@ const PerosonalDetails = () => {
                      </div>
                }
                 <div className=' mt-4 flex gap-3 items-center  font-[500] text-blue-500 cursor-pointer'>
-                <h2 className='' onClick={()=>setShow(!show)}>Edit additional details</h2>
-                <FontAwesomeIcon icon={faAngleDown} onClick={()=>setShow(!show)}/>
+                <h2 className='' onClick={()=>setShow(!show)}>
+                  
+                   {show ? 'Hide' : 'Show'} More Details
+                </h2>
+                <FontAwesomeIcon icon={show?faAngleUp:faAngleDown } onClick={()=>setShow(!show)}/>
                 </div>
             </form>
         </div>

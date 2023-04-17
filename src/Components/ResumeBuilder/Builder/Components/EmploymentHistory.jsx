@@ -32,13 +32,16 @@ const EmploymentHistory = () => {
                    </div>
                    <Input label='City'/>
                 </div>
-                <div className='mt-3 md:mt-0'>
-                    <label>Description</label>
+                <div className=''>
+                    <h2 className='py-3'>Description</h2>
                     <Editor
            onInit={(evt, editor) => editorRef.current = editor}
            initialValue=""
            init={{
+            selector: '#tinymce',
+            branding: false,
              height: 200,
+             resize: false,
              menubar: false,
              plugins: [
                'advlist autolink lists link image charmap print preview anchor',
@@ -58,7 +61,9 @@ const EmploymentHistory = () => {
               <div className=' ml-5 flex gap-3 py-3 font-[600] text-blue-500 items-center cursor-pointer'>
                <FontAwesomeIcon icon={faPlus} onClick={()=>SetOpen(!open)}/>
                <p onClick={()=>SetOpen(!open)}>
-                Add employment
+                 {
+                      open ? 'Add One More Employment' : 'Add Employment'
+                 }
                </p>
             </div>
         </div>
