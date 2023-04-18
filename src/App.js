@@ -7,6 +7,8 @@ import ResumeTemplates from "./Components/ResumeTemplates/ResumeTemplates";
 import Creative from "./Components/Creative/Creative";
 import Professional from "./Components/Professional/Professional";
 import ResumeBuilder from "./Pages/ResumeBuilder";
+import Christoper from "./Components/Resume/Christoper/Christoper";
+
 
 
 function App() {
@@ -23,7 +25,8 @@ function App() {
           </Route>
         <Route path="/login" element={<Login/>} />
         </Route>
-        <Route path="/resume_builder" element={<ResumeBuilder />}/>
+        <Route path="/resume_builder/:id" element={<ResumeBuilder />}/>
+        <Route path="/toronto" element={<Christoper/>}/>
         </Routes>
     </div>
   );

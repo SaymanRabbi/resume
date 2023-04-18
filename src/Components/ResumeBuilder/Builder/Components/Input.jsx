@@ -1,13 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-const Input = ({label,placeHolder,setNewSkill}) => {
+const Input = ({label,placeHolder,setNewSkill,attributename}) => {
+  let storenamename = attributename;
+  const [input, setInput] = useState('');
+  const data = {
+    [storenamename]:input
+  }
     return (    
         
              <div className='group h-[74px] flex-grow-0 flex-shrink-0 flex-[50%] mt-3'>
                    <label htmlFor="" className='text-gray-500 font-[500] mb-2 inline-block'>{label}</label>
                   {
                     label==='Skill'?<input type="text" className=' w-[100%] px-4 h-[50px] bg-gray-100 rounded border-none outline-none caret-blue-500 border border-transparent
-                    ' placeholder={placeHolder} onChange={(e)=>setNewSkill(e.target.value)}/>: <input type="text" className=' w-[100%] px-4 h-[50px] bg-gray-100 rounded border-none outline-none caret-blue-500 border border-transparent
+                    ' placeholder={placeHolder} onChange={(e)=>setNewSkill(e.target.value)}/>: <input dataCustom={data}  value={input} onInput={e => setInput(e.target.value)}  type="text" className=' w-[100%] px-4 h-[50px] bg-gray-100 rounded border-none outline-none caret-blue-500 border border-transparent
                     ' placeholder={placeHolder}
                     />
                   }

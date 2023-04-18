@@ -2,10 +2,25 @@ import React from 'react';
 import { FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import { faGoogle,faFacebook,faLinkedin } from '@fortawesome/free-brands-svg-icons';
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
-import { Link } from 'react-router-dom';
-
+import { Link, useNavigate } from 'react-router-dom';
+import { auth } from '../../firebase.init';
+import {useSignInWithGoogle } from 'react-firebase-hooks/auth';
 
 const Login = () => {
+    const [signInWithGoogle,googleuser] = useSignInWithGoogle(auth)
+    const naviagate = useNavigate();
+    // =====sign in with google=====
+const signInWithGooglefunc =async () => {
+    try {
+         signInWithGoogle()
+        if(googleuser){
+            naviagate('/resume-templates')
+        }
+     } catch (error) {
+        
+     }
+}
+// =====sign in with google=====
     return (
         <div className=' max-w-[1200px] mx-auto pt-[40px]  pb-120px flex justify-center'>
             <div className=' text-center '>
@@ -30,7 +45,7 @@ const Login = () => {
                            </div>
                     </div>
                     <div className=' grid grid-cols-2 gap-4'>
-                    <div className=' bg-[#DB4437] text-white px-10 py-3 flex items-center gap-2 rounded-md font-[600] cursor-pointer'>
+                    <div className=' bg-[#DB4437] text-white px-10 py-3 flex items-center gap-2 rounded-md font-[600] cursor-pointer' onClick={()=>signInWithGooglefunc()}>
                                <FontAwesomeIcon icon={faGoogle} className='text-xl mr-3 text-white'/>
                                 Goggle
                            </div>

@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import Titttle from './Components/Titttle';
 import ResumeScore from './Components/ResumeScore';
 import PerosonalDetails from './Components/PerosonalDetails';
@@ -13,6 +13,10 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faNoteSticky } from '@fortawesome/free-solid-svg-icons';
 
 const Builder = ({setShow}) => {
+    const [personalInfo, setPersonalInfo] = useState({});
+
+
+
 
     return (
         <div className='col-span-12 xl:col-span-6 p-12 relative'>
@@ -21,7 +25,7 @@ const Builder = ({setShow}) => {
             <ResumeScore/>
             {/* -----score--- */}
             {/* ------Personal Details-------  */}
-            <PerosonalDetails/>
+            <PerosonalDetails setPersonalInfo={setPersonalInfo}/>
             {/* ------Personal Details-------  */}
             {/* ------Summary------ */}
             <Summary/>

@@ -86,7 +86,8 @@ const Resume = () => {
                     </p>
                   </h2>
                   </div>
-                  <Link to='/resume_builder' className='hidden group-hover:block top-[43%] font-[500] right-[30%] absolute'>
+                  
+                  <Link to={`/resume_builder/${item.id}`} className='hidden group-hover:block top-[43%] font-[500] right-[30%] absolute'>
                     <button className=' px-4 py-2 bg-blue-500 rounded-md text-white shadow-md'>
                         Use This Template
                     </button>
