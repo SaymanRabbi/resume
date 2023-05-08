@@ -1,10 +1,12 @@
 import React from 'react';
 import Profile from './Profile';
 import Employment from './Employment';
+import useWidth from '../../../../hooks/useWidth';
 
 const Left = () => {
+    const width = useWidth()
     return (
-        <div className=' col-span-9'>
+        <div className={`${width>1280?'col-span-8':'col-span-9'}`}>
             <Profile/>
             <Employment/>
         </div>

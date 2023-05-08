@@ -8,14 +8,14 @@ const TemplatesFilter = () => {
     console.log(path);
     return (
         <div className=' flex justify-center border-b mb-8'>
-            <div className='flex md:gap-x-16 gap-x-8'>
+            <div className='flex md:gap-x-16 gap-x-4'>
                <NavLink
   to="/resume-templates"
-  className={({ isActive }) => (isActive ? `${path==='/resume-templates'?'active flex':'deactive group flex'} 
-}`: 'deactive group')}
+  className={({ isActive }) => (isActive ? `${path===`${'/resume-templates'||'/'}`?'active flex':'deactive group flex'} 
+}`: 'deactive group flex')}
 > 
 <FontAwesomeIcon icon={faCopy} className='mr-3  text-2xl group-hover:text-blue-500 hidden md:block'/>
-<span className='text-gray-500 group-hover:text-black'>All templates</span>
+<span className='text-gray-500 group-hover:text-black text-[16px] md:text-[18px]'>All templates</span>
 </NavLink>
 <NavLink
   to="/resume-templates/creative"
@@ -23,7 +23,7 @@ const TemplatesFilter = () => {
 }`: 'deactive group flex')}
 > 
 <FontAwesomeIcon icon={faChessQueen} className='mr-3  text-2xl group-hover:text-blue-500 hidden md:block'/>
-<span className='text-gray-500 group-hover:text-black'>Creative</span>
+<span className='text-gray-500 group-hover:text-black text-[16px] md:text-[18px]'>Creative</span>
 </NavLink>
 <NavLink
   to="/resume-templates/professional"
@@ -31,7 +31,7 @@ const TemplatesFilter = () => {
 }`: 'deactive group flex')}
 > 
 <FontAwesomeIcon icon={faBriefcase} className='mr-3  text-2xl group-hover:text-blue-500 hidden md:block'/>
-<span className='text-gray-500 group-hover:text-black'>Professional</span>
+<span className='text-gray-500 group-hover:text-black text-[16px] md:text-[18px]'>Professional</span>
 </NavLink>
             </div>
         </div>

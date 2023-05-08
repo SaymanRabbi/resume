@@ -1,78 +1,48 @@
-import React from 'react';
+import React, {  } from 'react';
+import useWidth from '../../../../hooks/useWidth';
+import { useContext } from 'react';
+import { data } from '../../../../App';
+import { useLocation } from 'react-router-dom';
 
 const RightUserInfo = () => {
-    const skills = [
-        {
-            id: 1,
-            name: 'Neurogical Assessment',
-            rating: 5
-        },{
-            id: 2,
-            name: 'Cogntive Behavioral Therapy',
-            rating: 5
-        },
-            {
-                id: 3,
-                name: 'Advanced Research Skills',
-                rating: 5
-            },{
-                id: 4,
-                name: 'Knowledge of Psychopha',
-                rating: 5
-            }
-        
-    ]
-    const referances = [
-        {
-            id: 1,
-            text:'Dr. Gene Reandopal from The UniverCity of New York, USA',
-            university:'grand university',
-            regino:'0122121212121'
-        },
-        {
-            id: 2,
-            text:'Dr. Gene Reandopal from The UniverCity of New York, USA',
-            university:'grand university',
-            regino:'0122121212121'
-
-
-        },{
-            id:3,
-            text:'Dr. Gene Reandopal from The UniverCity of New York, USA',
-            university:'grand university',
-            regino:'0122121212121'
-
-
-        }
-    ]
+    const {allData} = useContext(data)
+    const path = useLocation().pathname.split('/')[2]
+    const skills = allData[path]?.skills
+    const references = allData[path]?.references
+    const width = useWidth()
     return (
         <div className=' col-span-5'>
-             <div className='bg-[#ECEDEC] rounded-lg p-2'>
-             <h2 className='text-2xl font-bold text-[#1B3055]'>
-                            Skills
-                        </h2>
-                        {
-                            skills.map(skill => <div className='flex justify-between items-center gap-3 text-gray-700'>
-                            <h2 className=' font-bold skill_tittle'  key={skill.id}>{skill.name}</h2>
-                             <div className=' border w-auto border-gray-700 h-0 flex-grow'></div>
-                             <h2 className=' font-medium skill_rating'>{skill.rating}/5</h2>
-                            </div>)
-                        }
-
-                       
-             </div>
+           {
+                skills?.length>0 ? <div className='bg-gray-200 rounded-lg p-2'>
+                <h2 className={`${width>1280?"text-[16px]":"text-3xl  mb-3"} font-bold text-[#1B3055]`}>
+                               Skills
+                           </h2>
+                           {
+                               skills.map((skill,index)=> <div className={`flex justify-between items-center  ${width>1280?"gap-x-[2px]":"gap-3"}  text-gray-700`}>
+                               <h2 className={`font-bold skill_tittle ${width>1280?"text-[8px]":""}`}  key={index}>{skill}</h2>
+                                <div className={` w-auto border-gray-700 h-0 flex-grow ${width>1280?' border-[1px]':" border"}`}></div>
+                                <h2 className={`font-medium skill_rating ${width>1280?"text-[8px]":""}`}>5/5</h2>
+                               </div>)   
+                           }
+                </div>
+                :null
+           }
              <div>
-             <div className='bg-[#ECEDEC] rounded-lg p-2 mt-3'>
-                            <h2 className='text-2xl font-bold text-[#1B3055]'>
+             <div className='bg-gray-200 rounded-lg p-2 mt-3'>
+                            {
+                                references?.length>0 ? <>
+                                <h2 className={`${width>1280?"text-[16px]":"text-3xl  mb-3"} font-bold text-[#1B3055]`}>
                                References
                             </h2>
 {
-    referances.map(referance => <div key={referance.id} className='my-2 text-gray-700 References'>
-    <h2 className=' font-bold ref_tittle'>{referance.text}</h2>
-    <h2 className=' font-medium ref_uni'>{referance.university}</h2>
-    <h2  className=' font-medium ref_id'>{referance.regino}</h2>
+    references.map(referance => <div key={referance.id} className={`text-gray-700 References ${width>1280?'':'my-2 '}`}>
+    <h2 className={`ref_tittle font-bold ${width>1280?"text-[8px]":""}`}>{referance?.name} { referance?.city}</h2>
+    <h2 className={`font-medium ref_uni ${width>1280?"text-[6px]":""}`}>{referance?.institute}</h2>
+    <h2  className={`font-medium ref_id ${width>1280?"text-[6px]":""}`}>{referance?.id}</h2>
     </div>)
-}
+}   
+                                </> : null
+                            }
                         </div>
              </div>
         </div>

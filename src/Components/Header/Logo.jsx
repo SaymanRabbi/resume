@@ -1,10 +1,11 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Logo = () => {
     return (
-        <div>
-            <img src="https://s3.resume.io/uploads/country/logo_default/2/for-light-bg.svg" alt="" />
-        </div>
+        <Link to='/' className=' text-2xl text-[#1F2937] font-semibold cursor-pointer'>
+            Resume Logo
+        </Link>
     );
 };
 

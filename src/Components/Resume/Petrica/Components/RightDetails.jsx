@@ -1,4 +1,5 @@
 import React from 'react';
+import useWidth from '../../../../hooks/useWidth';
 
 const RightDetails = () => {
     const employmentHistory=[
@@ -49,36 +50,37 @@ const RightDetails = () => {
             year:'september 2013 - september 2015'
         }
     ]
+    const width = useWidth()
     return (
         <div className=' col-span-8'>
-            <h2 className=' font-bold text-2xl text-[#1b3055]'>
+            <h2 className={`font-bold ${width>1280?"text-[12px]":"text-2xl"} text-[#1b3055]`}>
                 Profile
             </h2>
-            <p className='profile-dec font-semibold mt-2 text-[#1b3055] user_profile'>
+            <p className={`profile-dec font-semibold  text-[#1b3055] user_profile ${width>1280?"mt-1 text-[8px]":"mt-2"}`}>
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias, recusandae. Accusamus id iure perferendis repellat est facilis quibusdam deleniti tenetur. Et distinctio iure nesciunt assumenda aspernatur tempora eum alias nobis.
             </p>
 
 
-            <div className=' mt-4'>
-                <h2 className=' font-bold text-2xl text-[#1b3055] my-3'>Employment History</h2>
+            <div className={`${width>1280?"mt-1":"mt-4"}`}>
+                <h2 className={`font-bold ${width>1280?"text-[12px]":"text-2xl"} text-[#1b3055]`}>Employment History</h2>
                {
                      employmentHistory.map((item,index)=><div key={index}>
-                      <h2 className='font-bold text-[#1b3055] employ_tittle'>
+                      <h2 className={`font-bold text-[#1b3055] employ_tittle ${width>1280?"text-[8px]":""}`}>
                    {
                           item.tittle
                    }
                 </h2>
-                <h2 className=' text-gray-600 font-semibold mb-3 employ_year'>
+                <h2 className={`text-gray-600 font-semibold  employ_year ${width>1280?"text-[8px] mb-1 mt-1":"mb-3 mt-1"}`}>
                     {
                         item.year
                     }
                 </h2>
              {
                     item.skill.map((item,index)=>(
-                        <div className=' flex  gap-3 relative' key={index}>
-                            <div className=' absolute w-[.5rem] h-[.5rem] bg-[#1b3055] rounded-full mt-[2%] left-0'>
+                        <div className={` flex  relative ${width>1280?"gap-1":"gap-3"}`} key={index}>
+                            <div className={` absolute  bg-[#1b3055] rounded-full left-0 ${width>1280?"w-[.2rem] h-[.2rem] mt-[1%] ":"w-[.5rem] h-[.5rem] mt-[2%] "}`}>
                             </div>
-                            <p className='employment ml-5 employ_skill'>
+                            <p className={`employment  employ_skill ${width>1280?"ml-[6px] text-[7px]":"ml-5"}`}>
                                 {item.name}
                             </p>
                             </div>
@@ -89,16 +91,16 @@ const RightDetails = () => {
                  
             </div>
             <div>
-                <h2 className=' font-bold text-2xl text-[#1b3055] mt-3'>
+                <h2 className={`font-bold ${width>1280?"text-[12px] mt-1":"text-2xl mt-3"} text-[#1b3055]`}>
                     Education
                 </h2>
                 {
                     education.map((item,index)=>(
                        <div className='education' key={index}>
-                        <h2 className=' font-semibold text-xl edu_tittle'>
+                        <h2 className={`font-bold text-[#1b3055] edu_tittle ${width>1280?"text-[8px]":""}`}>
                         {item.tittle} 
                 </h2>
-                <h2 className=' text-gray-500 font-semibold edu_year'>
+                <h2 className={`text-gray-600 font-semibold  edu_year ${width>1280?"text-[8px] mb-1 mt-1":"mb-3 mt-1"}`}>
                     {item.year}
                 </h2>
                 </div>

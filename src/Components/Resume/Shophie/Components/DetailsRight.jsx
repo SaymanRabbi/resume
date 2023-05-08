@@ -1,6 +1,7 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser,faRectangleList,faGraduationCap } from '@fortawesome/free-solid-svg-icons';
+import useWidth from '../../../../hooks/useWidth';
 const DetailsRight = () => {
     const employmentHistory=[
        {
@@ -46,34 +47,31 @@ const DetailsRight = () => {
         year:'september 2013 - september 2015'
     }
    ]
+   const width = useWidth()
     return (
         <div className=' col-span-8'>
-            <div className=' flex gap-5'>
+            <div className={`flex ${width>1280?"gap-2":" gap-5"}`}>
             <div className=' w-full flex flex-col  justify-center h-auto'>
-            <div className=' flex gap-5 items-center'>
-            <FontAwesomeIcon icon={faUser} className='text-[#1b3055] text-sm' />
-            <h2 className=' font-bold text-[#1b3055] uppercase'>Profile</h2>
+            <div className={` flex items-center ${width>1280?"gap-2":"gap-5"}`}>
+            <FontAwesomeIcon icon={faUser} className={`text-[#1b3055]  ${width>1280?"text-[8px]":"text-sm"}`} />
+            <h2 className={` font-semibold text-[#1b3055] uppercase ${width>1280?"text-[10px]":""}`}>Profile</h2>
             </div>
-            <div className=' flex gap-6 items-center h-[150px] justify-center mt-3'>
-            <div className='w-[20px] bg-[#1b3055]  ml-1 h-[90%] relative'>
-            <span className='absolute w-2 h-2 rounded-full bg-[#1b3055] left-[-2px] top-[-1px]'></span>
-            </div>
-            
-            <p className=' text-[#1b3055] font-semibold user_profile'>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nunc ut aliquam aliquet, nisl nisl aliquet nisl, eget aliquam nunc nisl sit amet nisl. Sed euismod, nunc ut aliquam aliquet, nisl nisl aliquet nisl, eget aliquam nunc nisl sit amet nisl. nisl nisl aliquet nisl, eget aliquam nunc nisl sit amet nisl. Sed euismod, nunc ut aliquam aliquet, nisl nisl aliquet nisl, eget aliquam nunc nisl sit amet nisl.
+            <div className={`relative ${width>1280?"gap-3 mt-2":" gap-6 mt-3"}`}>
+            <p className={` text-[#1b3055] font-semibold ml-[2px] user_profile  w-fit  border-[#1b3055]  ${width>1280?"border-l-[1px] px-4 text-[8px] leading-4":"border-l-[2px] px-6"}`}>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nunc ut aliquam aliquet, nisl nisl aliquet nisl, eget aliquam nunc nisl sit amet nisl. Sed euismod, nunc ut aliquam aliquet, nisl nisl aliquet nisl, eget aliquam nunc nisl sit amet nisl. nisl nisl aliquet nisl, eget aliquam nunc nisl sit w-fit  border-[#1b3055]
+                    w-fit  border-[#1b3055]
+                    w-fit  border-[#1b3055]
                  </p>
+                 <span className={`absolute  rounded-full bg-[#1b3055] left-[0px] top-[-3px] ${width>1280?"w-[.3rem] h-[.3rem]":"w-2 h-2"}`}></span>
             </div>
                
-            <div className=' flex gap-5 items-center mt-4'>
-            <FontAwesomeIcon icon={faRectangleList} className='text-[#1b3055] text-sm' />
-            <h2 className=' font-bold text-[#1b3055] uppercase'>Employment History</h2>
+            <div className={` flex ${width>1280?"gap-2 mt-1":"gap-5 mt-4"}  items-center`}>
+            <FontAwesomeIcon icon={faRectangleList} className={`text-[#1b3055]  ${width>1280?"text-[8px]":"text-sm"}`} />
+            <h2 className={` font-semibold text-[#1b3055] uppercase ${width>1280?"text-[10px]":""}`}>Employment History</h2>
             </div>
             {/* ----Employment History--- */}
-            <div className=' flex gap-6 h-[80%] mt-3'>
-            <div className='w-[7px] bg-[#1b3055]  ml-1 h-[100%] relative'>
-            <span className='absolute w-2 h-2 rounded-full bg-[#1b3055] left-[-2px] top-[-3px]'></span>
-            </div>
-            
+            <div className={` relative border-[#1b3055] ml-[2px]  ${width>1280?"border-l-[1px] px-4 text-[6px] mt-2":"border-l-[2px] px-6 mt-3"}`}>
+                <span className={`absolute  rounded-full bg-[#1b3055] left-[-3px] top-[-3px] ${width>1280?"w-[.3rem] h-[.3rem]":"w-2 h-2"}`}></span>
              <div>
             {
                 employmentHistory.map((item,index)=>
@@ -87,9 +85,9 @@ const DetailsRight = () => {
              {
                     item.skill.map((item,index)=>(
                         <div className=' flex  gap-3 relative' key={index}>
-                            <div className=' absolute w-[.5rem] h-[.5rem] bg-[#1b3055] rounded-full mt-[2%] left-0'>
+                            <div className={`absolute  bg-[#1b3055] rounded-full  ${width>1280?"w-[.2rem] h-[.2rem] mt-[1%] left-0":"w-[.5rem] h-[.5rem] mt-[2%] left-0"}`}>
                             </div>
-                            <p className='employment ml-5 employ_skill'>
+                            <p className={`employment employ_skill ${width>1280?"ml-2 text-[6px]":"ml-5"}`}>
                                 {item.name}
                             </p>
                             </div>
@@ -101,17 +99,13 @@ const DetailsRight = () => {
              </div>
             </div>
             {/* ----Employment History--- */}
-            <div className=' flex gap-5 items-center mt-6'>
-            <FontAwesomeIcon icon={faGraduationCap} className='text-[#1b3055] text-sm' />
-            <h2 className=' font-bold text-[#1b3055] uppercase'>Education</h2>
+            <div className={`flex items-center ${width>1280?"mt-2 gap-3":"mt-6 gap-5"}`}>
+            <FontAwesomeIcon icon={faGraduationCap} className={`text-[#1b3055]  ${width>1280?"text-[8px]":"text-sm"}`} />
+            <h2 className={` font-semibold text-[#1b3055] uppercase ${width>1280?"text-[10px]":""}`}>Education</h2>
             </div>
              <>
-             <div className=' flex gap-6 h-[90%] mt-3 education'>
-            <div className='w-[3.5px] bg-[#1b3055]  ml-1 h-[90%] relative'>
-            <span className='absolute w-2 h-2 rounded-full bg-[#1b3055] left-[-2px] top-[-3px]'></span>
-            </div>
-            
-             
+             <div className={`education  relative border-[#1b3055] ml-[2px]  ${width>1280?"border-l-[1px] px-4 text-[6px] mt-2":"border-l-[2px] px-6 mt-3"}`}>
+             <span className={`absolute  rounded-full bg-[#1b3055] left-[-3px] top-[-3px] ${width>1280?"w-[.3rem] h-[.3rem]":"w-2 h-2"}`}></span>
                <div>
                {
                     education.map((item,index)=><div key={index}> <h2 className=' font-semibold edu_tittle'>

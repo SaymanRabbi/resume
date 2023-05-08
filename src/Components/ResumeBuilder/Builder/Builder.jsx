@@ -11,13 +11,11 @@ import NewSection from './Components/NewSection';
 import Websites from './Components/Websites ';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faNoteSticky } from '@fortawesome/free-solid-svg-icons';
+import AddNewSection from './Components/AddNewSection';
+import References from './Components/References';
 
 const Builder = ({setShow}) => {
-    const [personalInfo, setPersonalInfo] = useState({});
-
-
-
-
+    const [text,setText] = useState('')
     return (
         <div className='col-span-12 xl:col-span-6 p-12 relative'>
            <Titttle tittle='Untitled' position='justify-center'/>
@@ -25,7 +23,7 @@ const Builder = ({setShow}) => {
             <ResumeScore/>
             {/* -----score--- */}
             {/* ------Personal Details-------  */}
-            <PerosonalDetails setPersonalInfo={setPersonalInfo}/>
+            <PerosonalDetails />
             {/* ------Personal Details-------  */}
             {/* ------Summary------ */}
             <Summary/>
@@ -36,6 +34,7 @@ const Builder = ({setShow}) => {
             {/* --------Education------- */}
             <Education/>
             {/* --------Education------- */}
+            <References/>
             {/* ------website-------- */}
             <Websites/>
             {/* ------website-------- */}
@@ -46,13 +45,13 @@ const Builder = ({setShow}) => {
             <Hobies/>
             {/* -------Hobbies------- */}
             {/* -------Custom Section---- */}
-            <NewSection/>
+            <AddNewSection tittle={text}/>
+            <NewSection setText={setText}/>
             {/* -------Custom Section---- */}
             {/* ------Preview And Download------- */}
             <div className=' absolute bottom-5 right-2 block xl:hidden'>
-                      <div className=' py-5 px-5 rounded-md bg-blue-500 flex justify-center items-center gap-3 text-white font-[600] cursor-pointer text-2xl' onClick={()=>setShow(true)}>
-                           <p>Preview & Download</p>
-                            <FontAwesomeIcon icon={faNoteSticky} className=' text-white text-2xl font-[500]'/>
+                      <div className=' h-[60px] w-[60px] px-5 bg-blue-500 flex justify-center items-center gap-3 text-white font-[600] cursor-pointer rounded-full' onClick={()=>setShow(true)}>
+                            <FontAwesomeIcon icon={faNoteSticky} className=' text-white text-3xl font-[500]'/>
                       </div>
             </div>
             {/* ------Preview And Download------- */}

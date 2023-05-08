@@ -1,16 +1,18 @@
+import useWidth from '../../../hooks/useWidth';
 import Left from './Components/Left';
 import Right from './Components/Right';
 
 const Gregory = () => {
+  const width = useWidth()
     return (
-        <div className=' bg-[#EFF2F9] p-12'>
-    <div className='  bg-[white] rounded-md w-[990px]  mx-auto'>
-      <div className=' grid grid-cols-12'>
+        
+    <div className={`bg-[white] rounded-md ${width>1280?"w-[100%] h-[100%]":"w-[990px]"}  mx-auto`}>
+      <div className=' grid grid-cols-12 w-[100%] h-[100%] overflow-hidden'>
         <Left/>
         <Right/>
       </div>
     </div>
- </div>
+ 
     );
 };
 

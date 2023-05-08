@@ -1,5 +1,6 @@
 import React from 'react';
 import './Right.css'
+import useWidth from '../../../../hooks/useWidth';
 const Right = () => {
     const skills =[
         {
@@ -24,16 +25,17 @@ const Right = () => {
             rating:5
         }
     ]
+    const width = useWidth()
     return (
-        <div className=' col-span-3 flex'>
+        <div className={`${width>1280?'col-span-4 flex':'col-span-3 flex'}`}>
             <div className='vr'></div>
-            <div className=' py-8 pl-10'>
-            <h2 className=' italic text-2xl font-bold'>Skills</h2>
+            <div className={`${width>1280?'py-1 pl-3':'py-6 pl-10'}`}>
+            <h2 className={`italic ${width>1280?"text-[14px]":"text-2xl"} font-bold`}>Skills</h2>
             {
                 skills.map((skill)=>(
-                    <div key={skill.id} className=' mt-2'>
-                        <h3 className='font-[500] skill_tittle'>{skill.tittle}</h3>
-                        <div className=' flex gap-2'>
+                    <div key={skill.id} className={`${width>1280?'':' mt-2'}`}>
+                        <h3 className={`font-[500] ${width>1280?"text-[9px]":"text-xl mt-2"} skill_tittle`}>{skill.tittle}</h3>
+                        <div className={` flex ${width>1280?'gap-x-1':'gap-2'}`}>
                             {/* angle backgrounbd */}
                             {
                                         [...Array(5)].map((_,i) => <div  className='h-1 bg-gray-400 w-full mt-1'>

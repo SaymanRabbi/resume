@@ -1,5 +1,6 @@
 import React from 'react';
 import user from './img/user.jpg'
+import useWidth from '../../../../hooks/useWidth';
 const Left = () => {
     const employmentHistory=[
         {
@@ -39,12 +40,13 @@ const Left = () => {
             year:'september 2013 - september 2015'
         }
     ]
+    const width = useWidth()
     return (
-        <div className=' col-span-7 px-10 py-16'>
-               <div className=' flex gap-5 mb-8 items-center'>
-                 <img src={user} alt="" className=' w-24 h-24 rounded-full user_img'/>
+        <div className={` col-span-7 ${width>1280?"p-6":"px-10 py-16"}`}>
+               <div className={` flex  ${width>1280?"mb-3 gap-2":"mb-8 gap-5"} items-center`}>
+                 <img src={user} alt="" className={`${width>1280?" w-[50px] h-[50px]":"w-24 h-24"} rounded-full user_img`}/>
                  <div>
-                        <h2 className=' font-bold text-[40px] text-[#1b3055] user_name'>
+                        <h2 className={` font-bold ${width>1280?"text-[20px]":"text-[40px]"} text-[#1b3055] user_name`}>
                             John Doe
                         </h2>
                         <h2 className=' uppercase font-semibold user_tittle'>
@@ -52,30 +54,30 @@ const Left = () => {
                         </h2>
                  </div>
                </div>
-            <h2 className=' font-bold text-2xl text-[#1b3055]'>
+            <h2 className={`font-bold ${width>1280?"text-[14px]":"text-2xl"} text-[#1b3055]`}>
                 Profile
             </h2>
-            <p className='profile-dec font-semibold mt-2 text-[#1b3055] user_profile'>
+            <p className={`profile-dec font-semibold ${width>1280?" mt-1 text-[8px]":"mt-2"} text-[#1b3055] user_profile`}>
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias, recusandae. Accusamus id iure perferendis repellat est facilis quibusdam deleniti tenetur. Et distinctio iure nesciunt assumenda aspernatur tempora eum alias nobis.
             </p>
 
 
-            <div className=' mt-4'>
-                <h2 className=' font-bold text-2xl text-[#1b3055] my-3'>Employment History</h2>
+            <div className={` ${width>1280?"mt-2":" mt-4"}`}>
+                <h2 className={`font-bold ${width>1280?"text-[14px]":"text-2xl"} text-[#1b3055]`}>Employment History</h2>
                 {
                     employmentHistory.map((item,index)=><div key={index}>
-                    <h2 className='font-bold text-[#1b3055] employ_tittle'>
+                    <h2 className={`font-bold text-[#1b3055] employ_tittle ${width>1280?"text-[8px]":""}`}>
                {item.tittle}
                 </h2>
-                <h2 className=' text-gray-600 font-semibold mb-3 employ_year'>
+                <h2 className={`text-gray-600 font-semibold employ_year ${width>1280?" mb-1 text-[8px]":"mb-3"}`}>
                    {item.year}
                 </h2>
              {
                     item.skill.map((item,index)=>(
                         <div className=' flex  gap-3 relative' key={index}>
-                            <div className=' absolute w-[.5rem] h-[.5rem] bg-[#1b3055] rounded-full mt-[2%] left-0'>
+                            <div className={`absolute  bg-[#1b3055] rounded-full  left-0 ${width>1280?"w-[.2rem] h-[.2rem] mt-[1%]":"w-[.5rem] h-[.5rem] mt-[2%]"}`}>
                             </div>
-                            <p className='employment ml-5 employ_skill'>
+                            <p className={`employment  employ_skill ${width>1280?"text-[6px] ml-[7px]":"ml-5"}`}>
                                 {item.name}
                             </p>
                             </div>
@@ -85,16 +87,17 @@ const Left = () => {
                 }
             </div>
             <div>
-                <h2 className=' font-bold text-2xl text-[#1b3055] mt-3'>
+                <h2 className={`font-bold ${width>1280?"text-[14px] mt-1":"text-2xl"} text-[#1b3055]`}>
                     Education
                 </h2>
                 {
                     education.map((item,index)=>(
-                       <div className='education mt-3' key={index}>
-                        <h2 className=' font-semibold text-xl text-[#1B3055] edu_tittle'>
+                       <div className={`education ${width>1280?"":" mt-3"}`} key={index}>
+                        <h2 className={` font-semibold text-xl text-[#1B3055] edu_tittle ${width>1280?"text-[8px]":
+                    ""}`}>
                         {item.tittle} 
                 </h2>
-                <h2 className=' text-gray-500 font-semibold edu_year'>
+                <h2 className={`text-gray-500 font-semibold edu_year ${width>1280?"text-[8px]":""}`}>
                     {item.year}
                 </h2>
                        </div>
@@ -103,7 +106,7 @@ const Left = () => {
                 </div>
 
                 <div>
-                    <h2 className='references font-bold text-2xl text-[#1b3055] mt-3'>
+                    <h2 className={`references font-bold ${width>1280?"text-[14px]":"text-2xl"} text-[#1b3055] mt-3`}>
                         References
                     </h2>
                 </div>

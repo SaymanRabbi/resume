@@ -3,11 +3,16 @@ import Titttle from './Titttle';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus,faTrash } from '@fortawesome/free-solid-svg-icons';
 import Input from './Input';
+import { useLocation } from 'react-router-dom';
+import { useContext } from 'react';
+import { data } from '../../../../App';
 
 
 const Skills = () => {
+    const {allData,setAllData } = useContext(data)
+  const path = useLocation().pathname.split('/')[2]
     const [open,SetOpen] = useState(false);
-    const data =[ {  id:1,
+    const datatext =[ {  id:1,
         tittle:'Marketing',
         
     },{
@@ -32,8 +37,12 @@ const Skills = () => {
         id:8,
         tittle:'Communication',
     }]
-    const [skillstext,SetSkillsText]=useState(data)
-    const [skills,setSkills] = useState([]);
+    const [skills,setSkills] = useState(
+        allData[path]?.skills || []
+        );
+    const [skillstext,SetSkillsText]=useState(
+        datatext.filter((skill)=>!skills.includes(skill.tittle))
+    )
     const [newSkill,setNewSkill] = useState('');
     const removeSkillText = (e)=>{
         setSkills([e.target.innerText,...skills])
@@ -44,7 +53,7 @@ const Skills = () => {
     }
      const removeSkill= (text)=>{
             setTimeout(() => {
-            const setAgeain = data.filter((skill)=>skill.tittle===text)
+            const setAgeain = datatext.filter((skill)=>skill.tittle===text)
             SetSkillsText([...setAgeain,...skillstext])
             setSkills(skills.filter((skill)=>skill!==text))
             }, 500);
@@ -52,7 +61,70 @@ const Skills = () => {
     //  ------custom Skill---------
     const addSkill = ()=>{
         setSkills([newSkill,...skills])
+        const exits = allData[path]?.skills
+    if(exits && exits.length>0){
+            setAllData({...allData,
+                [path]:{
+                  ...allData[path],
+                  skills:[
+                        ...allData[path]?.skills,
+                        newSkill
+                  ]
+                }
+              })
+        }
+       else{
+        setAllData({...allData,
+            [path]:{
+              ...allData[path],
+              skills:[
+                newSkill
+              ]
+            }
+          })
+       }
         SetOpen(false)
+    }
+    const skillData = (data)=>{
+        const exits = allData[path]?.skills
+        console.log(exits)
+        if(exits && exits.length>0){
+            
+            setAllData({...allData,
+                [path]:{
+                  ...allData[path],
+                  skills:[
+                        ...allData[path]?.skills,
+                    data
+                  ]
+                }
+              })
+        }
+       else{
+        setAllData({...allData,
+            [path]:{
+              ...allData[path],
+              skills:[
+                data
+              ]
+            }
+          })
+       }
+        
+    }
+    const removeSkillData = (data)=>{
+        const exits = allData[path]?.skills
+        if(exits){
+            const dataa = exits.filter((skill)=>skill!==data)
+            setAllData({...allData,
+                [path]:{
+                  ...allData[path],
+                  skills:[
+                    ...dataa
+                  ]
+                }
+              })
+        }
     }
     //  ------custom Skill---------
     return (
@@ -64,7 +136,7 @@ const Skills = () => {
             <div className=' flex flex-wrap'>
                 {
                     skillstext.map((skill)=><div key={skill.id} className='flex items-center bg-gray-200 text-black hover:bg-blue-200 hover:text-blue-500 text-[16px] whitespace-nowrap cursor-pointer py-[6px] pl-[10px] pr-[10px]  rounded-[4px] mb-[12px] mr-[12px]' onClick={(e)=>removeSkillText(e)}>
-                    <h2>{skill.tittle}</h2>
+                    <h2 onClick={()=>skillData(skill.tittle)}>{skill.tittle}</h2>
                     <FontAwesomeIcon icon={faPlus} className='ml-[4px]' />
                 </div>)
                 }
@@ -82,8 +154,8 @@ const Skills = () => {
                 <option value="Beginner ">Beginner </option>
                 </select>
                 </div>
-                <button className=' absolute right-[-25px]'>
-                    <FontAwesomeIcon icon={faTrash} className='text-red-500 text-2xl opacity-0 group-hover:opacity-100' onClick={()=>removeSkill(text)} />
+                <button className=' absolute right-[-25px]' onClick={()=>removeSkillData(text)}>
+                    <FontAwesomeIcon icon={faTrash} className='text-red-500 text-[20px] opacity-0 group-hover:opacity-100' onClick={()=>removeSkill(text)} />
                 </button>
             </div>)
             }{

@@ -1,14 +1,14 @@
 import React from 'react';
+import useWidth from '../../../../hooks/useWidth';
 
 const Profile = () => {
+    const width = useWidth()
     return (
-        <div className='py-8'>
-            <h2 className=' italic text-2xl font-bold'>Profile</h2>
-            <p  className='mt-2 font-[500] user_profile'>
+        <div className={`${width>1280?'py-1':'py-6'}`}>
+            <h2 className={`italic ${width>1280?"text-[14px]":"text-2xl"} font-bold`}>Profile</h2>
+            <p  className={` font-[500] ${width>1280?"text-[9px]":"text-xl mt-2"} user_profile`}>
                 
 As an administrative assistant, I am a highly organized and detail-oriented professional with strong communication and interpersonal skills. I possess excellent time management and multitasking abilities, which enable me to prioritize tasks and meet deadlines efficiently.
-
-I am proficient in managing administrative tasks such as scheduling appointments, organizing meetings, managing correspondence, and maintaining accurate records. I have experience in using various office software and technology tools to manage data and streamline office operations.
             </p>
         </div>
     );

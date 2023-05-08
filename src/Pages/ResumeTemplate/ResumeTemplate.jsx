@@ -9,7 +9,6 @@ const ResumeTemplate = () => {
           <Hero tittle='Job-winning resume templates' dec='Each resume template is expertly designed and follows the exact “resume rules” hiring managers look for. Stand out and get hired faster with field-tested resume templates.' button='Create My Resume' />
           <TemplatesFilter/>
           <Outlet/>
-          <h2>hello</h2>
         </div>
     );
 };

@@ -1,4 +1,5 @@
 import React from 'react';
+import useWidth from '../../../../hooks/useWidth';
 
 const Employment = () => {
     const employemt =[
@@ -59,19 +60,20 @@ const Employment = () => {
         ]
         }
     ]
+    const width = useWidth()
     return (
         <div className='pb-6'>
-        <h2 className=' italic text-2xl font-bold'>Employment History</h2>
+        <h2 className={`italic ${width>1280?"text-[14px]":"text-2xl"} font-bold`}>Employment History</h2>
         {
             employemt.map((item)=>(
-                <div key={item.id} className=' mt-3'>
-                    <h3 className=' text-xl font-[500] mt-2 employ_tittle'>{item.tittle}</h3>
-                    <p className=' text-gray-400 employ_year'>{item.year}</p>
+                <div key={item.id} className={`${width>1280?"mt-1":"mt-3"}`}>
+                    <h3 className={`${width>1280?"text-[8px] mt-1":"text-xl mt-2"} font-[500]  employ_tittle`}>{item.tittle}</h3>
+                    <p className={`text-gray-400 employ_year ${width>1280?"text-[6px]":"text-[18px]"}`}>{item.year}</p>
                     {
                         item.skill.map((item)=>(
                             <div key={item.id} className=' relative ml-3'>
-                                <span className=' absolute w-[7px] h-[7px] bg-black rounded-full mt-2'></span>
-                                <p className='font-[400] ml-4 employ_skill'>{item.name}</p>
+                                <span className={` absolute ${width>1280?"w-[4px] h-[4px] mt-[4px]":"w-[7px] h-[7px] mt-2"} bg-black rounded-full `}></span>
+                                <p className={`font-[400] employ_skill ${width>1280?'text-[7px] ml-2':"text-[14px] ml-4"}`}>{item.name}</p>
                             </div>
                         ))
                     }

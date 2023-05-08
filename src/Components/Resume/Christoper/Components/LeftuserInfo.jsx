@@ -1,120 +1,82 @@
 import React from 'react';
 import './LeftUserInfo.css'
+import useWidth from '../../../../hooks/useWidth';
+import { data } from '../../../../App';
+import { useContext } from 'react';
 const LeftuserInfo = () => {
-    const employment = [
-        {
-            id:1,
-            tittle:'Psychologist at the University of California, Los Angeles',
-            year:'04/2017 - 04/2018',
-            skill:[
-                {
-                    id: 1,
-                    name:'Conducting psychological assessments and evaluations for 8 clients'
-                },{
-                    id: 2,
-                    name: 'Collaborating with other psychologists to develop treatment plans for 8 clients',
-                },{
-                    id: 3,
-                    name: 'Implementing treatment that includes individual, group, and family therapy for 8 clients',
-                },{
-                    id: 4,
-                    name: 'Studying and analyzing data from psychological tests and evaluations',
-                    
-                }
-                ,{
-                    id: 5,
-                    name:'Utilizing evidence-based practices to treat clients with a variety of mental health issues'
-                },{
-                    id: 6,
-                    name: 'Collaborating with other psychologists to develop treatment plans for 8 clients',
-                }
-            ]
-        },
-        {
-            id:1,
-            tittle:'Psychologist at the University of California, Los Angeles',
-            year:'04/2017 - 04/2018',
-            skill:[
-                {
-                    id: 1,
-                    name:'Conducting psychological assessments and evaluations for 8 clients'
-                },{
-                    id: 2,
-                    name: 'Collaborating with other psychologists to develop treatment plans for 8 clients',
-                },{
-                    id: 3,
-                    name: 'Implementing treatment that includes individual, group, and family therapy for 8 clients',
-                },{
-                    id: 4,
-                    name: 'Studying and analyzing data from psychological tests and evaluations',
-                    
-                }
-                ,{
-                    id: 5,
-                    name:'Utilizing evidence-based practices to treat clients with a variety of mental health issues'
-                },{
-                    id: 6,
-                    name: 'Collaborating with other psychologists to develop treatment plans for 8 clients',
-                }
-            ]
-        }
-    ]
-    const educations = [
-        {
-            id:1,
-            tittle:'Doctor of Psychology at the University of California, Los Angeles',
-            year:'04/2017 - 04/2018',
-            skill:[{}]
-        }
-    ]
+    const {allData } = useContext(data)
+    const employment = allData?.toronto?.employment
+    const educations = allData?.toronto?.education
+    const widht = useWidth()
     return (
         <div className=' col-span-7'>
-            <h2 className=' text-3xl font-bold text-[#1B3055] mb-3'>Employment History</h2>
+            {
+                employment?.length>0 ? 
+                <><h2 className={`${widht>1280?"text-[16px]":"text-3xl  mb-3"} font-bold text-[#1B3055]`}>Employment History</h2>
+              {
+                    employment.map((emp,index)=><div className={`${widht>1280?'':'mt-3'}`}>
+                    <h2 className='text-white ' >
+       <span className={`bg-[#1B3055] employ_tittle ${widht>1280?'text-[9px] font-medium':' font-medium'}`}>
+       {emp?.jobTittle} at {emp?.employer}
+       </span>
+     </h2>
+   
+   <div>
+       <h2 className={`${widht>1280?'text-[10px]':'text-xl'} text-gray-700 font-medium employ_year`}>
+          {emp?.startDate || emp?.endDate ? 
             
-             {
-                            employment.map(education => <div className='mt-3'>
-                             <h2 className='text-white ' >
-                <span className='bg-[#1B3055] employ_tittle'>
-                {education.tittle}
-                </span>
-              </h2>
-            
-            <div>
-                <h2 className=' text-xl text-gray-700 font-bold employ_year'>
-                    {education.year}
-                </h2>
-            </div>
-            <div className=' font-medium text-gray-600'>
+               `${emp?.startDate} - ${emp?.endDate}`: null
+               
+          }
+       </h2>
+   </div>
+   <div className=' font-medium text-gray-600'>
+     
               
-                       {
-                            education.skill.map(education => <div className=' relative'>
-                             <div className=' w-2 h-2 bg-[#1B3055] rounded-full mt-[9px] absolute'></div>
-                            <p className='employment ml-4 employ_skill'  key={education.id}>{education.name}</p>
-                            </div>)    
-                       }
-                 
-            </div>
-                            </div>)
-             }
+                 {
+                   emp?.summary ?  <div className=' relative'>
+                   <div className={`${widht>1280?'w-[3px] h-[3px] mt-[2px]':"w-2 h-2 mt-[9px]"}  bg-[#1B3055] rounded-full  absolute`}></div>
+                  <p className={`employ_skill employment ${widht>1280?'ml-[8px] text-[6px]':' ml-4 '}`}  >{emp?.summary
+   }</p>
+                  </div> :null
+                 }
+              
+       
+   </div>
+                   </div> )
+              }
+             
+                
+ 
+</>:null }
             {/* -----Educations---- */}
-            <div className=' pb-6'>
-                <h2 className=' text-2xl font-bold text-[#1B3055]'>
+            {/* -----Educations---- */}
+            {
+                educations?.length>0? <div className={`${widht>1280?'':'pb-6'}`}>
+                <h2 className={`${widht>1280?"text-[16px]":"text-3xl  mb-3"} font-bold text-[#1B3055]`}>
                     Educations
                 </h2>
-            {
-                            educations.map(education => <div className='mt-3'>
-                                <h2 className='text-white' >
-                <span className='bg-[#1B3055] edu_tittle'>
-                {education.tittle}
-                </span>
-              </h2>
-              <h2 className=' text-xl text-gray-700 font-bold edu_year'>
-                   {education.year}
-                </h2>
-                                </div>)
+            
+                             {
+                                    educations.map((education,index) =><div key={index} className={`${widht>1280?'':'mt-3'}`}>
+                                    <h2 className='text-white' >
+                    <span className={`bg-[#1B3055] edu_tittle ${widht>1280?'text-[8px] font-medium':' font-medium'}`}>
+                    {education?.school}  {education?.degree}
+                    </span>
+                  </h2>
+                  <h2 className={`${widht>1280?'text-[10px]':'text-xl'} text-gray-700 font-bold edu_year`}>
+                  {education?.startDate || education?.endDate ? 
+             
+             `${education?.startDate} - ${education?.endDate}`: null
+             
+        }
+                    </h2>
+                                    </div> )
+                             }
+          
+            </div>:null
             }
-            </div>
-            {/* -----Educations---- */}
+
         </div>
     );
 };

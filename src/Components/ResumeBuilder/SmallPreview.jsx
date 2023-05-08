@@ -1,12 +1,19 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faDochub } from '@fortawesome/free-brands-svg-icons';
 import { faFileText } from '@fortawesome/free-solid-svg-icons';
-
-
+import { useLocation } from 'react-router-dom';
+import Vince from '../Resume/Vince/Vince';
+import Christoper from '../Resume/Christoper/Christoper';
+import Sebastian from '../Resume/Sebastian/Sebastian';
+import Petrica from '../Resume/Petrica/Petrica';
+import Gregory from '../Resume/Gregory/Gregory';
+import Shophie from '../Resume/Shophie/Shophie';
+import Westurner from '../Resume/Westurner/Westurner';
 
 const SmallPreview = ({setShowprev}) => {
     const [show, setShow] = React.useState(false);
+    const path = useLocation().pathname.split('/')[2]
     return (
         <div className='fixed w-[100%] min-h-[100vh] bg-black z-50 top-0 left-0 bottom-0 right-0 inset-0 overflow-hidden flex flex-col'>
             <div className=' relative h-[100vh]'>
@@ -26,8 +33,10 @@ const SmallPreview = ({setShowprev}) => {
                 {/* ------header------- */}
                 {/* ------body------- */}
                 <div className=' flex-grow flex-shrink-0 basis-0  px-[20px] h-[calc(100%-64px)]'>
-                        <div className=' relative my-[20px] mx-auto w-full bg-white h-[100%] rounded-[6px]'>
-                            
+                        <div className=' relative my-[20px] mx-auto w-full bg-white h-[100%] rounded-[6px]'>        
+                        {
+                      path==='tokyo'?<Vince/>:path==='toronto'?<Christoper/>:path==="madrid"?<Sebastian/>:path==='vienna'?<Petrica/>:path==='sydney'?<Gregory/>:path==="new_york"?<Shophie/>:path==="amsterdam"?<Westurner/>:null
+                     }
                         </div>
                 </div>
                 {/* ------body------- */}

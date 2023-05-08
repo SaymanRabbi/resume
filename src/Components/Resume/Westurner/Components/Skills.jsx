@@ -1,4 +1,5 @@
 import React from 'react';
+import useWidth from '../../../../hooks/useWidth';
 
 const Skills = () => {
     const skills = [
@@ -24,23 +25,24 @@ const Skills = () => {
         rating:5
     }
     ]
+    const width = useWidth()
     return (
-        <div className=' mt-10'>
-            <h2 className=' font-semibold text-2xl uppercase tracking-widest'>
+        <div className={`${width>1280?"mt-2":"mt-10"}`}>
+            <h2 className={`font-semibold uppercase tracking-widest ${width>1280?"text-[10px]":"text-2xl"}`}>
                 Skills
             </h2>
-            <div className=' my-3 w-full h-[3px] bg-[#000000]'></div>
-            <div className=' mt-5'>
+            <div className={`w-full  bg-[#000000] ${width>1280?"h-[2px] my-1 ":"h-[2px] my-3 "}`}></div>
+            <div className={`${width>1280?"mt-2":"mt-5"}`}>
                 {
                     skills.map((skill) =>
-                    <div className='my-2 skill' key={skill.id}>
-                        <h2 className=' uppercase  text-[18px] font-[400] skill_tittle'>
+                    <div className={` skill ${width>1280?"my-1":"my-2"}`} key={skill.id}>
+                        <h2 className={`uppercase  font-[400] skill_tittle ${width>1280?"text-[8px]":"text-[18px]"}`}>
                                     {skill.tittle}
                          </h2>
-                         <div className=' flex gap-3'>
+                         <div className={`flex ${width>1280?"gap-2":" gap-3"}`}>
                          {
                             [ ...Array(skill.rating)].map((_,i) => 
-                            <span className=' w-[9px] h-[9px] bg-black rounded-full '></span>
+                            <span className= {`  bg-black rounded-full ${width>1280?"w-[5px] h-[5px]":"w-[9px] h-[9px]"}`}></span>
                             )
                          } 
                             </div>                    
