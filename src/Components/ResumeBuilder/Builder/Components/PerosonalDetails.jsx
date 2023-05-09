@@ -81,6 +81,13 @@ const PerosonalDetails = () => {
       if(e.target.name==='postal_code'){
         setPostalCode(e.target.value);
       }
+      if(e.target.name==='city'){
+        setCity(e.target.value)
+      }
+      if(e.target.postal_code){
+        setPostalCode(e.target.value)
+
+      }
       const data = {
         firstName,lastName,
         tittle,

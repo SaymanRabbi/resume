@@ -11,10 +11,10 @@ import useWidth from '../../../hooks/useWidth';
 const Sebastian = () => {
   const widht = useWidth()
     return (
-        <div className={`bg-[#EFF2F9] rounded-md ${widht>1280?'pl-2':'p-12'} w-[100%] h-[100%]`}>
-    <div className={`bg-[white]  ${widht>1280?'w-[100%] h-[100%]':'w-[990px]'}  mx-auto`}>
+        <div className={`bg-[#EFF2F9] rounded-md ${widht>1280?'':''} w-[100%] h-[100%] overflow-x-scroll overflow-y-scroll`}>
+    <div className={`bg-[white]  ${widht>1280?'w-[100%] h-[100%]':'w-[990px]'}`}>
       <Header/>
-      <div className={`${widht>1280?" px-8 pb-2":" px-14 pb-8"}`}>
+      <div className={`${widht>1280?"pl-4":"pl-4"}`}>
        <Details/>
        <Profile/>
        <Education/>

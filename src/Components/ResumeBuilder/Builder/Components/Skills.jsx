@@ -3,7 +3,7 @@ import Titttle from './Titttle';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus,faTrash } from '@fortawesome/free-solid-svg-icons';
 import Input from './Input';
-import { useLocation } from 'react-router-dom';
+import { json, useLocation } from 'react-router-dom';
 import { useContext } from 'react';
 import { data } from '../../../../App';
 
@@ -14,29 +14,44 @@ const Skills = () => {
     const [open,SetOpen] = useState(false);
     const datatext =[ {  id:1,
         tittle:'Marketing',
+        rating:5
         
     },{
         id:2,
         tittle:'Dedicated team plyer',
+        rating:5
     },{
         id:3,
         tittle:'Creativity',
+        rating:5
     },{
         id:4,
         tittle:'Event Planing',
+        rating:5
     },{
         id:5,
         tittle:'Problem Solving Skills',
+        rating:5
     },{
         id:6,
         tittle:'Critical Thinking',
+        rating:5
     },{
         id:7,
         tittle:'Leadership',
+        rating:5
     },{
         id:8,
         tittle:'Communication',
+        rating:5
     }]
+    const options = [
+        {value: 'expert', text: 'Expert'},
+        {value: 'intermediate', text: 'Intermediate'},
+        {value: 'beginner', text: 'Beginner'},
+      ];
+      const [selected,setSelected] = useState('')
+      const [text,setText] = useState('')
     const [skills,setSkills] = useState(
         allData[path]?.skills || []
         );
@@ -85,17 +100,16 @@ const Skills = () => {
        }
         SetOpen(false)
     }
-    const skillData = (data)=>{
+    const skillData = (datas)=>{
+
         const exits = allData[path]?.skills
-        console.log(exits)
-        if(exits && exits.length>0){
-            
+        if(exits && exits.length>0){          
             setAllData({...allData,
                 [path]:{
                   ...allData[path],
                   skills:[
                         ...allData[path]?.skills,
-                    data
+                        datas
                   ]
                 }
               })
@@ -105,7 +119,7 @@ const Skills = () => {
             [path]:{
               ...allData[path],
               skills:[
-                data
+                datas
               ]
             }
           })
@@ -126,6 +140,11 @@ const Skills = () => {
               })
         }
     }
+    const handleChange =(event,text) => {
+        setSelected(event.target.value);
+        setText(text)
+      };
+
     //  ------custom Skill---------
     return (
         <div className=' mt-6'>
@@ -135,23 +154,22 @@ const Skills = () => {
             </p>
             <div className=' flex flex-wrap'>
                 {
-                    skillstext.map((skill)=><div key={skill.id} className='flex items-center bg-gray-200 text-black hover:bg-blue-200 hover:text-blue-500 text-[16px] whitespace-nowrap cursor-pointer py-[6px] pl-[10px] pr-[10px]  rounded-[4px] mb-[12px] mr-[12px]' onClick={(e)=>removeSkillText(e)}>
+                    skillstext.map((skill,i)=><div key={i} className='flex items-center bg-gray-200 text-black hover:bg-blue-200 hover:text-blue-500 text-[16px] whitespace-nowrap cursor-pointer py-[6px] pl-[10px] pr-[10px]  rounded-[4px] mb-[12px] mr-[12px]' onClick={(e)=>removeSkillText(e)}>
                     <h2 onClick={()=>skillData(skill.tittle)}>{skill.tittle}</h2>
                     <FontAwesomeIcon icon={faPlus} className='ml-[4px]' />
                 </div>)
                 }
             </div>{
-                skills.map((text,index)=><div key={index} className=' h-[70px] w-[100%] py-[15px] px-[20px] border rounded flex justify-between mt-5 relative group'>
+              skills.map((text,index)=><div key={index} className=' h-[70px] w-[100%] py-[15px] px-[20px] border rounded flex justify-between mt-5 relative group'>
                <h2 className=' font-[600] text-xl'> {
-                    text
-                }</h2>
+                    text}</h2>
                 <div>
-                <select id="countries" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg w-full p-2.5 outline-none">
-                <option value="Expert">Expert</option>
-                <option value="Intermediate">
-                Intermediate
-                </option>
-                <option value="Beginner ">Beginner </option>
+                <select id="countries" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg w-full p-2.5 outline-none" onChange={(e)=>handleChange(e,text)}>
+                {options.map(option => (
+              <option key={option.value} value={option.value}>
+                 {option.text}
+               </option>
+                ))}
                 </select>
                 </div>
                 <button className=' absolute right-[-25px]' onClick={()=>removeSkillData(text)}>

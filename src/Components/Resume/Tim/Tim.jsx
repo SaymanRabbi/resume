@@ -7,7 +7,7 @@ import Skills from './Components/Skills';
 
 const Tim = () => {
     return (
-        <div className=' bg-[#EFF2F9] p-12'>
+        <div className=' bg-[#EFF2F9] p-12 overflow-x-scroll overflow-y-scroll'>
     <div className='  bg-[white] rounded-md w-[990px]  mx-auto'>
       <div className=' px-14 py-8'>
         <Header/>

@@ -1,15 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import useWidth from '../../../../hooks/useWidth';
+import { data } from '../../../../App';
+import { useLocation } from 'react-router-dom';
 
 const Education = () => {
-    const education=[
-        {
-            id:1,
-            tittle:'Bachelor of Marketing, Colorado State University',
-            year:'aug 2005 - may 2009',
-            location:'Colorado Springs',
-        }
-    ]
+    const path = useLocation().pathname.split('/')[2]
+    const {allData } = useContext(data)
+    const education = allData[path]?.education
     const width = useWidth()
     return (
         <div className={`${width>1280?" my-1":"my-3"}`}>
@@ -18,7 +15,7 @@ const Education = () => {
             </h2>
             <div className={`w-full  bg-[#000000] ${width>1280?"h-[1.5px] my-1 ":"h-[2px] my-3 "}`}></div>
             {
-                education.map((item)=><div key={item.id}>
+              education && education.length>0 ?  education.map((item)=><div key={item.id}>
                     <div className=' flex justify-between'>
              <h2 className={`font-bold text-[#1b3055] edu_tittle ${width>1280?"text-[8px]":""}`}>
                  {
@@ -36,7 +33,7 @@ const Education = () => {
                         item.year
                 }
                 </h2>
-                </div>)
+                </div>) : null
             }
         </div>
     );

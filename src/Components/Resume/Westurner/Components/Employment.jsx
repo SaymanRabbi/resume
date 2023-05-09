@@ -1,14 +1,18 @@
 import React, { useContext } from 'react';
 import useWidth from '../../../../hooks/useWidth';
 import { data } from '../../../../App';
+import { useLocation } from 'react-router-dom';
 
 const Employment = () => {
+    const path = useLocation().pathname.split('/')[2]
     const {allData } = useContext(data)
-    const employment = allData?.toronto?.employment
+    const employment = allData[path]?.employment
    const width = useWidth()
     return (
         <div className={`${width>1280?" my-1":"my-3"}`}>
-            <h2  className={`font-semibold uppercase tracking-widest ${width>1280?"text-[10px]":"text-2xl "}`}>
+            {
+               employment &&  employment?.length ?<>
+               <h2  className={`font-semibold uppercase tracking-widest ${width>1280?"text-[10px]":"text-2xl "}`}>
                 Employment
             </h2>
             <div  className={`w-full  bg-[#000000] ${width>1280?"h-[2px] my-1 ":"h-[2px] my-3 "}`}></div>
@@ -28,7 +32,7 @@ const Employment = () => {
              </div>
                 <h2 className={` text-gray-600 font-semibold employ_year ${width>1280?"text-[8px] mb-1":"mb-3"}`}>
                {
-                    employment?.startDate + ' - ' + employment?.endDate
+                 employment?.startDate || employment?.endDate ?    employment?.startDate + ' - ' + employment?.endDate : null
                }
                 </h2>
          
@@ -47,6 +51,8 @@ const Employment = () => {
                 
                 
                 </div>
+                </> : null
+            }
             
                 
         </div>

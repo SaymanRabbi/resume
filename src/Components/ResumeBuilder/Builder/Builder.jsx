@@ -13,6 +13,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faNoteSticky } from '@fortawesome/free-solid-svg-icons';
 import AddNewSection from './Components/AddNewSection';
 import References from './Components/References';
+import Languages from './Components/Languages';
 
 const Builder = ({setShow}) => {
     const [text,setText] = useState('')
@@ -41,6 +42,7 @@ const Builder = ({setShow}) => {
             {/* -------Skills-=---- */}
             <Skills/>
             {/* -------Skills-=---- */}
+            <Languages/>
             {/* -------Hobbies------- */}
             <Hobies/>
             {/* -------Hobbies------- */}

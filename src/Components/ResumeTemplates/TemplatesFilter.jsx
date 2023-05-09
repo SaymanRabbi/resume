@@ -1,11 +1,10 @@
 import React from 'react';
-import { Link, NavLink, useLocation } from 'react-router-dom';
+import {  NavLink, useLocation } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCopy,faChessQueen,faBriefcase } from '@fortawesome/free-solid-svg-icons';
 import './TemplatesFilter.css'
 const TemplatesFilter = () => {
     const path  = useLocation().pathname;
-    console.log(path);
     return (
         <div className=' flex justify-center border-b mb-8'>
             <div className='flex md:gap-x-16 gap-x-4'>

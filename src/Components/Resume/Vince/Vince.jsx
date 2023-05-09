@@ -9,7 +9,7 @@ const Vince = () => {
     const widht = useWidth()
     return (
        
-        <div className='  bg-[white] rounded-[6px]  mx-auto w-[100%] h-[100%]'>
+        <div className='  bg-[white] rounded-[6px]  mx-auto w-[100%] h-[100%] overflow-x-scroll overflow-y-scroll'>
 
             <Header/>
             <div className=' px-8 h-[85%] overflow-hidden'>
