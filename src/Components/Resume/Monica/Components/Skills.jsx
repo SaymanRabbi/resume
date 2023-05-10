@@ -1,6 +1,12 @@
 import React from 'react';
+import { data } from '../../../../App';
+import { useContext } from 'react';
+import { useLocation } from 'react-router-dom';
 
 const Skills = () => {
+    const path = useLocation().pathname.split('/')[2]
+  const {allData} = useContext(data)
+  const profile = allData[path]?.skills
     const skills = [
         {
             id: 1,
