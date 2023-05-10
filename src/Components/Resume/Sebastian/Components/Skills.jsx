@@ -16,11 +16,11 @@ const Skills = () => {
              {
                    datas.map((item,i)=><div className=' col-span-6 skill' key={i}>
                       <h2 className={`${width>1280?"text-[8px] my-1":"text-xl mb-2"} font-[400] skill_tittle`}>
-                           {item}
+                           {item?.tittle}
                       </h2>
                         
                                <div className={`bg-gray-300 ${width>1280?"h-[2px]":"h-2"} w-[100%] rounded-full`}>
-                               <div className={`${width>1280?"h-[2px]":"h-2"} bg-black skill_rating w-[${100}%]`}></div>
+                               <div className={`${width>1280?"h-[2px]":"h-2"} bg-black skill_rating w-[${item?.rating ==='expert'?100 : item?.rating==='intermediate' ? 60 : item?.rating==='beginner'?50:0}%]`}></div>
 
                         </div>
                    </div>)

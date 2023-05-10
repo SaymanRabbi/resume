@@ -68,7 +68,7 @@ const Details = () => {
                   SKILLS && SKILLS.length>0 ?      SKILLS.map((item,index)=>(
                             <div className='text-center skills font-semibold skills flex justify-center' key={index}>
                             <h2 className={` w-fit  border-[#1b3055] skill_tittle ${width>1280?"border-b-[2px] text-[7px]":"border-b-[3px]"}`}>
-                            {item}
+                            {item?.tittle}
                             </h2>
                             </div>
                         )) : null

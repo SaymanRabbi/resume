@@ -19,9 +19,9 @@ const RightUserInfo = () => {
                            </h2>
                            {
                                skills.map((skill,index)=> <div className={`flex justify-between items-center  ${width>1280?"gap-x-[2px]":"gap-3"}  text-gray-700`}>
-                               <h2 className={`font-bold skill_tittle ${width>1280?"text-[8px]":""}`}  key={index}>{skill}</h2>
+                               <h2 className={`font-bold skill_tittle ${width>1280?"text-[8px]":""}`}  key={index}>{skill?.tittle}</h2>
                                 <div className={` w-auto border-gray-700 h-0 flex-grow ${width>1280?' border-[1px]':" border"}`}></div>
-                                <h2 className={`font-medium skill_rating ${width>1280?"text-[8px]":""}`}>5/5</h2>
+                                <h2 className={`font-medium skill_rating ${width>1280?"text-[8px]":""}`}>{skill?.rating ==='expert'?5 : skill?.rating==='intermediate' ? 4 : skill?.rating==='beginner'?3:5}/5</h2>
                                </div>)   
                            }
                 </div>

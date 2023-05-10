@@ -1,17 +1,22 @@
 import React from 'react';
+import { useContext } from 'react';
+import { useLocation } from 'react-router-dom';
+import { data } from '../../../../App';
 
 const Info = () => {
+    const path = useLocation().pathname.split('/')[2]
+  const {allData} = useContext(data)
+  const profile = allData[path]?.personal_details?.summary
     return (
         <div className=' py-10'>
-            <h2 className=' mb-6 text-2xl text-[#1B3055] font-[500]'>
-               Experiennced and energetic marketing manager with a demonstrated history of working in the marketing and advertising industry. Skilled in Marketing Strategy, Digital Marketing, Social Media Marketing, and Marketing.
-            </h2>
-            <p className=' my-3 font-[500] user_profile'>
-             Adept in using digital marketing tools to increase brand awareness and drive sales.
-             Experienced in managing marketing campaigns and developing marketing strategies.
-             Skilled in using social media platforms to increase brand awareness and drive sales.
-             Pragmatic and results-oriented marketing manager with a passion for marketing and advertising.
-            </p>
+            {
+                profile ? <p className=' my-3 font-[500] user_profile'>
+                {
+                    profile
+                }
+               </p> : null
+            }
+            
         </div>
     );
 };

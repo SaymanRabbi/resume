@@ -50,10 +50,10 @@ const Right = () => {
                        skills && skills.length>0 ?  skills.map((skill,i) => (
                         <div key={i} className={` ${width>1280?"mt-1":"mt-2"} details`}>
                             <h2 className={`text-gray-400 font-semibold skill_tittle ${width>1280?"text-[8px]":""}`}>
-                                {skill}
+                                {skill?.tittle}
                             </h2>
                             <div className={`w-[100%] ${width>1280?"h-[.1rem]":"h-1"} bg-gray-600 mt-1`}>
-                                <div className={`w-[100%] ${width>1280?"h-[.1rem]":"h-1"} bg-white`}>
+                                <div className={`w-[${skill?.rating ==='expert'? 100 : skill?.rating==='intermediate' ? 80 : skill?.rating==='beginner'?50:0}%] ${width>1280?"h-[.1rem]":"h-1"} bg-white`}>
                                     </div>
                             </div>
                         </div>

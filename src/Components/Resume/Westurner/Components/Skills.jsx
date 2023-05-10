@@ -7,6 +7,7 @@ const Skills = () => {
     const path = useLocation().pathname.split('/')[2]
     const {allData} = useContext(data)
     const skills_data = allData[path]?.skills
+    console.log(skills_data)
     const width = useWidth()
     return (
         <div className={`${width>1280?"mt-2":"mt-10"}`}>
@@ -21,11 +22,11 @@ const Skills = () => {
                  skills_data && skills_data.length>0 ?   skills_data?.map((skill,i) =>
                     <div className={` skill ${width>1280?"my-1":"my-2"}`} key={i}>
                         <h2 className={`uppercase  font-[400] skill_tittle ${width>1280?"text-[8px]":"text-[18px]"}`}>
-                                    {skill}
+                                    {skill?.tittle}
                          </h2>
                          <div className={`flex ${width>1280?"gap-2":" gap-3"}`}>
                          {
-                            [ ...Array(5)].map((_,i) => 
+                            [ ...Array(skill?.rating ==='expert'?5 : skill?.rating==='intermediate' ? 4 : skill?.rating==='beginner'?3:5)].map((_,i) => 
                             <span className= {`  bg-black rounded-full ${width>1280?"w-[5px] h-[5px]":"w-[9px] h-[9px]"}`}></span>
                             )
                          } 

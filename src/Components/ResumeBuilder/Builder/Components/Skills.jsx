@@ -3,7 +3,7 @@ import Titttle from './Titttle';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus,faTrash } from '@fortawesome/free-solid-svg-icons';
 import Input from './Input';
-import { json, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import { useContext } from 'react';
 import { data } from '../../../../App';
 
@@ -14,36 +14,36 @@ const Skills = () => {
     const [open,SetOpen] = useState(false);
     const datatext =[ {  id:1,
         tittle:'Marketing',
-        rating:5
+        rating:'expert'
         
     },{
         id:2,
         tittle:'Dedicated team plyer',
-        rating:5
+        rating:'expert'
     },{
         id:3,
         tittle:'Creativity',
-        rating:5
+        rating:'expert'
     },{
         id:4,
         tittle:'Event Planing',
-        rating:5
+        rating:'expert'
     },{
         id:5,
         tittle:'Problem Solving Skills',
-        rating:5
+        rating:'expert'
     },{
         id:6,
         tittle:'Critical Thinking',
-        rating:5
+        rating:'expert'
     },{
         id:7,
         tittle:'Leadership',
-        rating:5
+        rating:'expert'
     },{
         id:8,
         tittle:'Communication',
-        rating:5
+        rating:'expert'
     }]
     const options = [
         {value: 'expert', text: 'Expert'},
@@ -52,6 +52,7 @@ const Skills = () => {
       ];
       const [selected,setSelected] = useState('')
       const [text,setText] = useState('')
+      const [custom,setCustom] = useState('expert')
     const [skills,setSkills] = useState(
         allData[path]?.skills || []
         );
@@ -59,23 +60,30 @@ const Skills = () => {
         datatext.filter((skill)=>!skills.includes(skill.tittle))
     )
     const [newSkill,setNewSkill] = useState('');
-    const removeSkillText = (e)=>{
-        setSkills([e.target.innerText,...skills])
+    const removeSkillText = (data)=>{
+        setSkills([data,...skills])
         setTimeout(() => {
-            const data= skillstext.filter((skill)=>skill.tittle!==e.target.innerText)
-            SetSkillsText(data)
+            const datas= skillstext.filter((skill)=>skill.tittle!==data?.tittle)
+            SetSkillsText(datas)
         }, 500);  
     }
      const removeSkill= (text)=>{
             setTimeout(() => {
-            const setAgeain = datatext.filter((skill)=>skill.tittle===text)
+            const setAgeain = datatext.filter((skill)=>skill.tittle===text?.tittle)
             SetSkillsText([...setAgeain,...skillstext])
-            setSkills(skills.filter((skill)=>skill!==text))
+            setSkills(skills.filter((skill)=>skill.tittle!==text?.tittle))
             }, 500);
+     }
+     const customSkill = (e)=>{
+           setCustom(e.target.value)
+          
      }
     //  ------custom Skill---------
     const addSkill = ()=>{
-        setSkills([newSkill,...skills])
+        setSkills([{tittle:newSkill,rating:custom},...skills])
+       
+        const newSkillobj = {tittle:newSkill,rating:custom}
+       
         const exits = allData[path]?.skills
     if(exits && exits.length>0){
             setAllData({...allData,
@@ -83,22 +91,23 @@ const Skills = () => {
                   ...allData[path],
                   skills:[
                         ...allData[path]?.skills,
-                        newSkill
+                        newSkillobj
                   ]
                 }
               })
+              SetOpen(false)
         }
        else{
         setAllData({...allData,
             [path]:{
               ...allData[path],
               skills:[
-                newSkill
+                newSkillobj
               ]
             }
           })
+          SetOpen(false)
        }
-        SetOpen(false)
     }
     const skillData = (datas)=>{
 
@@ -129,7 +138,7 @@ const Skills = () => {
     const removeSkillData = (data)=>{
         const exits = allData[path]?.skills
         if(exits){
-            const dataa = exits.filter((skill)=>skill!==data)
+            const dataa = exits.filter((skill)=>skill?.tittle!==data.tittle)
             setAllData({...allData,
                 [path]:{
                   ...allData[path],
@@ -143,6 +152,20 @@ const Skills = () => {
     const handleChange =(event,text) => {
         setSelected(event.target.value);
         setText(text)
+        const update = allData[path]?.skills?.filter((skill)=>skill?.tittle ===text)[0]
+        const data = allData[path]?.skills?.filter((skill)=>skill?.tittle !==text)
+        setAllData({...allData,
+          [path]:{
+            ...allData[path],
+            skills:[
+                  ...data,
+                 {
+                      ...update,
+                      rating:event.target.value
+                 }
+            ]
+          }
+        })
       };
 
     //  ------custom Skill---------
@@ -154,17 +177,17 @@ const Skills = () => {
             </p>
             <div className=' flex flex-wrap'>
                 {
-                    skillstext.map((skill,i)=><div key={i} className='flex items-center bg-gray-200 text-black hover:bg-blue-200 hover:text-blue-500 text-[16px] whitespace-nowrap cursor-pointer py-[6px] pl-[10px] pr-[10px]  rounded-[4px] mb-[12px] mr-[12px]' onClick={(e)=>removeSkillText(e)}>
-                    <h2 onClick={()=>skillData(skill.tittle)}>{skill.tittle}</h2>
+                    skillstext.map((skill,i)=><div key={i} className='flex items-center bg-gray-200 text-black hover:bg-blue-200 hover:text-blue-500 text-[16px] whitespace-nowrap cursor-pointer py-[6px] pl-[10px] pr-[10px]  rounded-[4px] mb-[12px] mr-[12px]' onClick={()=>removeSkillText(skill)}>
+                    <h2 onClick={()=>skillData(skill)}>{skill.tittle}</h2>
                     <FontAwesomeIcon icon={faPlus} className='ml-[4px]' />
                 </div>)
                 }
             </div>{
               skills.map((text,index)=><div key={index} className=' h-[70px] w-[100%] py-[15px] px-[20px] border rounded flex justify-between mt-5 relative group'>
                <h2 className=' font-[600] text-xl'> {
-                    text}</h2>
+                    text?.tittle}</h2>
                 <div>
-                <select id="countries" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg w-full p-2.5 outline-none" onChange={(e)=>handleChange(e,text)}>
+                <select id="countries" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg w-full p-2.5 outline-none" onChange={(e)=>handleChange(e,text?.tittle)}>
                 {options.map(option => (
               <option key={option.value} value={option.value}>
                  {option.text}
@@ -180,12 +203,12 @@ const Skills = () => {
 open?<div className=' p-4 border'>
         <div className=' flex gap-3 w-[100%] items-center relative'>
             <Input label='Skill' setNewSkill={setNewSkill}/>
-            <select id="countries" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg w-full p-2.5 outline-none mt-12">
-                <option value="Expert">Expert</option>
-                <option value="Intermediate">
-                Intermediate
-                </option>
-                <option value="Beginner ">Beginner </option>
+            <select id="countries" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg w-full p-2.5 outline-none mt-12" onChange={(e)=>customSkill(e)}>
+            {options.map(option => (
+              <option key={option.value} value={option.value}>
+                 {option.text}
+               </option>
+                ))}
                 </select>
                 <div className=' absolute top-0 right-0 bg-blue-500 text-white px-3 py-1 rounded-md font-[500] cursor-pointer' onClick={()=>addSkill()}>Add</div>
         </div>
@@ -195,7 +218,7 @@ open?<div className=' p-4 border'>
                <FontAwesomeIcon icon={faPlus} onClick={()=>SetOpen(!open)}/>
                <p onClick={()=>SetOpen(!open)}>
                 {
-                    open?'Add One More Skill':'Add Skill'
+                    open?'Close Skill':'Add Skill'
                 }
                </p>
             </div>

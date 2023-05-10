@@ -6,7 +6,7 @@ import Employment from './Components/Employment';
 
 const Monica = () => {
     return (
-        <div className=' bg-[#EFF2F9] p-12 overflow-y-scroll overflow-x-scroll'>
+        <div className=' bg-[#EFF2F9] overflow-y-scroll overflow-x-scroll h-[100%]'>
         <div className='  bg-[white] rounded-md w-[990px]  mx-auto  relative '>
             <div className=' h-[700px] bg-[#F5EEE3] w-full px-20 py-12'>
             <Header/>
