@@ -21,8 +21,7 @@ const Builder = ({setShow}) => {
     const [text,setText] = useState('')
     const path = useLocation().pathname.split('/')[2]
     const {allData,setAllData} = useContext(data)
-    const [resumeTittle,setResumeTittle] = useState(
-        allData[path]?.tittle || 'Untitled'
+    const [resumeTittle,setResumeTittle] = useState(allData[path]?.tittle || 'Untitled'
         )
     useEffect(()=>{
      setAllData({...setAllData,
