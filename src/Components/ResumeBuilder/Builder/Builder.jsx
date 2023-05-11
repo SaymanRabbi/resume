@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import Titttle from './Components/Titttle';
 import ResumeScore from './Components/ResumeScore';
 import PerosonalDetails from './Components/PerosonalDetails';
@@ -14,12 +14,30 @@ import { faNoteSticky } from '@fortawesome/free-solid-svg-icons';
 import AddNewSection from './Components/AddNewSection';
 import References from './Components/References';
 import Languages from './Components/Languages';
+import { useLocation } from 'react-router-dom';
+import { data } from '../../../App';
 
 const Builder = ({setShow}) => {
     const [text,setText] = useState('')
+    const path = useLocation().pathname.split('/')[2]
+    const {allData,setAllData} = useContext(data)
+    const [resumeTittle,setResumeTittle] = useState(
+        allData[path]?.tittle || 'Untitled'
+        )
+    useEffect(()=>{
+     setAllData({...setAllData,
+        [path]:{
+            ...allData[path],
+            tittle:resumeTittle
+          }
+    })
+    localStorage.setItem('data',JSON.stringify(allData))
+    },[resumeTittle])
     return (
         <div className='col-span-12 xl:col-span-6 p-12 relative'>
-           <Titttle tittle='Untitled' position='justify-center'/>
+           <Titttle tittle={`
+           ${resumeTittle ? resumeTittle :'Untitled'}
+           `} position='justify-center' setResumeTittle={setResumeTittle}/>
             {/* -----score--- */}
             <ResumeScore/>
             {/* -----score--- */}
@@ -37,7 +55,7 @@ const Builder = ({setShow}) => {
             {/* --------Education------- */}
             <References/>
             {/* ------website-------- */}
-            <Websites/>
+            {/* <Websites/> */}
             {/* ------website-------- */}
             {/* -------Skills-=---- */}
             <Skills/>

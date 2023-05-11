@@ -15,7 +15,7 @@ const Languages = () => {
             <button className={`uppercase bg-black text-white font-semibold tracking-widest ${width>1280?"px-[5px] text-[8px]":"px-3 py-1"}`}>Languages</button>
              <div className={`${width>1280?"gap-x-7":"mt-1 gap-x-16"} grid grid-cols-12 `}>
                {
-                 language && language.length>0 ? language.map((lan,i) => 
+                 language && language.length>0 ? language.map((lan) => 
                    <div className=' col-span-6' key={lan._id}>
                      <h2 className={`${width>1280?"text-[8px] mb-1":"text-xl mb-2"} font-[400] lan_tittle`}>
                       {lan.lan}

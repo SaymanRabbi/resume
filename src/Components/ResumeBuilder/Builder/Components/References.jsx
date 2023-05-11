@@ -97,7 +97,7 @@ const References = () => {
                 List people who have agreed to speak on your behalf. Include their name, title, employer, address, phone number, and email address.{' '}
             </p>
             {
-              raferences && raferences.length>0 ? raferences.map((item,index)=>
+              raferences && raferences.length>0 ? raferences.map((item)=>
                  <div key={item?._id} className='border p-4 mb-3 relative group'>
                 <div className='flex justify-between '>
                   <h2 className='font-bold'>{`${item?.name ? item?.name:'Not specified'}`}</h2>

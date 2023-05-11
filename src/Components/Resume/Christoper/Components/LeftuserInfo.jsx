@@ -14,7 +14,7 @@ const LeftuserInfo = () => {
                 employment?.length>0 ? 
                 <><h2 className={`${widht>1280?"text-[16px]":"text-3xl  mb-3"} font-bold text-[#1B3055]`}>Employment History</h2>
               {
-                    employment.map((emp,index)=><div className={`${widht>1280?'':'mt-3'}`}>
+                    employment.map((emp,index)=><div className={`${widht>1280?'':'mt-3'}`} key={emp.id}>
                     <h2 className='text-white ' >
        <span className={`bg-[#1B3055] employ_tittle ${widht>1280?'text-[9px] font-medium':' font-medium'}`}>
        {emp?.jobTittle} at {emp?.employer}

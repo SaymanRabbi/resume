@@ -133,7 +133,7 @@ const PerosonalDetails = () => {
   },[])
   useEffect(()=>{
     localStorage.setItem('data',JSON.stringify(allData))
-  },[allData])
+  },[allData,setAllData])
     return (
         <div>
             <Titttle tittle='Personal Details'/>

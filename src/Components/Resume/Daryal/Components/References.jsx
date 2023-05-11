@@ -9,7 +9,6 @@ const References = () => {
     const path = useLocation().pathname.split('/')[2]
     const {allData} = useContext(data)
     const references = allData[path]?.references
-    console.log(references)
     return (
         <div>
              <div className=' mt-3'>

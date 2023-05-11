@@ -40,7 +40,7 @@ const LeftDetails = () => {
                                <h2 className={`font-semibold text-[#1b3055] lan_tittle ${width>1280?"text-[8px] mb-1":""}`}>{lan.lan}</h2>
                                  <div className={`flex ${width>1280?"gap-1":"gap-2"}`}>
                                  {
-                                       [...Array(5)].map((_,i) => <div  className={`${width>1280?"h-[2px]":"h-1 mt-1"} bg-gray-400 w-full`}>
+                                       [...Array(5)].map((_,i) => <div  className={`${width>1280?"h-[2px]":"h-1 mt-1"} bg-gray-400 w-full`} key={i}>
 
                                            {
                                                i < lan?.rating && <div className={`${width>1280?"h-[2px]":"h-1"} bg-[#181b1a] w-full lan_rating`}></div>

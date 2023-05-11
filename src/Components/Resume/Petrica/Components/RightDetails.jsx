@@ -69,7 +69,7 @@ item?.endDate
                     Education
                 </h2>
                 {
-                    educations.map((item,index)=>(
+                    educations.map((item)=>(
                        <div className='education' key={item.id}>
                         <h2 className={`font-bold text-[#1b3055] edu_tittle ${width>1280?"text-[8px]":""}`}>
                         {item?.degree} { item?.school} {item?.city}

@@ -188,11 +188,9 @@ const Skills = () => {
                     text?.tittle}</h2>
                 <div>
                 <select id="countries" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg w-full p-2.5 outline-none" onChange={(e)=>handleChange(e,text?.tittle)}>
-                {options.map(option => (
-              <option key={option.value} value={option.value}>
-                 {option.text}
-               </option>
-                ))}
+                  {
+                    options.map((option,i)=><option key={i} value={option.value} selected={option.value===text?.rating}>{option.text}</option>)
+                  }
                 </select>
                 </div>
                 <button className=' absolute right-[-25px]' onClick={()=>removeSkillData(text)}>

@@ -95,7 +95,7 @@ const Languages = () => {
         <Titttle tittle='Languages'/>
         {
             
-              language && language.length>0 ? language.map((item,index)=>
+              language && language.length>0 ? language.map((item)=>
                  <div key={item?._id} className='border p-4 mb-3 relative group'>
                 <div className='flex justify-between '>
                   <h2 className='font-bold'>{`${item?.lan ? item?.lan:'Not specified'}`}</h2>
