@@ -1,34 +1,35 @@
 import React from 'react';
+import useWidth from '../../../../hooks/useWidth';
+import { useLocation } from 'react-router-dom';
+import { data } from '../../../../App';
+import { useContext } from 'react';
 
 const Education = () => {
-    const education = [{
-        id:1,
-        tittle:'Bachelor of Graphic Design at Hunter College',
-        location:'New York',
-        year:'september 2004 - may 2008'
-    },{
-        id:2,
-        tittle:'High School Diploma at Rye High School',
-        location:'Rye, NY',
-        year:'september 2000 - may 2004'
-    }]
+    const width = useWidth()
+    const path = useLocation().pathname.split('/')[2]
+    const {allData} = useContext(data)
+    const education = allData[path]?.education
     return (
-        <div className=' my-4'>
-            <h2 className='text-[#003469] font-[700] text-2xl mb-2'>Educations</h2>
+        <div className={`  ${width>1280?"my-1":"my-4"}`}>
+            {
+                education && education.length>0 ?<>
+                <h2 className={`text-[#003469] font-[700]  ${width>1280?"text-[14px] mb-1":"text-2xl mb-2"}`}>Educations</h2>
             <div>
                 {
                     education.map((item) => <div key={item.id} className=' py-1'>
-                        <h2 className=' edu_tittle text-xl font-[600]'>{item.tittle}<span className=' edu_location'>
-                        {item.location}
+                        <h2 className={`edu_tittle  font-[600] ${width>1280?"text-[10px]":"text-xl"}`}>{item?.jobTittle}<span className=' edu_location'>
+                        {item?.city}
                             </span></h2>
 
-                        <h2 className=' uppercase text-[#a2b5f0] font-[600] py-1 edu-year'>{
-                            item.year
+                        <h2 className={` uppercase text-[#a2b5f0] font-[600] py-1 edu-year ${width>1280?"text-[8px]":""}`}>{
+                            item?.startDate || item.endDate ? `${item?.startDate} - ${item.endDate} `:null
                             }</h2>
                             
                     </div>)
                 }
             </div>
+                </> :null
+            }
         </div>
     );
 };

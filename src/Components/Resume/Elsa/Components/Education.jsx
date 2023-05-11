@@ -20,7 +20,7 @@ const Education = () => {
             {
                     educations.map((history) =>
                    <div className={`  education ${width>1280?"my-1":"my-3"}`}>
-                     <div className={`${width>1280?"my-1":"my-3"}`}>
+                     <div className={`${width>1280?"":"my-3"}`}>
                      <h2 className={` font-[400] edu_tittle ${width>1280?"text-[10px]":"text-2xl"}`}>{history?.degree}</h2>
                        <div className={`flex  items-center  ${width>1280?"py-2 gap-2":"gap-6"}`}>
                         <h2 className={` font-[400] edu_year ${width>1280?"text-[8px]":"text-xl"}`}>{history?.startDate || history?.endDate ? `${

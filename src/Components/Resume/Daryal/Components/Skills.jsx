@@ -1,48 +1,33 @@
 import React from 'react';
+import useWidth from '../../../../hooks/useWidth';
+import { useLocation } from 'react-router-dom';
+import { data } from '../../../../App';
+import { useContext } from 'react';
 
 const Skills = () => {
-    const skills = [{
-        id:1,
-        tittle:'Creativity',
-        rating:5
-    },
-   {
-    id:2,
-    tittle:'Collaboration Skills',
-    rating:5
-   },{
-    id:3,
-    tittle:'Knowledge of Complex Animation Software',
-    rating:5
-   },{
-    id:4,
-    tittle:'Technical Drawing Skills',
-    rating:5
-   },{
-    id:5,
-    tittle:'Excellent Communication Skills',
-    rating:5
-   },{
-    id:6,
-    tittle:'Knowledge of Adobe PhotoShop, After Effects, and Illustrator',
-    rating:4
-   }
-]
+    const path = useLocation().pathname.split('/')[2]
+    const {allData} = useContext(data)
+    const skills = allData[path]?.skills
+const width = useWidth()
     return (
-        <div className=' py-5'>
-              <h2 className='text-[#003469] font-[700] text-2xl mb-2'>Skills</h2>
+        <div className={` ${width>1280?"py-1":"py-5"}`}>
+             {
+                skills && skills.length>0 ?<>
+                 <h2 className={`text-[#003469] font-[700]  ${width>1280?"text-[14px]":"text-2xl mb-2"}`}>Skills</h2>
               {
-                    skills.map((item) => <div key={item.id} className=' py-1'>
-                           <h2>
-                                 <span className=' font-[600] skill_tittle'>{item.tittle}</span>
+                    skills.map((item) => <div key={item.id} className={` ${width>1280?"":"py-1"}`}>
+                           <h2 className={`${width>1280?"leading-[10px]":""}`}>
+                                 <span className={`font-[600] skill_tittle ${width>1280?"text-[8px] leading-[10px]":""}`}>{item.tittle}</span>
                                 <div className=' flex gap-1'>
                                    {
-                                        Array(item.rating).fill().map((_,i) => <div key={i} className=' w-full h-[6px] bg-[#003469] skill_rating'></div>)
+                                        Array(item?.rating ==='expert'?5 : item?.rating==='intermediate' ? 4 : item?.rating==='beginner'?3:5).fill().map((_,i) => <div key={i} className={`w-full  bg-[#003469] skill_rating ${width>1280?"h-[2px] mt-[3px]":"h-[6px]"}`}></div>)
                                    }
                                 </div>
                            </h2>
                         </div>)
               }
+                </> :null
+             }
         </div>
     );
 };

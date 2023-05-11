@@ -24,7 +24,7 @@ const Skills = () => {
                         <h2 className={`uppercase   font-[400] skill ${width>1280?"text-[8px]":"text-[18px]"} mb-1`}>
                                     {skill?.tittle}
                          </h2>
-                         <div className=' flex gap-3'>
+                         <div className={`flex  ${width>1280?"gap-1":"gap-3"}`}>
                          {
                             [ ...Array(skill?.rating ==='expert'?5 : skill?.rating==='intermediate' ? 4 : skill?.rating==='beginner'?3:5)].map((_,i) => 
                             <span className={` bg-black rounded-full ${width>1280?"w-[3px] h-[3px]":"w-[9px] h-[9px]"}`}></span>

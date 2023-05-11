@@ -15,6 +15,7 @@ import Tim from '../../Resume/Tim/Tim';
 import IsabelMaher from '../../Resume/IsabelMaher/IsabelMaher';
 import Elsa from '../../Resume/Elsa/Elsa';
 import Monica from '../../Resume/Monica/Monica';
+import Daryal from '../../Resume/Daryal/Daryal';
 function IFrame({ children }) {
   const [ref, setRef] = useState();
   const container = ref?.contentWindow?.document?.body;
@@ -44,7 +45,7 @@ const Preview = () => {
                     </div>
                 <div className=' inset-0 z-30 rounded-[6px] cursor-pointer h-[80%] w-[60%] bg-white mx-auto'>
                      {
-                      path==='tokyo'?<Vince/>:path==='toronto'?<Christoper/>:path==="madrid"?<Sebastian/>:path==='vienna'?<Petrica/>:path==='sydney'?<Gregory/>:path==="new_york"?<Shophie/>:path==="amsterdam"?<Westurner/>:path ==='london' ? <Tim/>:path==='vancouver' ?<IsabelMaher/>: path ==='milan' ? <Elsa/>:path ==='copenhagen' ? <Monica/>:null
+                      path==='tokyo'?<Vince/>:path==='toronto'?<Christoper/>:path==="madrid"?<Sebastian/>:path==='vienna'?<Petrica/>:path==='sydney'?<Gregory/>:path==="new_york"?<Shophie/>:path==="amsterdam"?<Westurner/>:path ==='london' ? <Tim/>:path==='vancouver' ?<IsabelMaher/>: path ==='milan' ? <Elsa/>:path ==='copenhagen' ? <Monica/>:path==="lisbon" ? <Daryal/>:null
                      }
             </div>
                <div className=' mt-5 flex justify-center'>
