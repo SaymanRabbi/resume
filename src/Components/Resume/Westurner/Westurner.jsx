@@ -11,16 +11,16 @@ const Westurner = () => {
   const {allData} = useContext(data)
   const personal_info = allData[path]?.personal_details
     return (
-        <div className={`bg-[#EFF2F9] w-[100%] h-[100%]  ${width>1280?"":"p-12"} overflow-x-scroll overflow-y-scroll`}>
-        <div className={` bg-[white] rounded-md  mx-auto  relative ${width>1280?"w-[100%] h-[100%]":"w-[990px]"}`}>
-          <div className={`absolute  border-black rounded-md  flex justify-center items-center ${width>1280?"w-[60%] h-[100px] left-[20%]  border-[1px]  my-8 ":"w-[70%] h-[200px] left-[15%]  border-[3px]  my-14 "}`}>
+        <div className={`bg-[#EFF2F9] w-[100%] h-[100%]  ${width>=1280 || width<=480 || width<=768?"":"p-12"} overflow-x-scroll overflow-y-scroll`}>
+        <div className={` bg-[white] rounded-md  mx-auto  relative ${width>=1280 || width<=480 || width<=768?"w-[100%] h-[100%]":"w-[990px]"}`}>
+          <div className={`absolute  border-black rounded-md  flex justify-center items-center ${width>=1280 || width<=480 || width<=768?"w-[60%] h-[100px] left-[20%]  border-[1px]  my-8 ":"w-[70%] h-[200px] left-[15%]  border-[3px]  my-14 "}`}>
              <div className=" text-center">
-               <h2 className={` font-bold name uppercase tracking-widest user_name ${width>1280?"text-[14px]":"text-3xl"}`}>{
+               <h2 className={` font-bold name uppercase tracking-widest user_name ${width>=1280 || width<=480 || width<=768?"text-[14px]":"text-3xl"}`}>{
                   personal_info?.firstName
                } {
                   personal_info?.lastName
                }</h2>
-               <h2 className={`text-gray-700 font-semibold uppercase  user_tittle ${width>1280?"text-[10px] mt-1":"text-xl mt-3"}`}>{
+               <h2 className={`text-gray-700 font-semibold uppercase  user_tittle ${width>=1280 || width<=480 || width<=768?"text-[10px] mt-1":"text-xl mt-3"}`}>{
                   personal_info?.tittle
 }</h2>
              </div>

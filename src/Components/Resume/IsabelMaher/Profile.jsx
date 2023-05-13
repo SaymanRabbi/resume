@@ -10,11 +10,11 @@ const Profile = () => {
   const profile =  allData[path]?.personal_details?.summary
    const width = useWidth()
     return (
-        <div className={ `grid grid-cols-12  ${width>1280 ?"py-4":"py-14"}`}>
+        <div className={ `grid grid-cols-12  ${width>=1280 || width<=480 || width<=768 ?"py-4":"py-14"}`}>
              {
                profile ? <>
-               <h1 className={ ` font-semibold uppercase text-[#1b3055] col-span-4 w-full ${width>1280?"text-[14px]":"text-2xl"}`}> 01 Profile</h1>
-             <p className={`col-span-8 font-[400] leading-relaxed user_profile ${width>1280?"text-[8px]":""}`}>
+               <h1 className={ ` font-semibold uppercase text-[#1b3055] col-span-4 w-full ${width>=1280 || width<=480 || width<=768?"text-[14px]":"text-2xl"}`}> 01 Profile</h1>
+             <p className={`col-span-8 font-[400] leading-relaxed user_profile ${width>=1280 || width<=480 || width<=768?"text-[8px]":""}`}>
              {
                     profile
              }

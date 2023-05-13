@@ -12,11 +12,11 @@ const Profile = () => {
     return (
         <div>
             {
-                profile ? <> <h2 className={`font-semibold  uppercase tracking-widest text-[#D0C2A6]  ${width>1280?"text-[14px] mb-2":"text-2xl mb-8"}`}>
+                profile ? <> <h2 className={`font-semibold  uppercase tracking-widest text-[#D0C2A6]  ${width>=1280 || width<=480 || width<=768?"text-[14px] mb-2":"text-2xl mb-8"}`}>
                 Profile
             </h2>
             
-            <p className={`font-[500] user_profile ${width>1280?"text-[8px]":""}`}>
+            <p className={`font-[500] user_profile ${width>=1280 || width<=480 || width<=768?"text-[8px]":""}`}>
            {
                 profile
            }

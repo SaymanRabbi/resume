@@ -12,20 +12,20 @@ const Address = () => {
     const {allData} = useContext(data)
     const profile_info =  allData[path]?.personal_details
     return (
-        <div className={`flex gap-x-10 justify-between ${width>1280?'py-2':'py-4'} w-[100%] h-[5%]`}>
+        <div className={`flex gap-x-10 justify-between ${width>=1280 || width<=480 || width<=768?'py-2':'py-4'} w-[100%] h-[5%]`}>
             <div className=' flex md:gap-x-2 gap-x-1 items-center'>
                  
                 {
-                    profile_info?.user_email ? <><FontAwesomeIcon icon={faEnvelope} className={`text-[#B02124] ${width>1280?'text-[6px]':'text-[18px]'}`}/>
-                    <h2 className={`md:font-[500] sm:font-[300] user_email ${width>1280?'text-[6px]':'text-[18px]'}`}>{
+                    profile_info?.user_email ? <><FontAwesomeIcon icon={faEnvelope} className={`text-[#B02124] ${width>=1280 || width<=480 || width<=768?'text-[6px]':'text-[18px]'}`}/>
+                    <h2 className={`md:font-[500] sm:font-[300] user_email ${width>=1280 || width<=480 || width<=768?'text-[6px]':'text-[18px]'}`}>{
                         profile_info?.user_email
                     }</h2></> : null
                 }
             </div>
             <div className=' flex gap-x-2 items-center'>
              {
-                profile_info ? <><FontAwesomeIcon icon={faLocationDot} className={ `text-[#B02124] ${width>1280?'text-[6px]':'text-[18px]'}`}/>
-                <h2 className={ `font-[500] ${width>1280?'text-[6px]':'text-[18px]'}`}>
+                profile_info ? <><FontAwesomeIcon icon={faLocationDot} className={ `text-[#B02124] ${width>=1280 || width<=480 || width<=768?'text-[6px]':'text-[18px]'}`}/>
+                <h2 className={ `font-[500] ${width>=1280 || width<=480 || width<=768?'text-[6px]':'text-[18px]'}`}>
                    <span className=' user_address'>
                    {
                           profile_info?.user_city
@@ -43,8 +43,8 @@ const Address = () => {
             <div className=' flex gap-x-2 items-center'>
            {
              profile_info?.user_phone ? <>
-              <FontAwesomeIcon icon={faPhone} className={` text-[#B02124] ${width>1280?'text-[6px]':'text-[18px]'}`}/>
-                <h2 className={` font-[500] user_phone ${width>1280?'text-[6px]':'text-[18px]'}`}>
+              <FontAwesomeIcon icon={faPhone} className={` text-[#B02124] ${width>=1280 || width<=480 || width<=768?'text-[6px]':'text-[18px]'}`}/>
+                <h2 className={` font-[500] user_phone ${width>=1280 || width<=480 || width<=768?'text-[6px]':'text-[18px]'}`}>
                    {
                             profile_info?.user_phone
                    }

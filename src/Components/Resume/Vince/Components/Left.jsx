@@ -6,7 +6,7 @@ import useWidth from '../../../../hooks/useWidth';
 const Left = () => {
     const width = useWidth()
     return (
-        <div className={`${width>1280?'col-span-8':'col-span-9'}`}>
+        <div className={`${width>=1280 || width<=480 || width<=768?'col-span-8':'col-span-9'}`}>
             <Profile/>
             <Employment/>
         </div>

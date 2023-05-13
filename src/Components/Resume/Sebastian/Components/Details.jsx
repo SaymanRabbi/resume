@@ -12,9 +12,9 @@ const Details = () => {
     return (
       <>
       {
-       datas ? <div className={`${width>1280?"mt-[10px]":" mt-10"}`}>
-       <button className={`uppercase bg-black text-white font-semibold tracking-widest ${width>1280?"px-[5px] text-[8px]":"px-3 py-1"}`}>details</button>
-       <div className={` details font-[500] ${width>1280?"text-[6px]":"mt-1 text-[18px]"}`}>
+       datas ? <div className={`${width>=1280 || width<=480 || width<=768?"mt-[10px]":" mt-10"}`}>
+       <button className={`uppercase bg-black text-white font-semibold tracking-widest ${width>=1280 || width<=480 || width<=768?"px-[5px] text-[8px]":"px-3 py-1"}`}>details</button>
+       <div className={` details font-[500] ${width>=1280 || width<=480 || width<=768?"text-[6px]":"mt-1 text-[18px]"}`}>
          <h2 className='user_address'>
            {
               datas?.user_address

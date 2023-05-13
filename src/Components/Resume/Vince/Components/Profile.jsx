@@ -10,11 +10,11 @@ const Profile = () => {
     const {allData} = useContext(data)
     const profile =  allData[path]?.personal_details?.summary
     return (
-        <div className={`${width>1280?'py-1':'py-6'}`}>
+        <div className={`${width>=1280 || width<=480 || width<=768?'py-1':'py-6'}`}>
             {
                 profile ? <>
-                <h2 className={`italic ${width>1280?"text-[14px]":"text-2xl"} font-bold`}>Profile</h2>
-            <p  className={` font-[500] ${width>1280?"text-[9px]":"text-xl mt-2"} user_profile`}>
+                <h2 className={`italic ${width>=1280 || width<=480 || width<=768?"text-[14px]":"text-2xl"} font-bold`}>Profile</h2>
+            <p  className={` font-[500] ${width>=1280 || width<=480 || width<=768?"text-[9px]":"text-xl mt-2"} user_profile`}>
                 
               {
                     profile

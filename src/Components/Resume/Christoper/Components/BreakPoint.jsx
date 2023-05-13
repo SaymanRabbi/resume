@@ -5,7 +5,7 @@ const BreakPoint = () => {
     const width = useWidth()
     return (
         <div>
-            <hr className={` ${width>1280?"my-1":"my-3"}`} />
+            <hr className={` ${width>=1280 || width<=480 || width<=768?"my-1":"my-3"}`} />
         </div>
     );
 };

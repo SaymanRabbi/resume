@@ -179,7 +179,7 @@ const Skills = () => {
                 {
                     skillstext.map((skill,i)=><div key={i} className='flex items-center bg-gray-200 text-black hover:bg-blue-200 hover:text-blue-500 text-[16px] whitespace-nowrap cursor-pointer py-[6px] pl-[10px] pr-[10px]  rounded-[4px] mb-[12px] mr-[12px]' onClick={()=>removeSkillText(skill)}>
                     <h2 onClick={()=>skillData(skill)}>{skill.tittle}</h2>
-                    <FontAwesomeIcon icon={faPlus} className='ml-[4px]' />
+                    <FontAwesomeIcon icon={faPlus} className='ml-[4px]' onClick={()=>skillData(skill)}/>
                 </div>)
                 }
             </div>{
@@ -187,7 +187,7 @@ const Skills = () => {
                <h2 className=' font-[600] text-xl'> {
                     text?.tittle}</h2>
                 <div>
-                <select id="countries" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg w-full p-2.5 outline-none" onChange={(e)=>handleChange(e,text?.tittle)}>
+                <select id="countries" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg w-full p-2.5 outline-none" onChange={(e)=>handleChange(e,text?.tittle)}>
                   {
                     options.map((option,i)=><option key={i} value={option.value} selected={option.value===text?.rating}>{option.text}</option>)
                   }
@@ -201,7 +201,7 @@ const Skills = () => {
 open?<div className=' p-4 border'>
         <div className=' flex gap-3 w-[100%] items-center relative'>
             <Input label='Skill' setNewSkill={setNewSkill}/>
-            <select id="countries" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg w-full p-2.5 outline-none mt-12" onChange={(e)=>customSkill(e)}>
+            <select id="countries" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg w-full p-2.5 outline-none mt-12" onChange={(e)=>customSkill(e)}>
             {options.map(option => (
               <option key={option.value} value={option.value}>
                  {option.text}

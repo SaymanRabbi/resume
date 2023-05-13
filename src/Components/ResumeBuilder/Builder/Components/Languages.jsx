@@ -110,7 +110,7 @@ const Languages = () => {
            <form onChange={(e)=>lan(e)}>
            <Input label='Languages' attributename='lan' />
            </form>
-            <select id="countries" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg w-full p-2.5 outline-none mt-12" onChange={(e)=>handleChange(e)}>
+            <select id="countries" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg w-full p-2.5 outline-none mt-12" onChange={(e)=>handleChange(e)}>
             {options.map(option => (
               <option key={option.value} value={option.value}>
                  {option.text}

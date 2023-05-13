@@ -15,17 +15,17 @@ const Details = () => {
                {
                      personal_info ? <>
                      <div className='text-center uppercase flex items-center gap-1 justify-center'>
-                <div className={`${width>1280?"w-[.2rem] h-[.2rem]":" w-2 h-2"} bg-[#1b3055] rounded-full`}>
+                <div className={`${width>=1280 || width<=480 || width<=768?"w-[.2rem] h-[.2rem]":" w-2 h-2"} bg-[#1b3055] rounded-full`}>
 
                 </div>
-               <h2 className={`${width>1280?"text-[10px]":"font-bold"}`}>
+               <h2 className={`${width>=1280 || width<=480 || width<=768?"text-[10px]":"font-bold"}`}>
                      Details
                </h2>
-               <div className={`${width>1280?"w-[.2rem] h-[.2rem]":" w-2 h-2"} bg-[#1b3055] rounded-full`}>
+               <div className={`${width>=1280 || width<=480 || width<=768?"w-[.2rem] h-[.2rem]":" w-2 h-2"} bg-[#1b3055] rounded-full`}>
 
               </div>
                </div>
-               <div className={` ${width>1280?"text-[7px] mt-1":"font-semibold"}`}>
+               <div className={` ${width>=1280 || width<=480 || width<=768?"text-[7px] mt-1":"font-semibold"}`}>
                <h2 className='text-center  user_address'>
                {personal_info?.user_postal_code},<br />{personal_info?.user_city}
                </h2>
@@ -48,17 +48,17 @@ const Details = () => {
                      </> : null
                }
             </div>
-            <div className={`${width>1280?"mt-2":"mt-5"}`}>
+            <div className={`${width>=1280 || width<=480 || width<=768?"mt-2":"mt-5"}`}>
                <div className='text-center uppercase flex items-center gap-1 justify-center'>
                 {
                     SKILLS && SKILLS.length>0 ? <>
-                    <div className={`${width>1280?"w-[.2rem] h-[.2rem]":" w-2 h-2"} bg-[#1b3055] rounded-full`}>
+                    <div className={`${width>=1280 || width<=480 || width<=768?"w-[.2rem] h-[.2rem]":" w-2 h-2"} bg-[#1b3055] rounded-full`}>
 
 </div>
-<h2 className={`${width>1280?"text-[10px]":"font-bold"}`}>
+<h2 className={`${width>=1280 || width<=480 || width<=768?"text-[10px]":"font-bold"}`}>
      Skills
 </h2>
-<div className={`${width>1280?"w-[.2rem] h-[.2rem]":" w-2 h-2"} bg-[#1b3055] rounded-full`}>
+<div className={`${width>=1280 || width<=480 || width<=768?"w-[.2rem] h-[.2rem]":" w-2 h-2"} bg-[#1b3055] rounded-full`}>
 
 </div>
                     </> : null
@@ -67,7 +67,7 @@ const Details = () => {
                {
                   SKILLS && SKILLS.length>0 ?      SKILLS.map((item,index)=>(
                             <div className='text-center skills font-semibold skills flex justify-center' key={index}>
-                            <h2 className={` w-fit  border-[#1b3055] skill_tittle ${width>1280?"border-b-[2px] text-[7px]":"border-b-[3px]"}`}>
+                            <h2 className={` w-fit  border-[#1b3055] skill_tittle ${width>=1280 || width<=480 || width<=768?"border-b-[2px] text-[7px]":"border-b-[3px]"}`}>
                             {item?.tittle}
                             </h2>
                             </div>

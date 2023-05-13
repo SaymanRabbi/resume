@@ -11,15 +11,15 @@ const Header = () => {
     return (
        <>
        {
-              datas ?  <div className={`bg-[#4AFCBA] flex ${width>1280?"h-[20%] gap-6":"h-[170px] gap-8"} rounded `}>
-              <img src={datas?.imgUrl} alt="" className={`h-full ${width>1280?"w-[110px] h-[100%]":"w-[200px]"} bg-cover bg-center user_img`} />
-              <div className={` text-[#1b3055] ${width>1280?"py-1":"py-3"}`}>
-                 <h2 className={`username font-bold user_name ${width>1280?"text-[16px]":"text-[30px]"}`}>{datas?.firstName} {datas?.lastName}</h2>
-                 <h2 className={`font-semibold user-tittle ${width>1280?"text-[14px]":""}`}>{
+              datas ?  <div className={`bg-[#4AFCBA] flex ${width>=1280 || width<=480 || width<=768?"h-[20%] gap-6":"h-[170px] gap-8"} rounded `}>
+              <img src={datas?.imgUrl} alt="" className={`h-full ${width>=1280 || width<=480 || width<=768?"w-[110px] h-[100%]":"w-[200px]"} bg-cover bg-center user_img`} />
+              <div className={` text-[#1b3055] ${width>=1280 || width<=480 || width<=768?"py-1":"py-3"}`}>
+                 <h2 className={`username font-bold user_name ${width>=1280 || width<=480 || width<=768?"text-[16px]":"text-[30px]"}`}>{datas?.firstName} {datas?.lastName}</h2>
+                 <h2 className={`font-semibold user-tittle ${width>=1280 || width<=480 || width<=768?"text-[14px]":""}`}>{
                      datas?.tittle
                  }</h2>
-                 <div className={`${width>1280?" mt-2":" mt-6"}`}>
-                  <h2 className={`${width>1280?' text-[8px]':''}`}>
+                 <div className={`${width>=1280 || width<=480 || width<=768?" mt-2":" mt-6"}`}>
+                  <h2 className={`${width>=1280 || width<=480 || width<=768?' text-[8px]':''}`}>
                      <span className='user_address'> {
                          datas?.user_city
                      }, {datas?.user_postal_code}, {

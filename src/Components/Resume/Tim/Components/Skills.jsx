@@ -14,7 +14,7 @@ const Skills = () => {
               {
                     skills && skills?.length>0?<> <div className='grid grid-cols-12'>
                     <div className=' col-span-3'>
-                    <h2 className={`uppercase  font-semibold text-[#1B3055] tracking-wider ${width>1280 ?"text-[14px]":"text-2xl"}`}>
+                    <h2 className={`uppercase  font-semibold text-[#1B3055] tracking-wider ${width>=1280 || width<=480 || width<=768 ?"text-[14px]":"text-2xl"}`}>
                       Skills
                     </h2>
                     </div>
@@ -25,8 +25,8 @@ const Skills = () => {
                               return(
                                   <div key={item.id} className='col-span-6 justify-items-center skill items-center'>
                                       <div className='flex items-center'>
-                                      <h2 className={` w-[80%]  font-medium skill_tittle ${width>1280?"text-[8px]":"text-[18px]"}`}>{item.tittle}</h2>
-                                      <h2 className={`w-[20%]  font-medium text-gray-700 skill_rating ${width>1280?"text-[8px]":"text-[18px]"}`}>{item.rating}</h2>
+                                      <h2 className={` w-[80%]  font-medium skill_tittle ${width>=1280 || width<=480 || width<=768?"text-[8px]":"text-[18px]"}`}>{item.tittle}</h2>
+                                      <h2 className={`w-[20%]  font-medium text-gray-700 skill_rating ${width>=1280 || width<=480 || width<=768?"text-[8px]":"text-[18px]"}`}>{item.rating}</h2>
                                       </div>
                                   </div>
                               )
@@ -37,7 +37,7 @@ const Skills = () => {
                     </div>
                     
                   
-                    <div className={`w-full  bg-[#1B3055] ${width>1280?"h-[.1rem] mt-1":"h-1 mt-3"}`}></div></> :null
+                    <div className={`w-full  bg-[#1B3055] ${width>=1280 || width<=480 || width<=768?"h-[.1rem] mt-1":"h-1 mt-3"}`}></div></> :null
               }
         </div>
     );

@@ -11,9 +11,9 @@ const Header = () => {
     return (
         <div className=' h-[15%] w-full bg-[#B02124] flex items-center  rounded-t-[6px] px-8'>
            <div className=' flex items-center gap-x-[3%] w-full'>
-             <img src={profile?.imgUrl} alt=""  className={`rounded-full bg-cover user_img ${width>1280?'h-[50px] w-[50px]':'h-[70px] w-[70px]'}`}/>
+             <img src={profile?.imgUrl} alt=""  className={`rounded-full bg-cover user_img ${width>=1280 || width<=480 || width<=768?'h-[50px] w-[50px]':'h-[70px] w-[70px]'}`}/>
              <div>
-                <h2 className={`italic ${width>1280?"text-lg":"text-xl"} font-bold text-white profile user_name`}>
+                <h2 className={`italic ${width>=1280 || width<=480 || width<=768?"text-lg":"text-xl"} font-bold text-white profile user_name`}>
                     {
                         profile?.firstName || profile?.lastName?`${profile?.firstName}-${profile?.lastName}`:''
                     }

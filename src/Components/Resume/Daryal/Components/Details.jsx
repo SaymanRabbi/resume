@@ -13,8 +13,8 @@ const Details = () => {
     const personal_info = allData[path]?.personal_details
     return (
         <div className=' col-span-4 pr-8 mt-5'>
-            <h2 className={`text-[#003469] font-[700]  ${width>1280?"text-[14px] mb-1":"text-2xl mb-2"}`}>Details</h2>
-            <div className={`font-[500] ${width>1280?"text-[8px]":"mt-2"}`}>
+            <h2 className={`text-[#003469] font-[700]  ${width>=1280 || width<=480 || width<=768?"text-[14px] mb-1":"text-2xl mb-2"}`}>Details</h2>
+            <div className={`font-[500] ${width>=1280 || width<=480 || width<=768?"text-[8px]":"mt-2"}`}>
             <h2 className='user_address'>{
                 personal_info?.user_city + ', ' + personal_info?.user_postal_code
             }<span className=' user_country'>{

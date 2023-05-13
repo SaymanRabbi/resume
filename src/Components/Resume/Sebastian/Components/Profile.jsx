@@ -12,9 +12,9 @@ const Profile = () => {
     return (
         <>
         {
-            datas?<div className={`${width>1280?'mt-[2px]':"mt-4"}`}>
-            <button className={`uppercase bg-black text-white font-semibold tracking-widest ${width>1280?"px-[5px] text-[8px]":"px-3 py-1"}`}>profile</button>
-            <p className={`font-[500] mt-1 profile user_profile ${width>1280?"text-[7px]":""}`}>
+            datas?<div className={`${width>=1280 || width<=480 || width<=768?'mt-[2px]':"mt-4"}`}>
+            <button className={`uppercase bg-black text-white font-semibold tracking-widest ${width>=1280 || width<=480 || width<=768?"px-[5px] text-[8px]":"px-3 py-1"}`}>profile</button>
+            <p className={`font-[500] mt-1 profile user_profile ${width>=1280 || width<=480 || width<=768?"text-[7px]":""}`}>
             {
                 datas
             }

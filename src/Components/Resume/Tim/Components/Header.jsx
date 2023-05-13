@@ -10,14 +10,14 @@ const Header = () => {
     const personal_info = allData[path]?.personal_details
     return (
         <div className=' text-center'>
-            <h2 className={` font-bold text-[#1b3055] ${width>1280 ? "text-[10px]":"text-2xl"}`}>
+            <h2 className={` font-bold text-[#1b3055] ${width>=1280 || width<=480 || width<=768 ? "text-[10px]":"text-2xl"}`}>
                 <span className=' user_name'>{
                 personal_info?.firstName || personal_info?.lastName ?   personal_info?.firstName + ' ' + personal_info?.lastName : null
                 }</span> <span className='user_tittle'>{
                     personal_info?.tittle
                 }</span>
             </h2>
-            <h2 className={`mt-3 address font-semibold ${width>1280 ? "text-[8px]":""}`}>
+            <h2 className={`mt-3 address font-semibold ${width>=1280 || width<=480 || width<=768 ? "text-[8px]":""}`}>
                 <span className='user_address'>{
                     personal_info?.user_city
                 } {

@@ -10,9 +10,9 @@ const Info = () => {
   const profile = allData[path]?.personal_details?.summary
   const width = useWidth()
     return (
-        <div className={` ${width>1280?" py-1":" py-10"}`}>
+        <div className={` ${width>=1280 || width<=480 || width<=768?" py-1":" py-10"}`}>
             {
-                profile ? <p className={` font-[500] user_profile ${width>1280?"text-[10px]":" my-3"}`}>
+                profile ? <p className={` font-[500] user_profile ${width>=1280 || width<=480 || width<=768?"text-[10px]":" my-3"}`}>
                 {
                     profile
                 }

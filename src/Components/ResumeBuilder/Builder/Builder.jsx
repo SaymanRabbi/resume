@@ -24,7 +24,7 @@ const Builder = ({setShow}) => {
     const [resumeTittle,setResumeTittle] = useState(allData[path]?.tittle || 'Untitled'
         )
     useEffect(()=>{
-     setAllData({...setAllData,
+     setAllData({...allData,
         [path]:{
             ...allData[path],
             tittle:resumeTittle
