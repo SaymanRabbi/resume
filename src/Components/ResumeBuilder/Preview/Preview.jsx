@@ -40,10 +40,12 @@ const Preview = () => {
                         1 / 1
                      </div>
                     </div>
-                <div className=' inset-0 z-30 rounded-[6px] cursor-pointer h-[80%] w-[60%] bg-white mx-auto p-1'>
+                <div className=' inset-0 z-30  cursor-pointer h-[80%] w-[60%] mx-auto'>
+                     <div className=' w-[100%] h-[100%] bg-white  p-1 rounded-[6px]'>
                      {
                       path==='tokyo'?<Vince/>:path==='toronto'?<Christoper/>:path==="madrid"?<Sebastian/>:path==='vienna'?<Petrica/>:path==='sydney'?<Gregory/>:path==="new_york"?<Shophie/>:path==="amsterdam"?<Westurner/>:path ==='london' ? <Tim/>:path==='vancouver' ?<IsabelMaher/>: path ==='milan' ? <Elsa/>:path ==='copenhagen' ? <Monica/>:path==="lisbon" ? <Daryal/>:null
                      }
+                     </div>
             </div>
                <div className=' mt-5 flex justify-center'>
                  <button className=' px-5 py-3 bg-blue-500 text-white text-2xl font-[600] rounded'

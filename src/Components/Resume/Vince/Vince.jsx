@@ -7,9 +7,10 @@ import useWidth from '../../../hooks/useWidth';
 
 const Vince = () => {
     const width = useWidth()
+    // w-[990px]
     return (
        
-        <div className='  bg-[white] rounded-[6px]  mx-auto w-[100%] h-[100%] overflow-x-scroll overflow-y-scroll'>
+        <div id='tokyo' className='  bg-[white] rounded-[6px]  mx-auto w-[100%] h-[100%] overflow-x-scroll overflow-y-scroll'>
 
             <Header/>
             <div className=' px-8 h-[85%] overflow-hidden'>

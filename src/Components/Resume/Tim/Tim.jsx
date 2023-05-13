@@ -8,9 +8,10 @@ import Skills from './Components/Skills';
 
 const Tim = () => {
   const width = useWidth()
+  // w-[990px]
     return (
-        <div className=' bg-[#EFF2F9] p-8 overflow-x-scroll overflow-y-scroll h-[100%]'>
-    <div className={`bg-[white] rounded-md   mx-auto h-[100%] ${width>=1280 || width<=480 || width<=768 ?" w-[100%]":"w-[990px]"}`}>
+        <div id='london' className=' bg-[#EFF2F9] p-8 overflow-x-scroll overflow-y-scroll h-[100%]'>
+    <div className={`bg-[white] rounded-md   mx-auto h-[100%] ${width>=1280 || width<=480 || width<=768 ?" w-[100%]":""}`}>
       <div className=''>
         <Header/>
         <Profile/>
