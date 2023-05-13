@@ -52,14 +52,22 @@ const Builder = ({setShow}) => {
             {/* --------Education------- */}
             <Education/>
             {/* --------Education------- */}
-            <References/>
+            {
+                path !== 'madrid' && path!== 'vienna' && path !=='new_york' && path !=='vancouver' && path !=='tokyo'  && path !=='milan' && path !== 'copenhagen'?  <References/>:null
+            }
+           
             {/* ------website-------- */}
             {/* <Websites/> */}
             {/* ------website-------- */}
             {/* -------Skills-=---- */}
-            <Skills/>
+            {
+                path !=='vancouver' ? <Skills/>:null
+            }
             {/* -------Skills-=---- */}
-            <Languages/>
+            {
+                path !=='toronto' && path !=='sydney' && path !== 'amsterdam' && path !=='london' && path !=='vancouver' && path !=='tokyo' && path !=='milan' && path !== 'copenhagen'? <Languages/>:null
+            }
+            
             {/* -------Hobbies------- */}
             <Hobies/>
             {/* -------Hobbies------- */}
