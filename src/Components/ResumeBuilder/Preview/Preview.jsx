@@ -15,15 +15,15 @@ import Elsa from '../../Resume/Elsa/Elsa';
 import Monica from '../../Resume/Monica/Monica';
 import Daryal from '../../Resume/Daryal/Daryal';
 import JsPDF from 'jspdf';
+import html2canvas from 'html2canvas';
 const Preview = () => {
   const path = useLocation().pathname.split('/')[2]
   const generatePDF =async () => {
-  console.log('hello')
-    const report = new JsPDF('portrait','pt','a4');
-    console.log(report)
-  await report.html(document.getElementById(path)).then(() => {
-        report.save(`${path}.pdf`);
-    })
+    const contentCanvas = await html2canvas(document.getElementById(path));
+    const image = contentCanvas.toDataURL("image/png");
+    var doc = new JsPDF();
+    doc.addImage(image, "png", 0, 0);
+    doc.save(`${path}.pdf`);
 }
     return (
         <div className='hidden xl:flex col-span-6 bg-[#656E83] fixed top-0 bottom-0 right-0 z-10  justify-center items-center h-[100vh] w-[50%]'>
