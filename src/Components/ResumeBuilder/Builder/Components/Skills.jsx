@@ -50,14 +50,12 @@ const Skills = () => {
         {value: 'intermediate', text: 'Intermediate'},
         {value: 'beginner', text: 'Beginner'},
       ];
-      const [selected,setSelected] = useState('')
-      const [text,setText] = useState('')
       const [custom,setCustom] = useState('expert')
     const [skills,setSkills] = useState(
         allData[path]?.skills || []
         );
     const [skillstext,SetSkillsText]=useState(
-        datatext.filter((skill)=>!skills.includes(skill.tittle))
+        datatext.filter((skill)=>!skills.find((skil)=>skil.tittle===skill.tittle))
     )
     const [newSkill,setNewSkill] = useState('');
     const removeSkillText = (data)=>{
@@ -80,7 +78,7 @@ const Skills = () => {
      }
     //  ------custom Skill---------
     const addSkill = ()=>{
-        setSkills([{tittle:newSkill,rating:custom},...skills])
+        setSkills([...skills,{tittle:newSkill,rating:custom}])
        
         const newSkillobj = {tittle:newSkill,rating:custom}
        
@@ -90,8 +88,8 @@ const Skills = () => {
                 [path]:{
                   ...allData[path],
                   skills:[
-                        ...allData[path]?.skills,
-                        newSkillobj
+                    newSkillobj,
+                    ...allData[path]?.skills
                   ]
                 }
               })
@@ -110,15 +108,14 @@ const Skills = () => {
        }
     }
     const skillData = (datas)=>{
-
         const exits = allData[path]?.skills
         if(exits && exits.length>0){          
             setAllData({...allData,
                 [path]:{
                   ...allData[path],
                   skills:[
-                        ...allData[path]?.skills,
-                        datas
+                    datas,
+                    ...allData[path]?.skills
                   ]
                 }
               })
@@ -150,20 +147,12 @@ const Skills = () => {
         }
     }
     const handleChange =(event,text) => {
-        setSelected(event.target.value);
-        setText(text)
-        const update = allData[path]?.skills?.filter((skill)=>skill?.tittle ===text)[0]
-        const data = allData[path]?.skills?.filter((skill)=>skill?.tittle !==text)
+        const updates = [...allData[path]?.skills]
+        const updateData = updates.map((skill)=>skill?.tittle ===text?{...skill,rating:event.target.value}:skill)
         setAllData({...allData,
           [path]:{
             ...allData[path],
-            skills:[
-                  ...data,
-                 {
-                      ...update,
-                      rating:event.target.value
-                 }
-            ]
+            skills: updateData
           }
         })
       };

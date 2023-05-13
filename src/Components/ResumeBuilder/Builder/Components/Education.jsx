@@ -102,7 +102,6 @@ const Education = () => {
     useEffect(()=>{
       localStorage.setItem('data',JSON.stringify(allData))
     },[allData])
-    console.log(process.env.REACT_APP_TINY_API_KEY)
     return (
         <div className=' mt-6'>
             <Titttle tittle='Education'/>
