@@ -23,9 +23,15 @@ const Right = () => {
                         <div className={` flex ${width>=1280 || width<=480 || width<=768?'gap-x-1':'gap-2'}`}>
                             {/* angle backgrounbd */}
                             {
-                                        [...Array(skill?.rating ==='expert'?5 : skill?.rating==='intermediate' ? 4 : skill?.rating==='beginner'?3:5)].map((_,i) => <div  className='h-1 bg-gray-400 w-full mt-1'>
+                                        [...Array(5)].map((_,i) => <div  className={`${width>=1280 || width<=480 || width<=768?"h-[2px]":"h-1"} bg-gray-400 w-full skill_rating mt-1`}>
 
-                                       
+
+                                             
+                                           {
+                                              i < (skill?.rating ==='expert'? 5 : skill?.rating==='intermediate' ? 4 : skill?.rating==='beginner'?3:5) && <div className={`${width>=1280 || width<=480 || width<=768?"h-[2px]":"h-1"} bg-red-500 w-full lan_rating`}>
+                                                
+                                              </div>
+                                           }
                                         </div>) 
                                   }
                                   </div>

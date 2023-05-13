@@ -14,7 +14,7 @@ const Header = () => {
           <div className={`col-span-8  ${width>=1280 || width<=480 || width<=768?"pl-10 pt-7":"pl-10 py-10"}`}>
           <h2 className={`text-[#003469]  font-bold user_name ${width>=1280 || width<=480 || width<=768?"text-[14px]":"text-5xl"}`}>
            {
-              personal_info?.firstName + " " + personal_info?.lastName
+              personal_info?.firstName ? personal_info?.firstName : null + " " + personal_info?.lastName ? personal_info?.lastName : null
            }
            </h2> 
            <h2 className={`text-[#003469]  font-[500] user_tittle mt-2 ${width>=1280 || width<=480 || width<=768?"text-[14px]":"text-5xl"}`}>

@@ -8,7 +8,6 @@ const LeftDetails = () => {
     const path = useLocation().pathname.split('/')[2]
     const {allData} = useContext(data)
     const skills = allData[path]?.skills
-    console.log(skills)
     const language = allData[path]?.languages
     const width = useWidth()
     return (
@@ -22,9 +21,19 @@ const LeftDetails = () => {
                                 <h2 className={`font-semibold text-[#1b3055] skill_tittle ${width>=1280 || width<=480 || width<=768?"text-[8px] mb-1":""}`}>{skill?.tittle}</h2>
                                   <div className={` flex ${width>=1280 || width<=480 || width<=768?"gap-1":'gap-2'}`}>
                                   {
-                                        [...Array(skill?.rating ==='expert'?5 : skill?.rating==='intermediate' ? 4 : skill?.rating==='beginner'?3:5)].map((_,i) => <div  className={`${width>=1280 || width<=480 || width<=768?"h-[2px]":"h-1 mt-1"} bg-[#181b1a] w-full  skill_rating`}></div>) 
+                                        [...Array(5)].map((_,i) => 
+                                        <div  className={`${width>=1280 || width<=480 || width<=768?"h-[2px]":"h-1 mt-1"} bg-gray-500 w-full  skill_rating`}>
+                                        {
+                                               i < (skill?.rating ==='expert'? 5 : skill?.rating==='intermediate' ? 4 : skill?.rating==='beginner'?3:5) && <div className={`${width>=1280 || width<=480 || width<=768?"h-[2px]":"h-1"} bg-[#181b1a] w-full lan_rating`}></div>
+                                           }
+
+                                        </div>
+
+                
+                                        ) 
                                   }
                                   </div>
+                                 
                             </div>
                         ))
                  }

@@ -43,7 +43,7 @@ const Preview = () => {
                         1 / 1
                      </div>
                     </div>
-                <div className=' inset-0 z-30 rounded-[6px] cursor-pointer h-[80%] w-[60%] bg-white mx-auto'>
+                <div className=' inset-0 z-30 rounded-[6px] cursor-pointer h-[80%] w-[60%] bg-white mx-auto p-1'>
                      {
                       path==='tokyo'?<Vince/>:path==='toronto'?<Christoper/>:path==="madrid"?<Sebastian/>:path==='vienna'?<Petrica/>:path==='sydney'?<Gregory/>:path==="new_york"?<Shophie/>:path==="amsterdam"?<Westurner/>:path ==='london' ? <Tim/>:path==='vancouver' ?<IsabelMaher/>: path ==='milan' ? <Elsa/>:path ==='copenhagen' ? <Monica/>:path==="lisbon" ? <Daryal/>:null
                      }

@@ -20,7 +20,14 @@ const width = useWidth()
                                  <span className={`font-[600] skill_tittle ${width>=1280 || width<=480 || width<=768?"text-[8px] leading-[10px]":""}`}>{item.tittle}</span>
                                 <div className=' flex gap-1'>
                                    {
-                                        Array(item?.rating ==='expert'?5 : item?.rating==='intermediate' ? 4 : item?.rating==='beginner'?3:5).fill().map((_,i) => <div key={i} className={`w-full  bg-[#003469] skill_rating ${width>=1280 || width<=480 || width<=768?"h-[2px] mt-[3px]":"h-[6px]"}`}></div>)
+                                        Array(5).fill().map((_,i) => <div key={i} className={`w-full  bg-gray-400 skill_rating ${width>=1280 || width<=480 || width<=768?"h-[2px] mt-[3px]":"h-[6px]"}`}>
+                                         {
+                                              i < (item?.rating ==='expert'? 5 : item?.rating==='intermediate' ? 4 : item?.rating==='beginner'?3:5) && <div className={`w-full  bg-[#003469] skill_rating ${width>=1280 || width<=480 || width<=768?"h-[2px] ":"h-[6px]"}`}>
+                                                
+                                              </div>
+                                           }
+
+                                        </div>)
                                    }
                                 </div>
                            </h2>

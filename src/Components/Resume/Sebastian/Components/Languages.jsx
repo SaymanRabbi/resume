@@ -19,9 +19,6 @@ const Languages = () => {
                    <div className=' col-span-6' key={lan._id}>
                      <h2 className={`${width>=1280 || width<=480 || width<=768?"text-[8px] mb-1":"text-xl mb-2"} font-[400] lan_tittle`}>
                       {lan.lan}
-                      {
-                       console.log(parseInt(lan?.rating * 20))
-                      }
                  </h2>
                  <div className={`bg-gray-300 ${width>=1280 || width<=480 || width<=768?"h-[2px]":"h-2"} w-[100%] rounded-full`}>
                    <div className={`${width>=1280 || width<=480 || width<=768?"h-[2px]":"h-[6px]"} bg-black w-[${parseInt(lan?.rating * 20)}%] lan_rating`}></div>
