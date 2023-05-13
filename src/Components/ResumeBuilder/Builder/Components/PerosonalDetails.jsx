@@ -110,13 +110,13 @@ const PerosonalDetails = () => {
         }
       })
     }
-    useEffect(()=>{
+    // ---add image to cloudinary----
       cloudinaryRef.current = window.cloudinary
       refToInput.current= cloudinaryRef.current.createUploadWidget({
           cloudName: 'dnr5u3jpb',
           uploadPreset: 'byni9vwa',
       },(error,result)=>{
-            if(!error && result.info.secure_url ){
+            if(result.info.secure_url ){
               setImgUrl(result.info.secure_url)
               setAllData({...allData,
                 [path]:{
@@ -130,7 +130,7 @@ const PerosonalDetails = () => {
               })
             }
       })
-  },[])
+       // ---add image to cloudinary----
   useEffect(()=>{
     localStorage.setItem('data',JSON.stringify(allData))
   },[allData,setAllData])

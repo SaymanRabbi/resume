@@ -32,6 +32,7 @@ const Summary = () => {
            Write 2-4 short & energetic sentences to interest the reader! Mention your role, experience & most importantly - your biggest achievements, best qualities and skills.
            </p>
            <Editor
+           apiKey= {process.env.REACT_APP_TINY_API_KEY}
            onEditorChange={log}
            onInit={(evt, editor) => editorRef.current = editor}
            initialValue=""

@@ -102,6 +102,7 @@ const Education = () => {
     useEffect(()=>{
       localStorage.setItem('data',JSON.stringify(allData))
     },[allData])
+    console.log(process.env.REACT_APP_TINY_API_KEY)
     return (
         <div className=' mt-6'>
             <Titttle tittle='Education'/>
@@ -138,7 +139,8 @@ const Education = () => {
                 </form>
                 <div >
                     <h2 className=' py-3'>Description</h2>
-                    <Editor
+                    <Editor 
+                    apiKey= {process.env.REACT_APP_TINY_API_KEY}
            onInit={(evt, editor) => editorRef.current = editor}
            initialValue=""
            onEditorChange={log}

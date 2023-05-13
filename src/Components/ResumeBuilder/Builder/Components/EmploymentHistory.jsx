@@ -141,6 +141,7 @@ const EmploymentHistory = () => {
                 <div className=''>
                     <h2 className='py-3'>Description</h2>
                     <Editor
+                    apiKey= {process.env.REACT_APP_TINY_API_KEY}
                      onEditorChange={log}
            onInit={(evt, editor) => editorRef.current = editor}
            initialValue=""
