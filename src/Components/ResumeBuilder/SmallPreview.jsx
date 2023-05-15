@@ -15,28 +15,14 @@ import IsabelMaher from '../Resume/IsabelMaher/IsabelMaher';
 import Elsa from '../Resume/Elsa/Elsa';
 import Monica from '../Resume/Monica/Monica';
 import Daryal from '../Resume/Daryal/Daryal';
-import { PDFExport } from '@progress/kendo-react-pdf';
+import {savePDF  } from '@progress/kendo-react-pdf';
 const SmallPreview = ({setShowprev}) => {
     const [show, setShow] = React.useState(false);
     const path = useLocation().pathname.split('/')[2]
     const pdfRef = React.useRef(null);
     const generatePDF =async () => {
-      pdfRef.current.save();
+      savePDF(pdfRef.current, { paperSize: 'A4',fileName:`${path}` });
     }
-    const refHeight = React.useRef(null)
-  const [height, setHeight] = useState(0)
-  const [width, setWidth] = useState(0)
-  const setDimension = () => {
-    setHeight(refHeight.current?.offsetHeight);
-    setWidth(refHeight.current?.offsetWidth);
-  }
-  useEffect(() => {
-    setDimension();
-    window.addEventListener('resize', setDimension);
-    return () => {
-      window.removeEventListener('resize', setDimension);
-    }
-  }, [height,width])
     return (
         <div className='fixed w-[100%] min-h-[100vh] bg-black z-50 top-0 left-0 bottom-0 right-0 inset-0  flex flex-col'>
             <div className=' relative h-[100vh]'>
@@ -58,19 +44,14 @@ const SmallPreview = ({setShowprev}) => {
                 {/* ------header------- */}
                 {/* ------body------- */}
                 <div className=' flex-grow flex-shrink-0   px-[20px] h-[calc(100%-64px)]'>
-                        <div className=' relative my-[20px] mx-auto w-full bg-white h-[100%] rounded-[6px]' ref={refHeight}>
-                        <PDFExport ref={pdfRef} paperSize="A4" fileName= {`${path}`}> 
-                        <div style={{
-                        height:height,
-                        width:'100%',
+                        <div className=' relative  mx-auto w-full bg-white h-[100%] rounded-[6px] overflow-x-scroll' ref={pdfRef}>
                         
-                     }}>
                        {
                       path==='tokyo'?<Vince/>:path==='toronto'?<Christoper small='small'/>:path==="madrid"?<Sebastian/>:path==='vienna'?<Petrica/>:path==='sydney'?<Gregory/>:path==="new_york"?<Shophie/>:path==="amsterdam"?<Westurner/>: path ==='london'?<Tim/>:path ==="vancouver" ?<IsabelMaher/>: path==="milan" ?<Elsa/>:path ==='copenhagen' ? <Monica/>:path ==="lisbon" ? <Daryal/>:null
                      }
                      </div> 
-                      </PDFExport>
-                        </div>
+                      
+                       
                 </div>
                 {/* ------body------- */}
                 {/* ------export------ */}
