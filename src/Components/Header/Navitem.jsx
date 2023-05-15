@@ -4,7 +4,7 @@ import './Navitem.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleDown,faBars, faXmark } from '@fortawesome/free-solid-svg-icons';
 import { useState } from 'react';
-const Navitem = () => {
+const Navitem = ({handleClick}) => {
   const [open,SetOpen] = useState(false);
     return (
         <div >
@@ -14,9 +14,9 @@ const Navitem = () => {
               <Link to="/resume-templates" className="nav_item">Resume Templates
                 <FontAwesomeIcon icon={faAngleDown} className='ml-2'/>
               </Link>
-                <Link to="/resume_builder/builder" className="nav_item">Resume Builder
+                <h2 onClick={()=>handleClick()} className="nav_item cursor-pointer">Resume Builder
                 <FontAwesomeIcon icon={faAngleDown} className='ml-2'/>
-                </Link>
+                </h2>
                 <Link to="/blog" className="nav_item">Blog</Link>
                 <Link to="/faq" className="nav_item">FAQ</Link>
             </div>

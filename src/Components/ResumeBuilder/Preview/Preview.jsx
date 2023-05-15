@@ -1,6 +1,6 @@
 import { faCloudUpload } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Vince from '../../Resume/Vince/Vince';
 import { useLocation } from 'react-router-dom';
 import Christoper from '../../Resume/Christoper/Christoper';
@@ -14,17 +14,28 @@ import IsabelMaher from '../../Resume/IsabelMaher/IsabelMaher';
 import Elsa from '../../Resume/Elsa/Elsa';
 import Monica from '../../Resume/Monica/Monica';
 import Daryal from '../../Resume/Daryal/Daryal';
-import JsPDF from 'jspdf';
-import html2canvas from 'html2canvas';
+import { PDFExport } from '@progress/kendo-react-pdf';
+ import './Preview.css'
 const Preview = () => {
   const path = useLocation().pathname.split('/')[2]
+  const pdfRef = React.useRef(null);
   const generatePDF =async () => {
-    const contentCanvas = await html2canvas(document.getElementById(path));
-    const image = contentCanvas.toDataURL("image/png");
-    var doc = new JsPDF();
-    doc.addImage(image, "png", 0, 0);
-    doc.save(`${path}.pdf`);
-}
+    pdfRef.current.save();
+  }
+  const refHeight = React.useRef(null)
+  const [height, setHeight] = useState(0)
+  const [width, setWidth] = useState(0)
+  const setDimension = () => {
+    setHeight(refHeight.current?.offsetHeight);
+    setWidth(refHeight.current?.offsetWidth);
+  }
+  useEffect(() => {
+    setDimension();
+    window.addEventListener('resize', setDimension);
+    return () => {
+      window.removeEventListener('resize', setDimension);
+    }
+  }, [height,width])
     return (
         <div className='hidden xl:flex col-span-6 bg-[#656E83] fixed top-0 bottom-0 right-0 z-10  justify-center items-center h-[100vh] w-[50%]'>
            
@@ -41,10 +52,19 @@ const Preview = () => {
                      </div>
                     </div>
                 <div className=' inset-0 z-30  cursor-pointer h-[80%] w-[60%] mx-auto'>
-                     <div className=' w-[100%] h-[100%] bg-white  p-1 rounded-[6px]'>
+                    <div className=' w-[100%] h-[100%] bg-white rounded-[6px]' ref={refHeight} >
+                    <PDFExport ref={pdfRef} paperSize="A4" fileName= {`${path}`}>
+                     <div style={{
+                        height:height,
+                        width:'100%',
+                        padding:'4px',
+                        
+                     }}>
                      {
                       path==='tokyo'?<Vince/>:path==='toronto'?<Christoper/>:path==="madrid"?<Sebastian/>:path==='vienna'?<Petrica/>:path==='sydney'?<Gregory/>:path==="new_york"?<Shophie/>:path==="amsterdam"?<Westurner/>:path ==='london' ? <Tim/>:path==='vancouver' ?<IsabelMaher/>: path ==='milan' ? <Elsa/>:path ==='copenhagen' ? <Monica/>:path==="lisbon" ? <Daryal/>:null
                      }
+                     </div>
+                    </PDFExport>
                      </div>
             </div>
                <div className=' mt-5 flex justify-center'>

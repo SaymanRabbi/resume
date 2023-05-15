@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const Hero = ({tittle,dec,button}) => {
+const Hero = ({tittle,dec,button,handleClick}) => {
     return (
         <div>
             <div className=' max-w-[670px] mx-auto mb-12 text-center'>
@@ -11,12 +11,14 @@ const Hero = ({tittle,dec,button}) => {
                 <p className=' font-[400] text-[18px] text-[#4F4F4F]'>
                     {dec}
                 </p>
-                <Link to='/resume_builder/builder'>
-                    <button  className=' font-[500] text-[18px] text-[#FFFFFF] bg-[#2F80ED] rounded-md py-3 px-6 mt-6'>
+                
+                    <button  className=' font-[500] text-[18px] text-[#FFFFFF] bg-[#2F80ED] rounded-md py-3 px-6 mt-6'
+                    onClick={()=>handleClick()}
+                    >
                     {button}
 
                     </button>
-                </Link>
+                
             </div>
         </div>
     );

@@ -1,10 +1,10 @@
 import React from 'react';
 import Resume from './Resume';
 
-const ResumeTemplates = () => {
+const ResumeTemplates = ({refar}) => {
     return (
         <div>
-            <Resume/>
+            <Resume refar={refar}/>
         </div>
     );
 };

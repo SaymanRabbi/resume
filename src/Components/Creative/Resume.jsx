@@ -2,7 +2,7 @@ import React from 'react';
 import { Daryal,Elsa,Isa,Patrica,Sebastian, Vince } from './Images';
 import { Link } from 'react-router-dom';
 
-const Resume = () => {
+const Resume = ({refar}) => {
     const data = [
         {
             id:'madrid',
@@ -37,7 +37,7 @@ const Resume = () => {
         }
     ]
     return (
-        <div className=' grid xl:grid-cols-3  md:grid-cols-2 grid-cols-1 md:px-3'>
+        <div className=' grid xl:grid-cols-3  md:grid-cols-2 grid-cols-1 md:px-3' ref={refar}>
             {
                 data.map((item) =>
                 <div key={item.id} data-name={item.id} className='mx-auto w-[90%] md:w-[100%] px-2 md:pb-3 pb-14  cursor-pointer group relative'>

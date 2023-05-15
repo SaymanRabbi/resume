@@ -11,8 +11,8 @@ const Christoper = () => {
     const datas = allData?.toronto
     // w-[990px]
     return (
-        <div id='toronto' className=' bg-[#EFF2F9] p-2 w-[100%] h-[100%] rounded-[6px] overflow-x-scroll overflow-y-scroll'>
-             <div className={`${width>=1280 || width<=480 || width<=768?" w-[100%] h-[100%]":"py-0 px-4"}?`}>
+        <div id='toronto' className=' bg-[#EFF2F9] p-2 w-[100%] h-[100%] rounded-[6px]  overflow-x-scroll overflow-y-scroll'>
+             <div className={`${width>=1280 || width<=480 || width<=768?" w-[100%] h-[100%]":""}? py-0 px-4`}>
                 <Header datas={datas?.personal_details}/>
                 <BreakPoint/>
                 <UserInfo/>
