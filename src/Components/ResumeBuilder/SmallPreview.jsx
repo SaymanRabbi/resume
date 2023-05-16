@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React  from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faDochub } from '@fortawesome/free-brands-svg-icons';
 import { faFileText } from '@fortawesome/free-solid-svg-icons';
@@ -44,7 +44,7 @@ const SmallPreview = ({setShowprev}) => {
                 {/* ------header------- */}
                 {/* ------body------- */}
                 <div className=' flex-grow flex-shrink-0   px-[20px] h-[calc(100%-64px)]'>
-                        <div className=' relative  mx-auto w-full bg-white h-[100%] rounded-[6px] overflow-x-scroll' ref={pdfRef}>
+                        <div className=' relative  mx-auto w-full bg-white h-[100%] rounded-[6px] p-1' ref={pdfRef}>
                         
                        {
                       path==='tokyo'?<Vince/>:path==='toronto'?<Christoper small='small'/>:path==="madrid"?<Sebastian/>:path==='vienna'?<Petrica/>:path==='sydney'?<Gregory/>:path==="new_york"?<Shophie/>:path==="amsterdam"?<Westurner/>: path ==='london'?<Tim/>:path ==="vancouver" ?<IsabelMaher/>: path==="milan" ?<Elsa/>:path ==='copenhagen' ? <Monica/>:path ==="lisbon" ? <Daryal/>:null

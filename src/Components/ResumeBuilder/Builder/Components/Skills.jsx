@@ -6,46 +6,15 @@ import Input from './Input';
 import { useLocation } from 'react-router-dom';
 import { useContext } from 'react';
 import { data } from '../../../../App';
+import { amsterdam, copenhagen, lisbon, london, madrid, milan, new_york, sydney, tokyo, toronto, vancouver, vienna } from '../../../Skills/SkillsData';
 
 
 const Skills = () => {
     const {allData,setAllData } = useContext(data)
   const path = useLocation().pathname.split('/')[2]
     const [open,SetOpen] = useState(false);
-    const datatext =[ {  id:1,
-        tittle:'Marketing',
-        rating:'expert'
-        
-    },{
-        id:2,
-        tittle:'Dedicated team plyer',
-        rating:'expert'
-    },{
-        id:3,
-        tittle:'Creativity',
-        rating:'expert'
-    },{
-        id:4,
-        tittle:'Event Planing',
-        rating:'expert'
-    },{
-        id:5,
-        tittle:'Problem Solving Skills',
-        rating:'expert'
-    },{
-        id:6,
-        tittle:'Critical Thinking',
-        rating:'expert'
-    },{
-        id:7,
-        tittle:'Leadership',
-        rating:'expert'
-    },{
-        id:8,
-        tittle:'Communication',
-        rating:'expert'
-    }]
-    const options = [
+    const datatext = path === 'toronto' ? toronto: path ==='madrid' ? madrid : path ==='vienna' ? vienna : path ==='sydney' ? sydney: path==='new_york' ? new_york : path === 'amsterdam' ?amsterdam : path ==='london' ? london : path ==='vancouver' ? vancouver : path === 'tokyo' ? tokyo : path ==='milan'? milan : path ==='copenhagen' ? copenhagen : path ==='lisbon' ? lisbon : []
+     const options = [
         {value: 'expert', text: 'Expert'},
         {value: 'intermediate', text: 'Intermediate'},
         {value: 'beginner', text: 'Beginner'},

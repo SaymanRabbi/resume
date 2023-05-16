@@ -13,9 +13,9 @@ const Header = () => {
     const {allData} = useContext(data)
     const personal_info = allData[path]?.personal_details
     return (
-        <div className={`py-3 ${width>=1280 || width<=480 || width<=768?"h-[23%]":""}`}>
+        <div className={`py-3 ${width>=1280 || width<=480 || width<=768?"h-[20%]":""}`}>
             <div className=' flex justify-center '>
-                <img src={personal_info?.imgUrl} alt="" className={` ${width>=1280 || width<=480 || width<=768?"w-[50px] h-[50px]":"w-24 h-24"} user_img`} />
+                <img src={personal_info?.imgUrl} alt="" className={` ${width>=1280 || width<=480 || width<=768?"w-[80px] h-[70px]":"w-24 h-24"} user_img`} />
             </div>
             <h2 className={` text-center mt-3 font-bold text-[#1b3055] tracking-wider user_name ${width>=1280 || width<=480 || width<=768?"text-[14px]":"text-3xl"}`}>{
                 personal_info?.firstName

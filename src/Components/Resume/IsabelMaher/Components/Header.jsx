@@ -1,6 +1,5 @@
 import React, { useContext } from 'react';
 import './Header.css'
-import img from './Img/userjpg.jpg'
 import { useLocation } from 'react-router-dom';
 import { data } from '../../../../App';
 import useWidth from '../../../../hooks/useWidth';
@@ -12,7 +11,7 @@ const Header = () => {
     return (
         <div className={`flex justify-center  ${width>=1280 || width<=480 || width<=768 ?"py-6":"py-12"}`}>
             <div className='text-center'>
-                <img src={personal_info?.imgUrl} alt="" className={`clippath inline-block user_img ${width>=1280 || width<=480 || width<=768?"h-[50px]":"h-[100px]"}`}/>
+                <img src={personal_info?.imgUrl} alt="" className={`clippath inline-block user_img ${width>=1280 || width<=480 || width<=768?"h-[60px]":"h-[100px]"}`}/>
                 <h2 className={` text-[#1b3055] font-semibold tracking-wide user_name ${width>=1280 || width<=480 || width<=768?"text-[14px] mt-1":"text-4xl mt-3"}`}>
                     {
                         personal_info?.firstName || personal_info?.lastName ? personal_info?.firstName + ' ' + personal_info?.lastName : null
