@@ -24,7 +24,7 @@ const Preview = () => {
   }
  
     return (
-        <div className='hidden xl:flex col-span-6 bg-[#656E83] fixed top-0 bottom-0 right-0 z-10  justify-center items-center h-[100vh] w-[50%]'>
+        <div className='hidden xl:flex col-span-6 bg-[#656E83] fixed top-0 bottom-0 right-0 z-10  justify-center items-center h-[100vh] w-[50%] py-3  '>
            
                 <div className=' h-[100%] w-[100%] absolute top-0 right-0  bottom-0'>
                     <div className=' w-[50%] mx-auto flex py-5 justify-between'>
@@ -47,7 +47,7 @@ const Preview = () => {
                    
                      </div>
             </div>
-               <div className=' mt-5 flex justify-center'>
+               <div className=' mt-3 flex justify-center'>
                  <button className=' px-5 py-3 bg-blue-500 text-white text-2xl font-[600] rounded'
                  onClick={generatePDF}
                  > Download Pdf</button>
