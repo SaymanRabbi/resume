@@ -4,7 +4,6 @@ import BreakPoint from './Components/BreakPoint';
 import UserInfo from './Components/UserInfo';
 import useWidth from '../../../hooks/useWidth';
 import { data } from '../../../App';
-
 const Christoper = () => {
     const width = useWidth()
     const {allData} = useContext(data)
@@ -17,8 +16,6 @@ const Christoper = () => {
                 <BreakPoint/>
                 <UserInfo/>
                 </div>
-            
-      
     </div>
     );
 };
