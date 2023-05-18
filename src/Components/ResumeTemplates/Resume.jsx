@@ -69,7 +69,7 @@ const Resume = ({refar}) => {
             {
                 data.map((item) =>
                 <div key={item.id} data-name={item.id} className=' mx-auto w-[90%] md:w-[100%] h-[100%] px-2 md:pb-3 pb-16 cursor-pointer group relative '>
-                 <div className=' lg:p-8 p-5 bg-[#EFF2F9] h-[85%] group-hover:shadow-md'>
+                 <div className=' lg:p-8 p-5 bg-[#EFF2F9] h-[85%] group-hover:shadow-md rounded-[5px]'>
                     <img src={item.img} alt="" className=' w-[100%] h-[100%] rounded-md
                     group-hover:shadow-xl
                     '/>

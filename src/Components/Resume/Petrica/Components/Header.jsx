@@ -9,11 +9,13 @@ const Header = () => {
     const {allData} = useContext(data)
     const datas = allData[path]?.personal_details
     return (
-       <>
+       <div className={`${width>=1280 || width<=480 || width<=768?"h-[80px]":"h-[170px]"}`}>
        {
-              datas ?  <div className={`bg-[#4AFCBA] flex ${width>=1280 || width<=480 || width<=768?"h-[20%] gap-6":"h-[170px] gap-8"} rounded `}>
-              <img src={datas?.imgUrl} alt="" className={`h-full ${width>=1280 || width<=480 || width<=768?"w-[110px] h-[100%]":"w-[200px]"} bg-cover bg-center user_img`} />
-              <div className={` text-[#1b3055] ${width>=1280 || width<=480 || width<=768?"py-1":"py-3"}`}>
+              datas ?  <div className={`bg-[#4AFCBA] flex h-[100%] rounded `}>
+             <div className='h-[100%] w-[20%]'>
+             <img src={datas?.imgUrl} alt="" className={`h-[100%] w-[100%] ${width>=1280 || width<=480 || width<=768?"":""} bg-cover bg-center user_img`} />
+             </div>
+              <div className={` text-[#1b3055] w-[80%] px-3 ${width>=1280 || width<=480 || width<=768?"py-1":"py-3"}`}>
                  <h2 className={`username font-bold user_name ${width>=1280 || width<=480 || width<=768?"text-[16px]":"text-[30px]"}`}>{datas?.firstName} {datas?.lastName}</h2>
                  <h2 className={`font-semibold user-tittle ${width>=1280 || width<=480 || width<=768?"text-[14px]":""}`}>{
                      datas?.tittle
@@ -36,7 +38,7 @@ const Header = () => {
               </div>
          </div>: null
        }
-       </>
+       </div>
     );
 };
 

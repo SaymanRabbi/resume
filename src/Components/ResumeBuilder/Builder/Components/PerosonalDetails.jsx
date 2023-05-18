@@ -151,10 +151,10 @@ const PerosonalDetails = () => {
                           </>
                           :<>
                           {
-                          path==='amsterdam'? "": <FontAwesomeIcon icon={faUser} className=' text-4xl text-blue-500'/>
+                          path==='amsterdam' || path==='london' ? "": <FontAwesomeIcon icon={faUser} className=' text-4xl text-blue-500'/>
                         }
                         {
-                          path==='amsterdam'? <span className=' font-[400] text-gray-500'> This Template Doesn't support photo upload</span>: <span className=' font-[400] text-blue-500'> Upload Photo</span>
+                          path==='amsterdam' || path==='london' ? <span className=' font-[400] text-gray-500'> This Template Doesn't support photo upload</span>: <span className=' font-[400] text-blue-500'> Upload Photo</span>
                         }
                           </>
                         }

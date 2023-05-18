@@ -6,7 +6,7 @@ const Header = ({datas}) => {
         <div className={`grid grid-cols-12 ${width>=1280 || width<=480 || width<=768?"":""}`}>
              <div className='col-span-4'>
               {
-                datas?.imgUrl? <img src={datas?.imgUrl} alt="" className={`user_img${width>=1280 || width<=480 || width<=768?"w-[70px] h-[60px]":" w-24 h-24"}`}/>:null
+                datas?.imgUrl? <img src={datas?.imgUrl} alt="" className={`user_img ${width>=1280 || width<=480 || width<=768?"w-[70px] h-[60px]":" w-24 h-24"}`}/>:null
               }
                <h1 className={` mt-2 ${width>=1280 || width<=480 || width<=768?'text-[14px] font-medium':'font-medium'} user_tittle`}>{datas?.tittle}</h1>
                <h2 className={`user_email ${width>=1280 || width<=480 || width<=768?"text-[8px]":""}`}>{datas?.user_email}</h2>

@@ -23,6 +23,11 @@ const SmallPreview = ({setShowprev}) => {
     const generatePDF =async () => {
       savePDF(pdfRef.current, { paperSize: 'A4',fileName:`${path}` });
     }
+    // export as txt file
+    const downloadDocx = () => {
+         
+       
+    }
     return (
         <div className='fixed w-[100%] min-h-[100vh] bg-black z-50 top-0 left-0 bottom-0 right-0 inset-0  flex flex-col'>
             <div className=' relative h-[100vh]'>
@@ -61,7 +66,7 @@ const SmallPreview = ({setShowprev}) => {
                      <div className=' bg-white rounded-md p-8 max-w-[100%]'>
                            <div className=' py-[6px] px-[10px] flex gap-4 w-full group cursor-pointer items-center'>
                                <FontAwesomeIcon icon={faDochub} className=' text-[#0E76A8] text-2xl font-[500]'/>
-                                <h2 className=' group-hover:text-blue-500 text-xl' onClick={generatePDF}>Export To DOCX</h2>
+                                <h2 className=' group-hover:text-blue-500 text-xl' >Export To DOCX</h2>
                            </div>
                            <hr />
                            <div className=' py-[6px] px-[10px] flex gap-4 w-full group cursor-pointer items-center'>

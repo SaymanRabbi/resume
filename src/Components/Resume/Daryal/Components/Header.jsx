@@ -1,6 +1,5 @@
 import React, { useContext } from 'react';
 import './Header.css'
-import img from './img/user2.jpg'
 import useWidth from '../../../../hooks/useWidth';
 import { useLocation } from 'react-router-dom';
 import { data } from '../../../../App';
@@ -10,11 +9,13 @@ const Header = () => {
   const {allData} = useContext(data)
   const personal_info = allData[path]?.personal_details
     return (
-        <div className=' grid grid-cols-12'>
-          <div className={`col-span-8  ${width>=1280 || width<=480 || width<=768?"pl-10 pt-7":"pl-10 py-10"}`}>
+        <div className={` grid grid-cols-12 ${width>=1280 || width<=480 || width<=768?"h-[165px]":"h-[250px]"}`}>
+          <div className={`col-span-8  ${width>=1280 || width<=480 || width<=768?"pl-4 pt-5":"pl-4 py-5"}`}>
           <h2 className={`text-[#003469]  font-bold user_name ${width>=1280 || width<=480 || width<=768?"text-[14px]":"text-5xl"}`}>
            {
-              personal_info?.firstName ? personal_info?.firstName : null + " " + personal_info?.lastName ? personal_info?.lastName : null
+              personal_info?.firstName ? personal_info?.firstName : null
+           } {
+            personal_info?.lastName ? personal_info?.lastName : null
            }
            </h2> 
            <h2 className={`text-[#003469]  font-[500] user_tittle mt-2 ${width>=1280 || width<=480 || width<=768?"text-[14px]":"text-5xl"}`}>
@@ -28,9 +29,9 @@ const Header = () => {
            }
            </p>
           </div>
-          <div className='relative w-full h-full col-span-4'>
-          <div className={` relative ${width>=1280 || width<=480 || width<=768?"h-[130px] w-[130px] py-4":"clip  pl-3"}`}>
-            <img src={personal_info?.imgUrl} alt="" className={`bg-center h-[90%] user_img bg-cover absolute  ${width>=1280 || width<=480 || width<=768?"top-[30px]":"top-[-5px]"}`}/>
+          <div className='relative w-full col-span-4 h-[100%]'>
+          <div className={` relative ${width>=1280 || width<=480 || width<=768?"h-[100%] clip w-[180px]":"clip  pl-3 w-[300px]"}`}>
+            <img src={personal_info?.imgUrl} alt="" className={`bg-center h-[100%] w-[100%] user_img bg-cover absolute  ${width>=1280 || width<=480 || width<=768?"":""}`}/>
             </div>
           </div>
         </div>

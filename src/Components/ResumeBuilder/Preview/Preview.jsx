@@ -1,6 +1,6 @@
 import { faCloudUpload } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import Vince from '../../Resume/Vince/Vince';
 import { useLocation } from 'react-router-dom';
 import Christoper from '../../Resume/Christoper/Christoper';
