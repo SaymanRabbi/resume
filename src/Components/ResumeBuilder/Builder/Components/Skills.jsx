@@ -6,12 +6,14 @@ import Input from './Input';
 import { useLocation } from 'react-router-dom';
 import { useContext } from 'react';
 import { data } from '../../../../App';
-import { amsterdam, copenhagen, lisbon, london, madrid, milan, new_york, sydney, tokyo, toronto, vancouver, vienna } from '../../../Skills/SkillsData';
-
+  import { amsterdam, copenhagen, lisbon, london, madrid, milan, new_york, sydney, tokyo, toronto, vancouver, vienna } from '../../../Skills/SkillsData';
+  import useOpenAi from '../../../../hooks/useOpenAi';
 
 const Skills = () => {
-    const {allData,setAllData } = useContext(data)
+  const {allData,setAllData } = useContext(data)
   const path = useLocation().pathname.split('/')[2]
+    // const apidata = useOpenAi(` ${allData[path]?.personal_details?.tittle} resume skills` || 'resume skills')
+    // console.log(apidata)
     const [open,SetOpen] = useState(false);
     const datatext = path === 'toronto' ? toronto: path ==='madrid' ? madrid : path ==='vienna' ? vienna : path ==='sydney' ? sydney: path==='new_york' ? new_york : path === 'amsterdam' ?amsterdam : path ==='london' ? london : path ==='vancouver' ? vancouver : path === 'tokyo' ? tokyo : path ==='milan'? milan : path ==='copenhagen' ? copenhagen : path ==='lisbon' ? lisbon : []
      const options = [
