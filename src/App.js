@@ -9,6 +9,8 @@ import ResumeBuilder from "./Pages/ResumeBuilder";
 import Christoper from "./Components/Resume/Christoper/Christoper";
 import { createContext, useRef } from "react";
 import { useState } from "react";
+import { Toaster } from 'react-hot-toast';
+import Profile from "./Pages/Profile/Profile";
 
 export const data = createContext()
 
@@ -38,10 +40,15 @@ function App() {
             <Route exact path='/resume-templates/professional' element={<Professional refar={ref}/>}/>
           </Route>
         <Route path="/login" element={<Login/>} />
+        <Route path="/app/profile" element={<Profile />}/>
         </Route>
         <Route path="/resume_builder/:id" element={<ResumeBuilder />}/>
         <Route path="/toronto" element={<Christoper/>}/>
         </Routes>
+        <Toaster
+         position="top-right"
+         reverseOrder={false}
+        />
     </div>
     </data.Provider>
   );

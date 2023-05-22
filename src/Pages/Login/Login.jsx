@@ -17,18 +17,7 @@ const Login = () => {
 const signInWithGooglefunc =async () => {
     try {
          signInWithGoogle()
-         console.log('hello')
-            await fetch('http://localhost:5000/api/v1/login',{
-            method:'POST',
-            headers:{
-                'Content-Type':'application/json'
-            },
-            body: JSON.stringify({
-                googleuser
-            })
-             }).then(res=>res.json()).then(data=>{
-                    console.log(data)
-             })
+           
        
      } catch (error) {
         
@@ -44,9 +33,24 @@ const signInWithFacebookfunc =async () => {
         
      }
 }
-useEffect(() => {
-    // naviagate('/resume-templates')
-}, [googleuser,facebookuser])
+ if(googleuser || facebookuser){
+        naviagate('/')
+        const func = async () => {
+            await fetch('http://localhost:5000/api/v1/login',{
+                method:'POST',
+                headers:{
+                    'Content-Type':'application/json'
+                },
+                body: JSON.stringify({
+                    googleuser
+                })
+                 }).then(res=>res.json()).then(data=>{
+                    
+                 })
+        }
+        func()
+ }
+
 // =====sign in with google=====
     return (
         <div className=' max-w-[1200px] mx-auto pt-[40px]  pb-120px flex justify-center'>
