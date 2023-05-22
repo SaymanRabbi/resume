@@ -11,6 +11,8 @@ import { createContext, useRef } from "react";
 import { useState } from "react";
 import { Toaster } from 'react-hot-toast';
 import Profile from "./Pages/Profile/Profile";
+import SignUp from "./Pages/SignUp/SignUp";
+import ProtectedRoute from "./Components/OutletContainer/ProtectedRoute";
 
 export const data = createContext()
 
@@ -40,10 +42,12 @@ function App() {
             <Route exact path='/resume-templates/professional' element={<Professional refar={ref}/>}/>
           </Route>
         <Route path="/login" element={<Login/>} />
+        <Route path="/signup" element={<SignUp/>} />
         <Route path="/app/profile" element={<Profile />}/>
         </Route>
-        <Route path="/resume_builder/:id" element={<ResumeBuilder />}/>
-        <Route path="/toronto" element={<Christoper/>}/>
+          <Route element={<ProtectedRoute/>}>
+          <Route path="/resume_builder/:id" element={<ResumeBuilder />}/>
+            </Route>
         </Routes>
         <Toaster
          position="top-right"

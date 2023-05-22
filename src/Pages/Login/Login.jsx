@@ -90,7 +90,7 @@ const signInWithFacebookfunc =async () => {
                 </div>
                 <div className=' mt-4  flex justify-center font-[500]'>
                      <h2 className=' text-gray-500'>I am not registered - </h2>
-                     <Link to='/' className=' text-blue-600'>Sign Up</Link>
+                     <Link to='/signup' className=' text-blue-600'>Sign Up</Link>
                 </div>
                 </> : show ===2 ? <LoginEmail setShow={setShow}/> : null
                }
