@@ -22,7 +22,9 @@ import axios from 'axios';
 import { toast } from 'react-hot-toast';
 import { useContext } from 'react';
 import { data } from '../../App';
+import { savePDF } from '@progress/kendo-react-pdf';
 const Profile = () => {
+    const pdfRef = React.useRef(null);
     const [user,loading] = useAuthState(auth)
     const {allData,setAllData} = useContext(data)
    loading && <Spiner/>
@@ -39,6 +41,9 @@ const Profile = () => {
         }
     } ).catch(err=>console.log(err))
   }
+  const GeneratePDF =async () => {
+    savePDF(pdfRef.current, { paperSize: 'A4',fileName:`${path}` });
+  }
     return (
         <div className=' max-w-[1100px] mx-auto'>
             <h2 className=' text-3xl text-black font-[600]'>Your All Resumes</h2>
@@ -54,7 +59,7 @@ const Profile = () => {
             </div>
             <div className=' py-5 grid grid-cols-12 gap-x-6 lg:gap-y-5 gap-y-0'>
                <div className=' flex gap-x-10 lg:col-span-6 col-span-12'>
-                <div className=' h-[300px] w-[210px] rounded-md border border-gray-200 '>
+                <div className=' h-[100%] w-[100%] rounded-md border border-gray-200 ' ref={pdfRef}>
                 {
                       path==='tokyo'?<Vince id={path}/>
                       :path==='toronto'?<Christoper id={path}/>
@@ -80,7 +85,7 @@ const Profile = () => {
                             <FontAwesomeIcon icon={faPen} className=' text-blue-500'/>
                             <span className='text-gray-500'>Edit</span>
                        </Link>
-                       <div className=' flex gap-x-4 items-center text-[18px] font-[400] py-3'>
+                       <div className=' flex gap-x-4 items-center text-[18px] font-[400] py-3 cursor-pointer' onClick={GeneratePDF}>
                             <FontAwesomeIcon icon={faArrowDown} className=' text-blue-500'/>
                             <span className='text-gray-500'>Download PDF</span>
                        </div>
