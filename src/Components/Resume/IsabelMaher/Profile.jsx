@@ -4,10 +4,10 @@ import { useContext } from 'react';
 import { useLocation } from 'react-router-dom';
 import useWidth from '../../../hooks/useWidth';
 
-const Profile = () => {
+const Profile = ({id}) => {
     const path = useLocation().pathname.split('/')[2]
   const {allData} = useContext(data)
-  const profile =  allData[path]?.personal_details?.summary
+  const profile =  allData[id||path]?.personal_details?.summary
    const width = useWidth()
     return (
         <div className={ `grid grid-cols-12  ${width>=1280 || width<=480 || width<=768 ?"py-4":"py-14"}`}>

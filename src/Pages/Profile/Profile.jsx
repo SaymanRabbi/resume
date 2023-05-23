@@ -1,10 +1,28 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus,faPen, faArrowDown,faTrashCan} from '@fortawesome/free-solid-svg-icons';
-
 import Christoper from '../../Components/Resume/Christoper/Christoper';
 import { Link } from 'react-router-dom';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import { auth } from '../../firebase.init';
+import useGetResume from '../../hooks/useGetResume';
+import Spiner from '../../Components/Spiner';
+import Vince from '../../Components/Resume/Vince/Vince';
+import Sebastian from '../../Components/Resume/Sebastian/Sebastian';
+import Petrica from '../../Components/Resume/Petrica/Petrica';
+import Gregory from '../../Components/Resume/Gregory/Gregory';
+import Shophie from '../../Components/Resume/Shophie/Shophie';
+import Westurner from '../../Components/Resume/Westurner/Westurner';
+import Tim from '../../Components/Resume/Tim/Tim';
+import IsabelMaher from '../../Components/Resume/IsabelMaher/IsabelMaher';
+import Elsa from '../../Components/Resume/Elsa/Elsa';
+import Monica from '../../Components/Resume/Monica/Monica';
+import Daryal from '../../Components/Resume/Daryal/Daryal';
 const Profile = () => {
+    const [user,loading] = useAuthState(auth)
+   loading && <Spiner/>
+  const Resumedata =  useGetResume(user?.email)
+  const path = Resumedata?.resumeId
     return (
         <div className=' max-w-[1100px] mx-auto'>
             <h2 className=' text-3xl text-black font-[600]'>Your All Resumes</h2>
@@ -21,11 +39,25 @@ const Profile = () => {
             <div className=' py-5 grid grid-cols-12 gap-x-6 lg:gap-y-5 gap-y-0'>
                <div className=' flex gap-x-10 lg:col-span-6 col-span-12'>
                 <div className=' h-[300px] w-[210px] rounded-md border border-gray-200 '>
-                    <Christoper/>
+                {
+                      path==='tokyo'?<Vince id={path}/>
+                      :path==='toronto'?<Christoper id={path}/>
+                      :path==="madrid"?<Sebastian id={path}/>
+                      :path==='vienna'?<Petrica id={path}/>
+                      :path==='sydney'?<Gregory id={path}/>
+                      :path==="new_york"?<Shophie id={path}/>
+                      :path==="amsterdam"?<Westurner id={path}/>
+                      :path ==='london' ? <Tim id={path}/>
+                      :path==='vancouver' ?<IsabelMaher id={path}/>
+                      :path ==='milan' ? <Elsa id={path}/>
+                      :path ==='copenhagen' ? <Monica id={path}/>
+                      :path==="lisbon" ? <Daryal id={path}/>
+                      :null
+                     }
                 </div>
                 <div className=''>
                     <h2 className=' text-2xl text-gray-500'>
-                    Untitled
+                    {Resumedata?.tittle}
                     </h2>
                     <div className=' py-5'>
                        <div className=' flex gap-x-3 items-center text-[18px] font-[400]'>

@@ -1,14 +1,13 @@
 import React, { useContext } from 'react';
-import user from './img/user.jpg'
 import useWidth from '../../../../hooks/useWidth';
 import { useLocation } from 'react-router-dom';
 import { data } from '../../../../App';
-const Header = () => {
+const Header = ({id}) => {
   const width = useWidth()
-  const path = useLocation().pathname.split('/')[2]
   const {allData} = useContext(data)
- const datas = allData?.[path]?.personal_details
-    return (
+  const path = useLocation().pathname.split('/')[2] 
+  const datas = allData?.[id || path]?.personal_details
+  return (
         <div className={`${width>=1280 || width<=480 || width<=768?'h-[80px]':'h-[200px]'}`}>
            {
                datas ? <div className=' h-[100%] flex w-[100%] gap-x-1'>

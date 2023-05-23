@@ -3,12 +3,12 @@ import Profile from './Profile';
 import Employment from './Employment';
 import Education from './Education';
 
-const Right = () => {
+const Right = ({id}) => {
     return (
         <div className=' col-span-9  px-8'>
-            <Profile/>
-            <Employment/>
-            <Education/>
+            <Profile id={id}/>
+            <Employment id={id}/>
+            <Education id={id}/>
         </div>
     );
 };

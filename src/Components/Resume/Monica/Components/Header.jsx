@@ -4,10 +4,10 @@ import { useLocation } from 'react-router-dom';
 import { useContext } from 'react';
 import { data } from '../../../../App';
 import useWidth from '../../../../hooks/useWidth';
-const Header = () => {
+const Header = ({id}) => {
   const path = useLocation().pathname.split('/')[2]
   const {allData} = useContext(data)
-  const personal_info = allData[path]?.personal_details
+  const personal_info = allData[id||path]?.personal_details
   const width = useWidth()
     return (
         <div className=' grid grid-cols-12 gap-x-6'>

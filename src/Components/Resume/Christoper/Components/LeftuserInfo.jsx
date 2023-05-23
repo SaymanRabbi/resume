@@ -3,7 +3,7 @@ import './LeftUserInfo.css'
 import useWidth from '../../../../hooks/useWidth';
 import { data } from '../../../../App';
 import { useContext } from 'react';
-const LeftuserInfo = () => {
+const LeftuserInfo = ({id}) => {
     const {allData } = useContext(data)
     const employment = allData?.toronto?.employment
     const educations = allData?.toronto?.education

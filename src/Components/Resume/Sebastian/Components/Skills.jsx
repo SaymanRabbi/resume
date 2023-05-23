@@ -3,11 +3,11 @@ import useWidth from '../../../../hooks/useWidth';
 import { data } from '../../../../App';
 import { useLocation } from 'react-router-dom';
 
-const Skills = () => {
+const Skills = ({id}) => {
     const width = useWidth()
     const path = useLocation().pathname.split('/')[2]
     const {allData} = useContext(data)
-   const datas = allData?.[path]?.skills
+   const datas = allData?.[id||path]?.skills
     return (
         <div className={`${width>=1280 || width<=480 || width<=768?'mt-[2px]':"mt-4"}`}>
           {

@@ -16,11 +16,25 @@ import Monica from '../../Resume/Monica/Monica';
 import Daryal from '../../Resume/Daryal/Daryal';
 import {savePDF } from '@progress/kendo-react-pdf';
  import './Preview.css'
+import { useContext } from 'react';
+import { data } from '../../../App';
+import useSaveData from '../../../hooks/useSaveData';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import { auth } from '../../../firebase.init';
 const Preview = () => {
+  const [user] = useAuthState(auth)
   const path = useLocation().pathname.split('/')[2]
+  const {allData} = useContext(data)
   const pdfRef = React.useRef(null);
-  const generatePDF =async () => {
+  const GeneratePDF =async () => {
     savePDF(pdfRef.current, { paperSize: 'A4',fileName:`${path}` });
+    const data = allData[path]
+    const newData = {
+      email: user?.email,
+      resumeId: path,
+        ...data
+      }
+    useSaveData(newData)
   }
  
     return (
@@ -49,7 +63,7 @@ const Preview = () => {
             </div>
                <div className=' mt-3 flex justify-center'>
                  <button className=' px-5 py-3 bg-blue-500 text-white text-2xl font-[600] rounded'
-                 onClick={generatePDF}
+                 onClick={GeneratePDF}
                  > Download Pdf</button>
                </div>
                 </div>

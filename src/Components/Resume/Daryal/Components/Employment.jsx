@@ -5,11 +5,11 @@ import { useLocation } from 'react-router-dom';
 import { data } from '../../../../App';
 import { useContext } from 'react';
 
-const Employment = () => {
+const Employment = ({id}) => {
     const width = useWidth()
    const path = useLocation().pathname.split('/')[2]
     const {allData} = useContext(data)
-    const employment = allData[path]?.employment
+    const employment = allData[id||path]?.employment
     return (
         <div className=' col-span-8 mt-4'>
             {

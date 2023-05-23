@@ -3,11 +3,11 @@ import { useLocation } from 'react-router-dom';
 import { data } from '../../../../App';
 import useWidth from '../../../../hooks/useWidth';
 
-const Header = () => {
+const Header = ({id}) => {
     const width = useWidth()
     const path = useLocation().pathname.split('/')[2]
     const {allData} = useContext(data)
-    const personal_info = allData[path]?.personal_details
+    const personal_info = allData[id||path]?.personal_details
     return (
         <div className=' text-center'>
             <h2 className={` font-bold text-[#1b3055] ${width>=1280 || width<=480 || width<=768 ? "text-[10px]":"text-2xl"}`}>

@@ -6,13 +6,16 @@ import ResumeTemplates from "./Components/ResumeTemplates/ResumeTemplates";
 import Creative from "./Components/Creative/Creative";
 import Professional from "./Components/Professional/Professional";
 import ResumeBuilder from "./Pages/ResumeBuilder";
-import Christoper from "./Components/Resume/Christoper/Christoper";
-import { createContext, useRef } from "react";
+import { createContext, useEffect, useRef } from "react";
 import { useState } from "react";
 import { Toaster } from 'react-hot-toast';
 import Profile from "./Pages/Profile/Profile";
 import SignUp from "./Pages/SignUp/SignUp";
 import ProtectedRoute from "./Components/OutletContainer/ProtectedRoute";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { auth } from "./firebase.init";
+import useGetResume from "./hooks/useGetResume";
+import Spiner from "./Components/Spiner";
 
 export const data = createContext()
 
@@ -21,10 +24,22 @@ function App() {
   const handleClick = () => {
     ref.current?.scrollIntoView({behavior: 'smooth'});
   };
-  
+  const [user,loading] = useAuthState(auth)
+   loading && <Spiner/>
+  const Resumedata =  useGetResume(user?.email)
   const [allData,setAllData] = useState({
    ...(localStorage.getItem('data') ? JSON.parse(localStorage.getItem('data')) : {})
   })
+  useEffect(() => {
+    setAllData({
+      ...(localStorage.getItem('data') ? JSON.parse(localStorage.getItem('data')) : {}),
+      ...(Resumedata ? {
+        [Resumedata?.resumeId] :{
+          ...Resumedata
+        }
+      } : {})
+     })
+  }, [Resumedata])
   return (
     <data.Provider value={{allData,setAllData}}>
     <div>

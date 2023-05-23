@@ -3,12 +3,12 @@ import user from './img/user.jpg'
 import useWidth from '../../../../hooks/useWidth';
 import { useLocation } from 'react-router-dom';
 import { data } from '../../../../App';
-const Left = () => {
+const Left = ({id}) => {
     const path = useLocation().pathname.split('/')[2]
     const {allData} = useContext(data)
-    const personal_info =  allData[path]?.personal_details
-    const employment_info = allData[path]?.employment
-    const education_info = allData[path]?.education
+    const personal_info =  allData[id||path]?.personal_details
+    const employment_info = allData[id||path]?.employment
+    const education_info = allData[id||path]?.education
     const width = useWidth()
     const ref_info = allData[path]?.references
     return (

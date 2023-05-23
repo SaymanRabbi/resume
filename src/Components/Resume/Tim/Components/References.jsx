@@ -4,11 +4,11 @@ import { data } from '../../../../App';
 import { useContext } from 'react';
 import useWidth from '../../../../hooks/useWidth';
 
-const References = () => {
+const References = ({id}) => {
    
     const path = useLocation().pathname.split('/')[2]
     const {allData} = useContext(data)
-    const references = allData[path]?.references
+    const references = allData[id||path]?.references
     const width = useWidth()
     return (
         <div className=' mt-3'>

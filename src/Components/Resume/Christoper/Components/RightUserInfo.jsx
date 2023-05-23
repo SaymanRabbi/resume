@@ -4,11 +4,11 @@ import { useContext } from 'react';
 import { data } from '../../../../App';
 import { useLocation } from 'react-router-dom';
 
-const RightUserInfo = () => {
+const RightUserInfo = ({id}) => {
     const {allData} = useContext(data)
     const path = useLocation().pathname.split('/')[2]
-    const skills = allData[path]?.skills
-    const references = allData[path]?.references
+    const skills = allData[id||path]?.skills
+    const references = allData[id||path]?.references
     const width = useWidth()
     return (
         <div className=' col-span-5'>

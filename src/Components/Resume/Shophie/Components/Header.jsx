@@ -7,11 +7,11 @@ import { useLocation } from 'react-router-dom';
 import { useContext } from 'react';
 import { data } from '../../../../App';
 
-const Header = () => {
+const Header = ({id}) => {
     const width = useWidth()
     const path = useLocation().pathname.split('/')[2]
     const {allData} = useContext(data)
-    const personal_info = allData[path]?.personal_details
+    const personal_info = allData[id||path]?.personal_details
     return (
         <div className={`py-3 ${width>=1280 || width<=480 || width<=768?"h-[20%]":""}`}>
             <div className=' flex justify-center '>

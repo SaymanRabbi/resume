@@ -4,10 +4,10 @@ import { useLocation } from 'react-router-dom';
 import { data } from '../../../../App';
 import useWidth from '../../../../hooks/useWidth';
 
-const Education = () => {
+const Education = ({id}) => {
     const path = useLocation().pathname.split('/')[2]
     const {allData} = useContext(data)
-    const educations = allData[path]?.education
+    const educations = allData[id||path]?.education
    const width = useWidth()
     return (
         <div className=' mt-3'>

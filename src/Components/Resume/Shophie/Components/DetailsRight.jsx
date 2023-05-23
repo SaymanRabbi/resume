@@ -4,13 +4,13 @@ import { faUser,faRectangleList,faGraduationCap } from '@fortawesome/free-solid-
 import useWidth from '../../../../hooks/useWidth';
 import { useLocation } from 'react-router-dom';
 import { data } from '../../../../App';
-const DetailsRight = () => {
+const DetailsRight = ({id}) => {
     const path = useLocation().pathname.split('/')[2]
     const {allData} = useContext(data)
     console.log(allData)
-    const profile_info = allData[path]?.personal_details?.summary
-    const employe_info = allData[path]?.employment
-    const education_info = allData[path]?.education
+    const profile_info = allData[id||path]?.personal_details?.summary
+    const employe_info = allData[id||path]?.employment
+    const education_info = allData[id||path]?.education
    const width = useWidth()
     return (
         <div className=' col-span-8'>

@@ -3,11 +3,11 @@ import useWidth from '../../../../hooks/useWidth';
 import { useLocation } from 'react-router-dom';
 import { useContext } from 'react';
 import { data } from '../../../../App';
-const Details = () => {
+const Details = ({id}) => {
     const path = useLocation().pathname.split('/')[2]
     const {allData} = useContext(data)
-    const  SKILLS = allData[path]?.skills
-    const personal_info = allData[path]?.personal_details
+    const  SKILLS = allData[id||path]?.skills
+    const personal_info = allData[id||path]?.personal_details
     const width = useWidth()
     return (
         <div className=' col-span-4'>

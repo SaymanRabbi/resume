@@ -3,12 +3,12 @@ import useWidth from '../../../../hooks/useWidth';
 import { useLocation } from 'react-router-dom';
 import { data } from '../../../../App';
 
-const Right = () => {
+const Right = ({id}) => {
    
     const path = useLocation().pathname.split('/')[2]
     const {allData} = useContext(data)
-    const personal_info =  allData[path]?.personal_details
-    const skills = allData[path]?.skills
+    const personal_info =  allData[id||path]?.personal_details
+    const skills = allData[id||path]?.skills
     const width = useWidth()
     return (
         <div className={` col-span-5 h-[100%] rounded-md bg-[#082A4C] ${width>=1280 || width<=480 || width<=768?" px-6" : ' px-12'}`}>

@@ -4,10 +4,10 @@ import { useContext } from 'react';
 import { useLocation } from 'react-router-dom';
 import useWidth from '../../../../hooks/useWidth';
 
-const Skills = () => {
+const Skills = ({id}) => {
     const path = useLocation().pathname.split('/')[2]
   const {allData} = useContext(data)
-  const skills = allData[path]?.skills
+  const skills = allData[id||path]?.skills
   const width = useWidth()
     return (
         <div>

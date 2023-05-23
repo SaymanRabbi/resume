@@ -3,11 +3,11 @@ import user from './img/user.jpg'
 import useWidth from '../../../../hooks/useWidth';
 import { useLocation } from 'react-router-dom';
 import { data } from '../../../../App';
-const Header = () => {
+const Header = ({id}) => {
     const width = useWidth()
     const path = useLocation().pathname.split('/')[2]
     const {allData} = useContext(data)
-    const profile =  allData[path]?.personal_details
+    const profile =  allData[id||path]?.personal_details
     return (
         <div className=' h-[15%] w-full bg-[#B02124] flex items-center  rounded-t-[6px] px-8'>
            <div className=' flex items-center gap-x-[3%] w-full'>

@@ -3,10 +3,10 @@ import './Header.css'
 import { useLocation } from 'react-router-dom';
 import { data } from '../../../../App';
 import useWidth from '../../../../hooks/useWidth';
-const Header = () => {
+const Header = ({id}) => {
     const path = useLocation().pathname.split('/')[2]
     const {allData} = useContext(data)
-    const personal_info =  allData[path]?.personal_details
+    const personal_info =  allData[id||path]?.personal_details
     const width = useWidth()
     return (
         <div className={`flex justify-center  ${width>=1280 || width<=480 || width<=768 ?"py-6":"py-12"}`}>

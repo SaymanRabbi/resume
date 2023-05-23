@@ -5,10 +5,10 @@ import { useLocation } from 'react-router-dom';
 import { useContext } from 'react';
 import useWidth from '../../../../hooks/useWidth';
 
-const Left = () => {
+const Left = ({id}) => {
     const path = useLocation().pathname.split('/')[2]
     const {allData} = useContext(data)
-    const profile_info =  allData[path]?.personal_details
+    const profile_info =  allData[id||path]?.personal_details
     const width = useWidth()
     return (
         <div className={`col-span-3 ${width>=1280 || width<=480 || width<=768?"pl-4 pr-2":"pl-8 pr-4"}`}>

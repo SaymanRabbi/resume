@@ -4,10 +4,10 @@ import { data } from '../../../../App';
 import { useContext } from 'react';
 import useWidth from '../../../../hooks/useWidth';
 
-const Address = () => {
+const Address = ({id}) => {
   const path = useLocation().pathname.split('/')[2]
   const {allData} = useContext(data)
-  const personal_info =  allData[path]?.personal_details
+  const personal_info =  allData[id||path]?.personal_details
   const width = useWidth()
     return (
         <div className={`grid grid-cols-12  w-[100%] ${width>=1280 || width<=480 || width<=768?"gap-x-4":"gap-x-16"}`}>  

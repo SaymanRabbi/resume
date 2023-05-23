@@ -1,13 +1,12 @@
 import React from 'react';
-import user from './img/user.jpg';
 import { useLocation } from 'react-router-dom';
 import { data } from '../../../../App';
 import { useContext } from 'react';
 import useWidth from '../../../../hooks/useWidth';
-const Header = () => {
+const Header = ({id}) => {
     const path = useLocation().pathname.split('/')[2]
     const {allData} = useContext(data)
-    const profile_info =  allData[path]?.personal_details
+    const profile_info =  allData[id||path]?.personal_details
     const width = useWidth()
     return (
         <div className={`grid grid-cols-12 ${width>=1280 || width<=480 || width<=768?"pl-4 py-2":"pl-6 py-6"}`}>

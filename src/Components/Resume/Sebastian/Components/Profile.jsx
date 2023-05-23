@@ -4,11 +4,11 @@ import { data } from '../../../../App';
 import { useLocation } from 'react-router-dom';
 import { useContext } from 'react';
 
-const Profile = () => {
+const Profile = ({id}) => {
     const width = useWidth()
     const path = useLocation().pathname.split('/')[2]
     const {allData} = useContext(data)
-   const datas = allData?.[path]?.personal_details?.summary
+   const datas = allData?.[id||path]?.personal_details?.summary
     return (
         <>
         {

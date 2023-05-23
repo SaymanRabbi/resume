@@ -5,11 +5,11 @@ import { useLocation } from 'react-router-dom';
 import { useContext } from 'react';
 import { data } from '../../../../App';
 
-const Left = () => {
+const Left = ({id}) => {
     const width = useWidth()
     const path = useLocation().pathname.split('/')[2]
   const {allData} = useContext(data)
-  const personal_info = allData[path]?.personal_details
+  const personal_info = allData[id||path]?.personal_details
     return (
         <div className={`col-span-4 bg-[#F4F4F3] ${width>=1280 || width<=480 || width<=768?" pt-[150px] pl-8 pr-3 ":"h-[1200px]  pt-[300px] pl-12 pr-6 "}`}>
             <h2 className={`font-semibold uppercase tracking-widest ${width>=1280 || width<=480 || width<=768?"text-[10px]":"text-2xl"}`}>

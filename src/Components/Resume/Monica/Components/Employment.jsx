@@ -4,11 +4,11 @@ import { useLocation } from 'react-router-dom';
 import { data } from '../../../../App';
 import { useContext } from 'react';
 
-const Employment = () => {
+const Employment = ({id}) => {
     const width = useWidth()
     const path = useLocation().pathname.split('/')[2]
     const {allData} = useContext(data)
-    const employmets = allData[path]?.employment
+    const employmets = allData[id||path]?.employment
     return (
         <div className={` pb-12 ${width>=1280 || width<=480 || width<=768?"px-10":"px-20"}`}>
           {

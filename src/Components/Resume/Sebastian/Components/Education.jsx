@@ -4,10 +4,10 @@ import { data } from '../../../../App';
 import { useContext } from 'react';
 import { useLocation } from 'react-router-dom';
 
-const Education = () => {
+const Education = ({id}) => {
     const path = useLocation().pathname.split('/')[2]
     const {allData} = useContext(data)
-   const datas = allData?.[path]?.education
+   const datas = allData?.[id||path]?.education
     const width = useWidth()
     return (
         <>

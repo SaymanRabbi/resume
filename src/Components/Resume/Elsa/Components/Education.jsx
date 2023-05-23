@@ -6,11 +6,11 @@ import { data } from '../../../../App';
 import { useContext } from 'react';
 import useWidth from '../../../../hooks/useWidth';
 
-const Education = () => {
+const Education = ({id}) => {
   const width = useWidth()
     const path = useLocation().pathname.split('/')[2]
     const {allData} = useContext(data)
-    const educations =  allData[path]?.education    
+    const educations =  allData[id||path]?.education    
     return (
         <div className={` education  ${width>=1280 || width<=480 || width<=768?"":"pb-5 mt-3"}`}>
            {

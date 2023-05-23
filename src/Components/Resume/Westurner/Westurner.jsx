@@ -5,11 +5,11 @@ import Right from "./Components/Right";
 import { data } from "../../../App";
 import { useContext } from "react";
 
-const Westurner = () => {
+const Westurner = ({id}) => {
   const width = useWidth()
   const path = useLocation().pathname.split('/')[2]
   const {allData} = useContext(data)
-  const personal_info = allData[path]?.personal_details
+  const personal_info = allData[id||path]?.personal_details
 //   w-[990px]
     return (
         <div id='amsterdam' className={`bg-[#EFF2F9] w-[100%] h-[100%]  ${width>=1280 || width<=480 || width<=768?"":"p-12"} overflow-x-scroll overflow-y-scroll`}>
@@ -27,8 +27,8 @@ const Westurner = () => {
              </div>
           </div>
           <div className=' grid grid-cols-12 '>
-            <Left/>
-            <Right/>
+            <Left id={id}/>
+            <Right id={id}/>
           </div>
         </div>
      </div>

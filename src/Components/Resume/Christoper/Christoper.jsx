@@ -4,7 +4,7 @@ import BreakPoint from './Components/BreakPoint';
 import UserInfo from './Components/UserInfo';
 import useWidth from '../../../hooks/useWidth';
 import { data } from '../../../App';
-const Christoper = () => {
+const Christoper = ({id}) => {
     const width = useWidth()
     const {allData} = useContext(data)
     const datas = allData?.toronto
@@ -15,7 +15,7 @@ const Christoper = () => {
                 <Header datas={datas?.personal_details}/>
                 <div className='px-4'>
                 <BreakPoint/>
-                <UserInfo/>
+                <UserInfo id={id}/>
                 </div>
                 </div>
     </div>

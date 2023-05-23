@@ -6,11 +6,11 @@ import { useContext } from 'react';
 import { data } from '../../../../App';
 import { useLocation } from 'react-router-dom';
 
-const Address = () => {
+const Address = ({id}) => {
     const width = useWidth()
     const path = useLocation().pathname.split('/')[2]
     const {allData} = useContext(data)
-    const profile_info =  allData[path]?.personal_details
+    const profile_info =  allData[id||path]?.personal_details
     return (
         <div className={`flex gap-x-10 justify-between ${width>=1280 || width<=480 || width<=768?'py-2':'py-4'} w-[100%] h-[5%]`}>
             <div className=' flex md:gap-x-2 gap-x-1 items-center'>

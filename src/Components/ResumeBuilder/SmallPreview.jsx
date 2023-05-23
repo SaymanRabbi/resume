@@ -16,18 +16,28 @@ import Elsa from '../Resume/Elsa/Elsa';
 import Monica from '../Resume/Monica/Monica';
 import Daryal from '../Resume/Daryal/Daryal';
 import {savePDF  } from '@progress/kendo-react-pdf';
+import { data } from '../../App';
+import useSaveData from '../../hooks/useSaveData';
+import { useContext } from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import { auth } from '../../firebase.init';
 const SmallPreview = ({setShowprev}) => {
     const [show, setShow] = React.useState(false);
     const path = useLocation().pathname.split('/')[2]
+    const {allData} = useContext(data)
+    const [user] = useAuthState(auth)
     const pdfRef = React.useRef(null);
-    const generatePDF =async () => {
+    const GeneratePDF =async () => {
       savePDF(pdfRef.current, { paperSize: 'A4',fileName:`${path}` });
+      const data = allData[path]
+    const newData = {
+      email: user?.email,
+      resumeId: path,
+        ...data
+      }
+    useSaveData(newData)
     }
-    // export as txt file
-    const downloadDocx = () => {
-         
-       
-    }
+
     return (
         <div className='fixed w-[100%] min-h-[100vh] bg-black z-50 top-0 left-0 bottom-0 right-0 inset-0  flex flex-col'>
             <div className=' relative h-[100vh]'>
@@ -36,7 +46,7 @@ const SmallPreview = ({setShowprev}) => {
                     <div className=' flex gap-3'>
                       
                        <button className='px-4 py-2 text-xl rounded-md bg-blue-500 text-white font-[600]'
-                       onClick={generatePDF}
+                       onClick={GeneratePDF}
                        >Download PDF</button>
                        <button className='px-4  text-xl rounded-md bg-blue-500 text-white font-[600] flex items-center'
                        onClick={() => setShow(!show)}
