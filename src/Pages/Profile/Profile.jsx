@@ -18,11 +18,27 @@ import IsabelMaher from '../../Components/Resume/IsabelMaher/IsabelMaher';
 import Elsa from '../../Components/Resume/Elsa/Elsa';
 import Monica from '../../Components/Resume/Monica/Monica';
 import Daryal from '../../Components/Resume/Daryal/Daryal';
+import axios from 'axios';
+import { toast } from 'react-hot-toast';
+import { useContext } from 'react';
+import { data } from '../../App';
 const Profile = () => {
     const [user,loading] = useAuthState(auth)
+    const {allData,setAllData} = useContext(data)
    loading && <Spiner/>
   const Resumedata =  useGetResume(user?.email)
   const path = Resumedata?.resumeId
+  const DeleteResume = async(id) => {
+    await axios.delete(`http://localhost:5000/api/v1/deleteResume/${id}`).then(res=>{
+        if(res.data.success){
+            setAllData ({
+                ...allData,
+                [path] : null
+            })
+            toast.success('Resume Deleted Successfully')
+        }
+    } ).catch(err=>console.log(err))
+  }
     return (
         <div className=' max-w-[1100px] mx-auto'>
             <h2 className=' text-3xl text-black font-[600]'>Your All Resumes</h2>
@@ -60,15 +76,15 @@ const Profile = () => {
                     {Resumedata?.tittle}
                     </h2>
                     <div className=' py-5'>
-                       <div className=' flex gap-x-3 items-center text-[18px] font-[400]'>
+                       <Link to={`/resume_builder/${path}`} className=' flex gap-x-3 items-center text-[18px] font-[400]'>
                             <FontAwesomeIcon icon={faPen} className=' text-blue-500'/>
                             <span className='text-gray-500'>Edit</span>
-                       </div>
+                       </Link>
                        <div className=' flex gap-x-4 items-center text-[18px] font-[400] py-3'>
                             <FontAwesomeIcon icon={faArrowDown} className=' text-blue-500'/>
                             <span className='text-gray-500'>Download PDF</span>
                        </div>
-                       <div className=' flex gap-x-4 items-center text-[18px] font-[400]'>
+                       <div className=' flex gap-x-4 items-center text-[18px] font-[400] cursor-pointer' onClick={DeleteResume}>
                             <FontAwesomeIcon icon={faTrashCan} className=' text-blue-500'/>
                             <span className='text-gray-500'>Delete</span>
                        </div>
