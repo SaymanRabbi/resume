@@ -30,7 +30,11 @@ const Profile = () => {
    loading && <Spiner/>
   const Resumedata =  useGetResume(user?.email)
   const path = Resumedata?.resumeId
+  console.log(path)
   const DeleteResume = async(id) => {
+    if(!id) {
+        return toast.error('Something Went Wrong')
+    }
     await axios.delete(`http://localhost:5000/api/v1/deleteResume/${id}`).then(res=>{
         if(res.data.success){
             setAllData ({
@@ -42,6 +46,9 @@ const Profile = () => {
     } ).catch(err=>console.log(err))
   }
   const GeneratePDF =async () => {
+    if(!path){
+        return toast.error('Something Went Wrong')
+    }
     savePDF(pdfRef.current, { paperSize: 'A4',fileName:`${path}` });
   }
     return (
@@ -81,15 +88,20 @@ const Profile = () => {
                     {Resumedata?.tittle}
                     </h2>
                     <div className=' py-5'>
-                       <Link to={`/resume_builder/${path}`} className=' flex gap-x-3 items-center text-[18px] font-[400]'>
+                      {
+                         path ?  <Link to={`/resume_builder/${path}`} className=' flex gap-x-3 items-center text-[18px] font-[400]'>
+                         <FontAwesomeIcon icon={faPen} className=' text-blue-500'/>
+                         <span className='text-gray-500'>Edit</span>
+                    </Link> :  <button className=' flex gap-x-3 items-center text-[18px] font-[400] cursor-not-allowed'>
                             <FontAwesomeIcon icon={faPen} className=' text-blue-500'/>
                             <span className='text-gray-500'>Edit</span>
-                       </Link>
+                       </button>
+                      }
                        <div className=' flex gap-x-4 items-center text-[18px] font-[400] py-3 cursor-pointer' onClick={GeneratePDF}>
                             <FontAwesomeIcon icon={faArrowDown} className=' text-blue-500'/>
                             <span className='text-gray-500'>Download PDF</span>
                        </div>
-                       <div className=' flex gap-x-4 items-center text-[18px] font-[400] cursor-pointer' onClick={DeleteResume}>
+                       <div className=' flex gap-x-4 items-center text-[18px] font-[400] cursor-pointer' onClick={()=>DeleteResume(path)}>
                             <FontAwesomeIcon icon={faTrashCan} className=' text-blue-500'/>
                             <span className='text-gray-500'>Delete</span>
                        </div>
