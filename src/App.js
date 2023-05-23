@@ -16,7 +16,7 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "./firebase.init";
 import useGetResume from "./hooks/useGetResume";
 import Spiner from "./Components/Spiner";
-
+import { LinkedInCallback } from 'react-linkedin-login-oauth2';
 export const data = createContext()
 
 function App() {
@@ -44,6 +44,7 @@ function App() {
     <data.Provider value={{allData,setAllData}}>
     <div>
       <Routes>
+      <Route exact path='/linkedin' element={ < LinkedInCallback /> } />
         <Route  element={<OutletContainer  handleClick={handleClick}/>}>
         <Route path="/" element={<ResumeTemplate  handleClick={handleClick}/>}>
             <Route exact path='' element={<ResumeTemplates refar={ref}/>}/>
@@ -59,6 +60,7 @@ function App() {
         <Route path="/login" element={<Login/>} />
         <Route path="/signup" element={<SignUp/>} />
         <Route path="/app/profile" element={<Profile />}/>
+        
         </Route>
           <Route element={<ProtectedRoute/>}>
           <Route path="/resume_builder/:id" element={<ResumeBuilder />}/>

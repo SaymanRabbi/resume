@@ -7,6 +7,8 @@ import { auth } from '../../firebase.init';
 import {useSignInWithFacebook, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import LoginEmail from './LoginEmail';
 import { useState } from 'react';
+import { useLinkedIn } from 'react-linkedin-login-oauth2';
+import axios from 'axios';
 
 const Login = () => {
     const [show, setShow] = useState(1);
@@ -33,6 +35,22 @@ const signInWithFacebookfunc =async () => {
         
      }
 }
+    const { linkedInLogin } = useLinkedIn({
+        clientId: '86kqhd6z3ywucx',
+        redirectUri: `http://localhost:3000/linkedin`, // for Next.js, you can use `${typeof window === 'object' && window.location.origin}/linkedin`
+        onSuccess: (code) => {
+        //   axios.get('https://api.linkedin.com/v2/me',{
+        //     headers:{
+        //         bearer:code
+        //     }
+        //   }).then(res=>console.log(res)).catch(err=>console.log(err))
+          console.log(code);
+        },
+        onError: (error) => {
+          console.log(error);
+        },
+      });
+
  if(googleuser || facebookuser){
         naviagate('/')
         const func = async () => {
@@ -69,7 +87,7 @@ const signInWithFacebookfunc =async () => {
                                <FontAwesomeIcon icon={faFacebook} className='text-xl mr-3 text-white'/>
                                 Facebook
                            </div>
-                           <div className=' bg-[#225695] text-white px-10 py-3 flex items-center gap-2 rounded-md font-[600] cursor-pointer'>
+                           <div className=' bg-[#225695] text-white px-10 py-3 flex items-center gap-2 rounded-md font-[600] cursor-pointer' onClick={linkedInLogin}>
                                <FontAwesomeIcon icon={faLinkedin} className='text-xl mr-3 text-white'/>
                                Linkedin
                            </div>

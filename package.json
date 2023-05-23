@@ -30,6 +30,7 @@
     "react-frame-component": "^5.2.6",
     "react-hook-form": "^7.43.9",
     "react-hot-toast": "^2.4.1",
+    "react-linkedin-login-oauth2": "^2.0.1",
     "react-live": "^4.0.1",
     "react-router-dom": "^6.10.0",
     "react-scripts": "5.0.1",

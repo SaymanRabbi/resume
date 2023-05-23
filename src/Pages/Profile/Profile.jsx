@@ -30,7 +30,6 @@ const Profile = () => {
    loading && <Spiner/>
   const Resumedata =  useGetResume(user?.email)
   const path = Resumedata?.resumeId
-  console.log(path)
   const DeleteResume = async(id) => {
     if(!id) {
         return toast.error('Something Went Wrong')
