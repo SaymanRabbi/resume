@@ -12,6 +12,7 @@ const Navitem = ({handleClick}) => {
   const [open,SetOpen] = useState(false);
   const [show,SetShow] = useState(false);
   const [user] = useAuthState(auth);
+  const customUser = JSON.parse(localStorage.getItem('user'))
    const path = useLocation().pathname;
    const [signOut] = useSignOut(auth);
    const navigateToHome = () =>{
@@ -24,6 +25,7 @@ const Navitem = ({handleClick}) => {
    }
    const LogOut =async () =>{
      await signOut();
+     localStorage.removeItem('user')
      toast.success('Log Out Successfully')
      setTimeout(() => {
      navigate('/login')
@@ -50,15 +52,15 @@ const Navitem = ({handleClick}) => {
              {/* ---------Navitem Right---------- */}
              <div className=' flex gap-x-4 items-center'>
                  {
-                  !user ? <>
+                  !user && !customUser ? <>
                   <Link to="/login" className="text-blue-500 hover:text-gray-900 font-[500]">Login</Link>
                  <Link to="/signup" className="text-white hover:bg-blue-600 font-[500] bg-blue-500 py-3 px-6 rounded-md">Sign Up</Link>
                   </> :  <div className=' flex gap-x-3 items-center'> 
                   <h2 className='nav_item'>
-                    {user?.displayName}
+                    {user?.displayName || customUser?.displayName}
                   </h2>
                     <img className=' w-[35px] h-[35px] rounded-full cursor-pointer' src={
-                      user?.photoURL
+                      user?.photoURL || customUser?.photoURL
                     } alt=""  onClick={toggle}/>
 
                   </div>
@@ -103,15 +105,15 @@ const Navitem = ({handleClick}) => {
              {/* ---------Navitem Right---------- */}
                <div className=' flex gap-x-4 items-center'>
                  {
-                  !user ? <>
+                  !user && !customUser ? <>
                   <Link to="/login" className="text-blue-500 hover:text-gray-900 font-[500]">Login</Link>
                  <Link to="/signup" className="text-white hover:bg-blue-600 font-[500] bg-blue-500 py-3 px-6 rounded-md">Sign Up</Link>
                   </> :   <div className=' flex gap-x-3 items-center'> 
                   <h2 className='nav_item'>
-                    {user?.displayName}
+                    {user?.displayName || customUser?.displayName}
                   </h2>
                     <img className=' w-[35px] h-[35px] rounded-full cursor-pointer' src={
-                      user?.photoURL
+                      user?.photoURL || customUser?.photoURL
                     } alt="" onClick={toggle}/>
 
                   </div>
@@ -138,10 +140,10 @@ const Navitem = ({handleClick}) => {
             </>:  path === '/app/profile' ? <>
             <div className=' flex gap-x-3 items-center relative'> 
                   <h2 className='nav_item'>
-                    {user?.displayName}
+                    {user?.displayName || customUser?.displayName}
                   </h2>
                     <img className=' w-[35px] h-[35px] rounded-full cursor-pointer' src={
-                      user?.photoURL
+                      user?.photoURL || customUser?.photoURL
                     } alt="" onClick={toggle}/>
 
                   </div>

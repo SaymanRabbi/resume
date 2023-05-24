@@ -23,6 +23,7 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth } from '../../../firebase.init';
 const Preview = () => {
   const [user] = useAuthState(auth)
+  const customUser = JSON.parse(localStorage.getItem('user'))
   const path = useLocation().pathname.split('/')[2]
   const {allData} = useContext(data)
   const pdfRef = React.useRef(null);
@@ -30,7 +31,7 @@ const Preview = () => {
     savePDF(pdfRef.current, { paperSize: 'A4',fileName:`${path}` });
     const data = allData[path]
     const newData = {
-      email: user?.email,
+      email: user?.email || customUser?.email,
       resumeId: path,
         ...data
       }

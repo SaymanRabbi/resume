@@ -23,6 +23,7 @@ import { toast } from 'react-hot-toast';
 import { useContext } from 'react';
 import { data } from '../../App';
 import { savePDF } from '@progress/kendo-react-pdf';
+import Swal from "sweetalert2";
 const Profile = () => {
     const pdfRef = React.useRef(null);
     const [user,loading] = useAuthState(auth)
@@ -34,15 +35,27 @@ const Profile = () => {
     if(!id) {
         return toast.error('Something Went Wrong')
     }
-    await axios.delete(`http://localhost:5000/api/v1/deleteResume/${id}`).then(res=>{
-        if(res.data.success){
-            setAllData ({
-                ...allData,
-                [path] : null
-            })
-            toast.success('Resume Deleted Successfully')
-        }
-    } ).catch(err=>console.log(err))
+    Swal.fire({
+        title: 'Are you sure?',
+        text: " You won't be able to revert this!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        cancelButtonText: 'Decline',
+        confirmButtonText: 'Delete'
+    }).then((result) => {
+        result.isConfirmed && axios.delete(`http://localhost:5000/api/v1/deleteResume/${id}`).then(res=>{
+            if(res.data.success){
+                setAllData ({
+                    ...allData,
+                    [path] : null
+                })
+                toast.success('Resume Deleted Successfully')
+            }
+        } ).catch(err=>console.log(err))
+    })
+    
   }
   const GeneratePDF =async () => {
     if(!path){

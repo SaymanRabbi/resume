@@ -26,12 +26,13 @@ const SmallPreview = ({setShowprev}) => {
     const path = useLocation().pathname.split('/')[2]
     const {allData} = useContext(data)
     const [user] = useAuthState(auth)
+    const customUser = JSON.parse(localStorage.getItem('user'))
     const pdfRef = React.useRef(null);
     const GeneratePDF =async () => {
       savePDF(pdfRef.current, { paperSize: 'A4',fileName:`${path}` });
       const data = allData[path]
     const newData = {
-      email: user?.email,
+      email: user?.email || customUser?.email,
       resumeId: path,
         ...data
       }

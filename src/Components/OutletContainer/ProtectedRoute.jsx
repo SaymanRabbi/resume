@@ -8,10 +8,11 @@ const ProtectedRoute = () => {
     const [user, loading] = useAuthState(auth)
     const location = useLocation()
     if(loading) return <Spiner/>
+    const customUser = JSON.parse(localStorage.getItem('user'))
     return (
         <div>
              {
-            user ?<Outlet />
+            user || customUser ?<Outlet />
              : <Navigate to="/login" state={{ from: location }} replace />
         }
         </div>
