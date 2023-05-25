@@ -6,7 +6,7 @@ const LoginEmail = ({setShow}) => {
     const navigate = useNavigate();
     const Login = (e) => {
             e.preventDefault()
-            const email = e?.target?.email?.value;
+            const email = e?.target?.email?.value.toLowerCase();
             const password = e?.target?.password?.value;
             console.log(email,password)
             if(!email || !password){
@@ -37,7 +37,7 @@ const LoginEmail = ({setShow}) => {
                     }
                     if(data?.data && data?.message === "Login successfully"){
                         localStorage.setItem('user',JSON.stringify(data?.data))
-                        toast.success('User created successfully')
+                        toast.success('User Login successfully')
                         navigate('/')
                     }
                  })
