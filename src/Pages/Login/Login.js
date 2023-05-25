@@ -39,20 +39,22 @@ const signInWithFacebookfunc =async () => {
     const { linkedInLogin } = useLinkedIn({
         clientId: '86kqhd6z3ywucx',
         redirectUri: `http://localhost:3000/linkedin`, // for Next.js, you can use `${typeof window === 'object' && window.location.origin}/linkedin`
-        onSuccess: (code) => {
-          axios.post('https://www.linkedin.com/oauth/v2/accessToken',{
+        scope: 'r_liteprofile r_emailaddress',
+        onSuccess: async(code) => {
+         await axios.post('http://localhost:5000/api/v1/token/https://www.linkedin.com/oauth/v2/accessToken',
+         {
             headers:{
+                'Accept': 'application/json',
                 'Content-Type':'application/x-www-form-urlencoded',
-                'Access-Control-Allow-Origin':'*',
-                grant_type:'authorization_code',
+            },
+            body: {
+                grant_type : 'authorization_code',
                 code:code,
                 client_id:'86kqhd6z3ywucx',
-               client_secret:'qx7W3USeDp9hHtVs',
-               redirect_uri:`http://localhost:3000/linkedin`
-            }
-          }).then(res=>console.log(res)).catch(err=>console.log(err))
-          console.log(code);
-            setCode(code)
+                client_secret:'qx7W3USeDp9hHtVs',
+                redirect_uri:'http://localhost:3000/linkedin'
+            },
+          }).then(res=>res.json()).then(data=>console.log(data)).catch(err=>console.log(err))
         },
         onError: (error) => {
           console.log(error);
@@ -95,17 +97,17 @@ const signInWithFacebookfunc =async () => {
                                <FontAwesomeIcon icon={faFacebook} className='text-xl mr-3 text-white'/>
                                 Facebook
                            </div>
-                           {/* <div className=' bg-[#225695] text-white px-10 py-3 flex items-center gap-2 rounded-md font-[600] cursor-pointer' onClick={linkedInLogin}>
-                               <FontAwesomeIcon icon={faLinkedin} className='text-xl mr-3 text-white'/>
-                               Linkedin
-                           </div> */}
+                          
                            <div className=' bg-[#DB4437] text-white px-10 py-3 flex items-center gap-2 rounded-md font-[600] cursor-pointer' onClick={()=>signInWithGooglefunc()}>
                                <FontAwesomeIcon icon={faGoogle} className='text-xl mr-3 text-white'/>
                                 Goggle
                            </div>
                     </div>
                     <div className=' grid grid-cols-2 gap-4 mt-3'>
-                    
+                     <div className=' bg-[#225695] text-white px-10 py-3 flex items-center gap-2 rounded-md font-[600] cursor-pointer' onClick={linkedInLogin}>
+                               <FontAwesomeIcon icon={faLinkedin} className='text-xl mr-3 text-white'/>
+                               Linkedin
+                           </div>
                            <div className='  text-black border px-10 py-3 flex items-center gap-2 rounded-md font-[600] cursor-pointer' onClick={()=>setShow(2)}>
                                <FontAwesomeIcon icon={faEnvelope} className='text-xl mr-3 text-blue-500'/>
                                 Email
