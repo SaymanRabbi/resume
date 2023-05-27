@@ -63,10 +63,10 @@ const Footer = () => {
                     {
                      footerItem.map((item,index)=> (
                         <div className=' min-w-[160px] mr-[48px] mb-[32px]' key={index}>
-                            <h2 className=' text-gray-600  font-[600]'>{item.title}</h2>
+                            <h2 className=' text-gray-700  font-[700] text-[12px] tracking-widest'>{item.title}</h2>
                                {
                                 item.links.map((link,index)=> (
-                                    <a href={link.link} className=' block text-white text-[16px] mt-[10px] hover:text-blue-500 font-[500]' key={index}>{link.name}</a>
+                                    <a href={link.link} className=' block text-gray-200 text-[16px] mt-[6px] hover:text-blue-500 font-[500]' key={index}>{link.name}</a>
                                 ))
                                }
                             </div>
@@ -75,6 +75,11 @@ const Footer = () => {
                 
                </div>
             </div>
+        </div>
+        <div className=' flex justify-center items-center w-[100%] text-gray-500 text-[12px]'>
+            <h1> 
+                CopyRight {new Date().getFullYear()} - <a href="https://techsroute.com/">Techsroute.com</a>
+            </h1>
         </div>
         </div>
     );
