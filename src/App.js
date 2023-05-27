@@ -27,10 +27,9 @@ function App() {
     ref.current?.scrollIntoView({behavior: 'smooth'});
   };
   const [user,loading] = useAuthState(auth)
-   loading && <Spiner/>
   const Resumedata =  useGetResume(user?.email)
   const [allData,setAllData] = useState({
-   ...(localStorage.getItem('data') ? JSON.parse(localStorage.getItem('data')) : {})
+    ...(localStorage.getItem('data') ? JSON.parse(localStorage.getItem('data')) : {})
   })
   useEffect(() => {
     setAllData({
@@ -40,8 +39,9 @@ function App() {
           ...Resumedata
         }
       } : {})
-     })
+    })
   }, [Resumedata])
+  if(loading) return <Spiner/>
   return (
     <data.Provider value={{allData,setAllData}}>
     <div>

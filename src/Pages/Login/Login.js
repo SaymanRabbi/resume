@@ -54,7 +54,7 @@ const signInWithFacebookfunc =async () => {
                 client_secret:'qx7W3USeDp9hHtVs',
                 redirect_uri:'http://localhost:3000/linkedin'
             },
-          }).then(res=>res.json()).then(data=>console.log(data)).catch(err=>console.log(err))
+          }).then(res=>console.log(res)).catch(err=>console.log(err))
         },
         onError: (error) => {
           console.log(error);
@@ -63,20 +63,41 @@ const signInWithFacebookfunc =async () => {
 
  if(googleuser || facebookuser){
         naviagate('/')
-        const func = async () => {
-            await fetch('http://localhost:5000/api/v1/login',{
-                method:'POST',
-                headers:{
-                    'Content-Type':'application/json'
-                },
-                body: JSON.stringify({
-                    googleuser
-                })
-                 }).then(res=>res.json()).then(data=>{
-                    
-                 })
+        if(googleuser){
+            const func = async () => {
+                await fetch('http://localhost:5000/api/v1/login',{
+                    method:'POST',
+                    headers:{
+                        'Content-Type':'application/json'
+                    },
+                    body: JSON.stringify({
+                        user:googleuser
+                    })
+                     }).then(res=>res.json()).then(data=>{
+                        
+                     })
+            }
+    
+            func()
         }
-        func()
+        if(facebookuser){
+            const func = async () => {
+                await fetch('http://localhost:5000/api/v1/login',{
+                    method:'POST',
+                    headers:{
+                        'Content-Type':'application/json'
+                    },
+                    body: JSON.stringify({
+                       user:facebookuser
+                    })
+                     }).then(res=>res.json()).then(data=>{
+                        
+                     })
+            }
+    
+            func()
+        }
+       
  }
 
 // =====sign in with google=====

@@ -1,8 +1,10 @@
 import { faUser,faCircleExclamation } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
+import { useCreateUserWithEmailAndPassword, useUpdateProfile } from 'react-firebase-hooks/auth';
 import { toast } from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
+import { auth } from '../../firebase.init';
 
 const SignUp = () => {
     const [imgUrl,setImgUrl] = useState( ''
@@ -10,6 +12,13 @@ const SignUp = () => {
       const cloudinaryRef = useRef();
       const refToInput = useRef(null);
       const navigate = useNavigate();
+      const [displayName,setDisplayName] = useState('')
+      const [
+        createUserWithEmailAndPassword,
+        customUser,loading,
+        error,
+      ] = useCreateUserWithEmailAndPassword(auth);
+      const [updateProfile, updating] = useUpdateProfile(auth);
      const [firstname_error,setFirstname_error] = useState('')
      const [lastname_error,setLastname_error] = useState('')
      const [email_error,setEmail_error] = useState('')
@@ -56,40 +65,70 @@ const SignUp = () => {
           setPassword_error('password')
           return;
         }
-        const displayName = firstName + ' ' + lastName;
-        const data = {
-            email,
-            password,
-            displayName,
-            photoURL:imgUrl || 'https://res.cloudinary.com/dnr5u3jpb/image/upload/v1684991367/su9auq96bhkz8n8xpxmx.webp'
-        }
+        setDisplayName(`${firstName} ${lastName}`)
         const func = async () => {
-            await fetch('http://localhost:5000/api/v1/customLogin',{
-                method:'POST',
-                headers:{
-                    'Content-Type':'application/json'
-                },
-                body: JSON.stringify({
-                    data
-                })
-                 }).then(res=>res.json()).then(data=>{
-                    if(data?.data && data?.message === "User created successfully"){
-                        localStorage.setItem('user',JSON.stringify(data?.data))
-                        toast.success('User created successfully')
-                        setTimeout(() => {
-                            navigate('/')
-                        }, 2000);
-                        e.target.reset()
-                        setImgUrl('')
-                    }
-                    if(data?.message === "User already exists"){
-                        toast.error('Gmail already exists try another one')
-                    }
-                 })
+            await createUserWithEmailAndPassword(email, password)
         }
         func()
       }
        // ---add image to cloudinary----
+    useEffect(()=>{
+        if(error){
+            toast.error(error.message)
+            return;
+        }
+        const updateUser = async () => {
+          const success =   await updateProfile({
+                displayName:displayName,
+                photoURL:imgUrl || 'https://res.cloudinary.com/dnr5u3jpb/image/upload/v1684991367/su9auq96bhkz8n8xpxmx.webp'
+            })
+            if(success){
+                const user = {
+                    photoURL : customUser?.user?.photoURL,
+                    email : customUser?.user?.email,
+                    uid : customUser?.user?.uid,
+                    displayName : customUser?.user?.displayName
+                }
+                const providerId = customUser?.user?.providerId
+                const _tokenResponse = {
+                    oauthAccessToken : customUser?.user?.accessToken,
+                }
+                const func = async () => {
+                    await fetch('http://localhost:5000/api/v1/login',{
+                        method:'POST',
+                        headers:{
+                            'Content-Type':'application/json'
+                        },
+                        body: JSON.stringify({
+                           user :{
+                            user,
+                            providerId,
+                            _tokenResponse
+                           }
+                        })
+                         }).then(res=>res.json()).then(data=>{
+                            if(data.message==='User already exist'){
+                                toast.error('User already exist')
+                                return;
+                            }
+                            if(data.message==='Email already use by another user'){
+                                toast.error('Email already use by another user')
+                                return;
+                            }
+
+                            if(data.message==='User created successfully'){
+                                toast.success('User created successfully')
+                                navigate('/')
+                            }
+                         })
+                }
+        
+                func()
+               
+            }
+        }
+        updateUser()
+    },[customUser,error])
     return (
         <div className=' w-[400px] mx-auto' >
             <div className=' mb-[20px] text-center'>
