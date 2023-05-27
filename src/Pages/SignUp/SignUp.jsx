@@ -1,4 +1,4 @@
-import { faUser,faCircleExclamation } from '@fortawesome/free-solid-svg-icons';
+import { faCircleExclamation, faUser } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useEffect, useRef, useState } from 'react';
 import { useCreateUserWithEmailAndPassword, useUpdateProfile } from 'react-firebase-hooks/auth';

@@ -8,6 +8,7 @@ module.exports = {
   },
   plugins: [require('daisyui')],
   variants: {
-    textColor: ['group-hover', 'hover'], 
+    textColor: ['group-hover', 'hover'],
+    backgroundColor: ['group-hover', 'hover'],
 }
 }
