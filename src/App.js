@@ -1,24 +1,23 @@
-import { Routes,Route } from "react-router-dom";
-import OutletContainer from "./Components/OutletContainer/OutletContainer";
-import ResumeTemplate from "./Pages/ResumeTemplate/ResumeTemplate";
-import Login from "./Pages/Login/Login";
-import ResumeTemplates from "./Components/ResumeTemplates/ResumeTemplates";
-import Creative from "./Components/Creative/Creative";
-import Professional from "./Components/Professional/Professional";
-import ResumeBuilder from "./Pages/ResumeBuilder";
-import { createContext, useEffect, useRef } from "react";
-import { useState } from "react";
-import { Toaster } from 'react-hot-toast';
-import Profile from "./Pages/Profile/Profile";
-import SignUp from "./Pages/SignUp/SignUp";
-import ProtectedRoute from "./Components/OutletContainer/ProtectedRoute";
+import { createContext, useEffect, useRef, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { auth } from "./firebase.init";
-import useGetResume from "./hooks/useGetResume";
-import Spiner from "./Components/Spiner";
+import { Toaster } from 'react-hot-toast';
 import { LinkedInCallback } from 'react-linkedin-login-oauth2';
+import { Route, Routes } from "react-router-dom";
+import Creative from "./Components/Creative/Creative";
+import OutletContainer from "./Components/OutletContainer/OutletContainer";
+import ProtectedRoute from "./Components/OutletContainer/ProtectedRoute";
+import Professional from "./Components/Professional/Professional";
+import ResumeTemplates from "./Components/ResumeTemplates/ResumeTemplates";
+import Spiner from "./Components/Spiner";
 import Blog from "./Pages/Blog/Blog";
 import Faq from "./Pages/Faq/Faq";
+import Login from "./Pages/Login/Login";
+import Profile from "./Pages/Profile/Profile";
+import ResumeBuilder from "./Pages/ResumeBuilder";
+import ResumeTemplate from "./Pages/ResumeTemplate/ResumeTemplate";
+import SignUp from "./Pages/SignUp/SignUp";
+import { auth } from "./firebase.init";
+import useGetResume from "./hooks/useGetResume";
 export const data = createContext()
 
 function App() {

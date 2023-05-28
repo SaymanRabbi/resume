@@ -50,9 +50,9 @@ const Footer = () => {
                    <div className=' flex gap-x-2 mt-[10px]'>
                     {
                         social.map((item,index)=> (
-                            <div className={` w-[35px] h-[35px] flex justify-center items-center rounded-full bg-opacity-10  ${item.name==='Youtube' ? `${item?.color} text-[#CD1F28]` : `${item?.color} text-white`} hover:bg-opacity-100`} key={index}>
+                            <div className={` w-[35px] h-[35px] flex justify-center items-center rounded-full bg-opacity-10 cursor-pointer  ${item.name==='Youtube' ? `${item?.color} text-[#CD1F28]` : `${item?.color} text-white`} hover:bg-opacity-100`} key={index}>
                               <FontAwesomeIcon icon={item.icon} className={`
-                               text-xl cursor-pointer`}/>
+                               text-xl`}/>
                           </div>
                         )
                         )
