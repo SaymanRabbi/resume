@@ -16,16 +16,23 @@ const Faq = () => {
                  </form>
                </div>
            </div>
-           <div className=' max-w-[928px] mx-auto relative px-[20px] '>
+           <div className=' max-w-[928px] mx-auto relative px-[20px] mb-[20px] bg-[#fff] rounded-[6px] shadow'>
              <div className=' hidden'> No results Found</div>
              {/* -----Content area----- */}
-                  <div className=' max-w-none w-auto mt-[-50px] rounded-[6px] bg-[#fff]  px-[50px] pt-[40px] pb-[45px]'>
+                  <div className=' max-w-none w-auto mt-[-50px]   px-[50px] pt-[40px] pb-[45px]'>
                      <h2 className=' text-2xl font-[700]'>Most popular Articles</h2>
                      <hr  className=' my-[20px]'/>
                      <h2 className=' text-center'>Some Content Show Here</h2>
                   </div>
              {/* -----Content area----- */}
            </div>
+           {/* -----category-list------ */}
+           {/* <div className=' flex flex-wrap pb-[8px]'>
+              <div className=' rounded-[6px] bg-[#fff] w-[31.33%] px-[25px] pt-[20px] pb-[35px]'>
+
+              </div>
+           </div> */}
+             {/* -----category-list------ */}
         </div>
     );
 };

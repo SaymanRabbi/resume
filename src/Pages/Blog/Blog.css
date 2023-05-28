@@ -1,0 +1,14 @@
+.blog{
+    background: #7dcdec url(../../img/blog.jpg) no-repeat 42% 50%;
+    background-size: cover;
+}
+.span-border{
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+    border-bottom-left-radius: 100px;
+    padding-top: 15px;
+    padding-right: 0px;
+    padding-bottom: 15px;
+    padding-left: 20px;
+}

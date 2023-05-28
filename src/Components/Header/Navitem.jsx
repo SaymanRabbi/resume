@@ -1,12 +1,11 @@
-import React from 'react';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
-import './Navitem.css'
+import { faAngleDown, faBars, faXmark } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faAngleDown,faBars, faXmark } from '@fortawesome/free-solid-svg-icons';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { useAuthState, useSignOut } from 'react-firebase-hooks/auth';
-import { auth } from '../../firebase.init';
 import { toast } from 'react-hot-toast';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { auth } from '../../firebase.init';
+import './Navitem.css';
 const Navitem = ({handleClick}) => {
   const navigate = useNavigate()
   const [open,SetOpen] = useState(false);
@@ -69,7 +68,7 @@ const Navitem = ({handleClick}) => {
              {/* ---------Navitem Right---------- */}
             </div>
            {
-            show ?  <div className=' absolute  w-auto right-8 top-16 rounded-[8px] shadow-xl bg-gray-50 transition duration-500  ease-in'>
+            show ?  <div className=' absolute  w-auto right-8 top-16 rounded-[8px] shadow-xl bg-gray-50 transition duration-500  ease-in  z-20'>
 
             <div className=' py-[12px] px-6 text-gray-600 font-[600] text-[17px]'>
                <Link to='/app/profile' className=' cursor-pointer'>My Profile</Link>
@@ -122,7 +121,7 @@ const Navitem = ({handleClick}) => {
              {/* ---------Navitem Right---------- */}
             </div>
                  {
-                  show ?  <div className=' absolute  w-auto rounded-[8px] shadow-xl bg-gray-50 transition duration-500  ease-in'>
+                  show ?  <div className=' absolute  w-auto rounded-[8px] shadow-xl bg-gray-50 transition duration-500  ease-in  z-20'>
                   <div className=' py-[12px] px-6 text-gray-600 font-[600] text-[17px]'>
                     <Link to='/app/profile' className=' cursor-pointer'>My Profile</Link>
                     <p className=' py-2 cursor-pointer'>
